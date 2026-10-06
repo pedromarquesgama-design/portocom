@@ -1,0 +1,196 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0A0A0A;
+  --surface: #171717;
+  --surface-hover: #1f1f1f;
+  --border: #262626;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --foreground: #FAFAFA;
+  --muted: #A3A3A3;
+  --accent-emerald: #34D399;
+  --accent-blue: #60A5FA;
+
+  /* shadcn variables */
+  --card: oklch(0.94 0 0);
+  --card-foreground: oklch(0 0 0);
+  --popover-foreground: oklch(0 0 0);
+  --primary: oklch(0 0 0);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.5 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted-foreground: oklch(0 0 0);
+  --accent: oklch(0.8 0 0);
+  --accent-foreground: oklch(0 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(1 0 0);
+  --input: oklch(1 0 0);
+  --ring: oklch(0 0 0 / 0.2);
+}
+
+.dark {
+  --background: oklch(0 0 0);
+  --foreground: oklch(1 0 0);
+  --card: oklch(0.1 0 0);
+  --card-foreground: oklch(1 0 0);
+  --popover: oklch(0 0 0);
+  --popover-foreground: oklch(1 0 0);
+  --primary: oklch(1 0 0);
+  --primary-foreground: oklch(0 0 0);
+  --secondary: oklch(0.3 0 0);
+  --secondary-foreground: oklch(1 0 0);
+  --muted: oklch(0.3 0 0);
+  --muted-foreground: oklch(0.7 0 0);
+  --accent: oklch(0.3 0 0);
+  --accent-foreground: oklch(1 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.3 0 0);
+  --input: oklch(0.3 0 0);
+  --ring: oklch(1 0 0 / 0.2);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-surface: #171717;
+  --color-surface-hover: #1f1f1f;
+  --color-border: var(--border);
+  --color-border-subtle: rgba(255, 255, 255, 0.08);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-accent-emerald: #34D399;
+  --color-accent-blue: #60A5FA;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--background);
+  color: var(--foreground);
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Background subtle grid pattern matching reference */
+.bg-grid-pattern {
+  background-size: 64px 64px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+}
+
+.bg-grid-radial-mask {
+  mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 80%);
+}
+
+/* Metallic chrome gradient headline */
+.text-metallic {
+  background: linear-gradient(180deg, #FFFFFF 15%, #E4E4E7 55%, #71717A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #FFFFFF 20%, #34D399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Giant outlined text for footer */
+.text-stroke-giant {
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.18);
+  color: transparent;
+  text-shadow: 0 0 30px rgba(52, 211, 153, 0.05);
+}
+
+/* Dark glass card styling */
+.glass-card {
+  background: rgba(23, 23, 23, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45);
+}
+
+.glass-card-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-card-hover:hover {
+  border-color: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px -10px rgba(52, 211, 153, 0.12);
+}
+
+/* Light highlight card for middle pricing card */
+.glass-card-light {
+  background: #FFFFFF;
+  color: #0A0A0A;
+  box-shadow: 0 20px 50px -10px rgba(255, 255, 255, 0.15), 0 0 30px rgba(52, 211, 153, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+::-webkit-scrollbar-thumb {
+  background: #262626;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #34D399;
+}
+
+/* Infinite marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Perspective tilt container for 3D results section */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+/* Animation utilities respecting prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee {
+    animation: none !important;
+  }
+}
