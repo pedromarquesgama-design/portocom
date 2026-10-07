@@ -4,17 +4,16 @@ import React, { useEffect, useRef, useState } from "react";
 import * as d3 from "d3";
 
 // ============================================================================
-// 1. KEY PHYSICS & INTERACTION CONSTANTS
+// 1. KEY ROTATION CONSTANTS (Continuous ambient auto-spin, zero user interaction)
 // ============================================================================
-const FRICTION = 0.94; // Deceleration rate per frame during inertia (0.0 - 1.0)
-const RETURN_SPEED = 0.055; // Easing speed back to starting position (0.0 - 1.0)
-const MAX_SPIN_SPEED = 24; // Maximum angular velocity on release (deg/frame)
+const AUTO_SPIN_SPEED = 12; // Continuous auto-spin around vertical axis (deg/sec, ~30s per rotation)
 const INITIAL_ROTATION: [number, number] = [0, -10]; // Aligned starting orientation [yaw, pitch]
 
 interface RotatingEarthProps {
   width?: number;
   height?: number;
   className?: string;
+  showHint?: boolean;
   connections?: { from: [number, number]; to: [number, number] }[];
   markers?: { lat: number; lng: number; label?: string }[];
 }
@@ -41,8 +40,8 @@ const DEFAULT_CONNECTIONS: { from: [number, number]; to: [number, number] }[] = 
 ];
 
 export default function RotatingEarth({
-  width = 800,
-  height = 600,
+  width = 760,
+  height = 760,
   className = "",
   connections = DEFAULT_CONNECTIONS,
   markers = DEFAULT_MARKERS,
@@ -60,9 +59,11 @@ export default function RotatingEarth({
     // 1. Cap Device Pixel Ratio to prevent extreme pixel fills on Retina displays
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
-    const containerWidth = Math.min(width, window.innerWidth - 40);
-    const containerHeight = Math.min(height, window.innerHeight - 100);
-    const radius = Math.min(containerWidth, containerHeight) / 2.5;
+    // Fixed dimensions at exact designated size
+    const size = Math.min(width, height);
+    const containerWidth = size;
+    const containerHeight = size;
+    const radius = size / 2.15;
 
     canvas.width = containerWidth * dpr;
     canvas.height = containerHeight * dpr;
@@ -99,19 +100,12 @@ export default function RotatingEarth({
       };
     });
 
-    // 3. Physics & Interaction State
+    // 3. Physics & Continuous Auto-Spin State
     const currentRot: [number, number] = [INITIAL_ROTATION[0], INITIAL_ROTATION[1]];
-    let velocityX = 0;
-    let velocityY = 0;
-    let interactionMode: "RESTING" | "DRAGGING" | "INERTIA" | "RETURNING" = "RESTING";
-
-    let lastPointerX = 0;
-    let lastPointerY = 0;
-    let lastPointerTime = 0;
     let animTime = 0;
     let isVisible = true;
 
-    // 4. Dot generation (Optimized spacing: 2.2 deg gives ~2,200 points instead of 16,000)
+    // 4. Dot generation (Optimized spacing for silky 60fps rendering)
     interface DotData {
       lng: number;
       lat: number;
@@ -161,7 +155,7 @@ export default function RotatingEarth({
       const dots: DotData[] = [];
       const bounds = d3.geoBounds(feature);
       const [[minLng, minLat], [maxLng, maxLat]] = bounds;
-      const stepSize = 2.4; // Optimized resolution for silky 60fps rendering
+      const stepSize = 2.4; // Resolution for silky smooth rendering
 
       for (let lng = minLng; lng <= maxLng; lng += stepSize) {
         for (let lat = minLat; lat <= maxLat; lat += stepSize) {
@@ -221,7 +215,7 @@ export default function RotatingEarth({
         context.stroke();
       }
 
-      // BATCH ALL DOTS IN A SINGLE PATH & DRAW CALL (100x speedup)
+      // Batch all dots in a single draw call (high FPS)
       context.beginPath();
       for (let i = 0; i < allDots.length; i++) {
         const pt = projection([allDots[i].lng, allDots[i].lat]);
@@ -239,7 +233,7 @@ export default function RotatingEarth({
       context.fillStyle = "rgba(180, 180, 180, 0.55)";
       context.fill();
 
-      // PIN POINT CONNECTION LINES
+      // Pin point connection lines
       context.beginPath();
       for (let i = 0; i < preparedConnections.length; i++) {
         path(preparedConnections[i].geoLine);
@@ -248,7 +242,7 @@ export default function RotatingEarth({
       context.lineWidth = 1.4 * scaleFactor;
       context.stroke();
 
-      // ANIMATED PULSE DOTS TRAVELING ALONG CONNECTIONS
+      // Animated pulse dots traveling along connections
       for (let i = 0; i < preparedConnections.length; i++) {
         const conn = preparedConnections[i];
         const t = (Math.sin(animTime * 1.6 + conn.from[0] * 0.1) + 1) / 2;
@@ -276,7 +270,7 @@ export default function RotatingEarth({
         }
       }
 
-      // PIN POINT MARKERS (Pulsing rings and city names)
+      // City markers with pulsing rings
       for (let i = 0; i < markers.length; i++) {
         const marker = markers[i];
         const pt = projection([marker.lng, marker.lat]);
@@ -288,9 +282,9 @@ export default function RotatingEarth({
           pt[1] >= 0 &&
           pt[1] <= containerHeight
         ) {
-          const pulse = (Math.sin(animTime * 2.8 + marker.lat) + 1) / 2;
+          const pulse = (Math.sin(animTime * 3 + i) + 1) / 2;
 
-          // Pulse expansion ring
+          // Expanding pulse wave ring
           context.beginPath();
           context.arc(pt[0], pt[1], (3.5 + pulse * 5.5) * scaleFactor, 0, twoPi);
           context.strokeStyle = `rgba(52, 211, 153, ${0.25 + pulse * 0.4})`;
@@ -319,47 +313,11 @@ export default function RotatingEarth({
       }
     };
 
-    // 6. Physics Simulation (Delta Time Independent)
+    // 6. Continuous Auto-Spin Physics (Delta Time Independent, No User Overrides)
     const updatePhysics = (dt: number) => {
       animTime += dt;
-
-      if (interactionMode === "INERTIA") {
-        // Spin in direction of flick
-        const stepMultiplier = dt * 60;
-        currentRot[0] += velocityX * stepMultiplier;
-        currentRot[1] += velocityY * stepMultiplier;
-        currentRot[1] = Math.max(-65, Math.min(65, currentRot[1]));
-
-        // Apply friction decay
-        const decay = Math.pow(FRICTION, stepMultiplier);
-        velocityX *= decay;
-        velocityY *= decay;
-
-        // When inertia slows to near-zero, smoothly ease back to starting pose
-        if (Math.hypot(velocityX, velocityY) < 0.08) {
-          velocityX = 0;
-          velocityY = 0;
-          interactionMode = "RETURNING";
-        }
-      } else if (interactionMode === "RETURNING") {
-        // Shortest angular difference for yaw
-        const diffYaw =
-          (((INITIAL_ROTATION[0] - currentRot[0] + 180) % 360) + 360) % 360 - 180;
-        const diffPitch = INITIAL_ROTATION[1] - currentRot[1];
-
-        // Smooth spring ease back to starting orientation
-        const easeFactor = 1 - Math.exp(-RETURN_SPEED * dt * 60);
-        currentRot[0] += diffYaw * easeFactor;
-        currentRot[1] += diffPitch * easeFactor;
-
-        // Perfectly settle at starting position
-        if (Math.abs(diffYaw) < 0.05 && Math.abs(diffPitch) < 0.05) {
-          currentRot[0] = INITIAL_ROTATION[0];
-          currentRot[1] = INITIAL_ROTATION[1];
-          interactionMode = "RESTING";
-        }
-      }
-
+      currentRot[0] = (currentRot[0] + AUTO_SPIN_SPEED * dt) % 360;
+      currentRot[1] = INITIAL_ROTATION[1]; // Fixed pitch pose
       projection.rotate([currentRot[0], currentRot[1]]);
     };
 
@@ -381,7 +339,7 @@ export default function RotatingEarth({
 
     rafId = requestAnimationFrame(loop);
 
-    // 7. Pause Rendering When Off-Screen or Hidden
+    // 7. Pause Rendering When Off-Screen or Tab Hidden
     const observer = new IntersectionObserver(
       (entries) => {
         isVisible = entries[0]?.isIntersecting ?? true;
@@ -396,87 +354,7 @@ export default function RotatingEarth({
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // 8. Pointer Drag-to-Spin & Inertia Handlers (Desktop & Mobile Touch)
-    const onPointerDown = (e: PointerEvent) => {
-      // Immediate cancellation of return mode when grabbed
-      interactionMode = "DRAGGING";
-      velocityX = 0;
-      velocityY = 0;
-
-      lastPointerX = e.clientX;
-      lastPointerY = e.clientY;
-      lastPointerTime = performance.now();
-
-      canvas.setPointerCapture(e.pointerId);
-    };
-
-    const onPointerMove = (e: PointerEvent) => {
-      if (interactionMode !== "DRAGGING") return;
-
-      const now = performance.now();
-      const dt = Math.max((now - lastPointerTime) / 1000, 0.005);
-      const dx = e.clientX - lastPointerX;
-      const dy = e.clientY - lastPointerY;
-
-      // Update orientation directly
-      const sensitivity = 0.42;
-      currentRot[0] += dx * sensitivity;
-      currentRot[1] -= dy * sensitivity;
-      currentRot[1] = Math.max(-65, Math.min(65, currentRot[1]));
-
-      // Exponential velocity tracker
-      const instVx = (dx * sensitivity) / (dt * 60);
-      const instVy = (-dy * sensitivity) / (dt * 60);
-      velocityX = velocityX * 0.35 + instVx * 0.65;
-      velocityY = velocityY * 0.35 + instVy * 0.65;
-
-      lastPointerX = e.clientX;
-      lastPointerY = e.clientY;
-      lastPointerTime = now;
-    };
-
-    const onPointerUp = (e: PointerEvent) => {
-      if (interactionMode !== "DRAGGING") return;
-
-      if (canvas.hasPointerCapture(e.pointerId)) {
-        canvas.releasePointerCapture(e.pointerId);
-      }
-
-      // Clamp max flick spin speed
-      const currentSpeed = Math.hypot(velocityX, velocityY);
-      if (currentSpeed > MAX_SPIN_SPEED) {
-        const ratio = MAX_SPIN_SPEED / currentSpeed;
-        velocityX *= ratio;
-        velocityY *= ratio;
-      }
-
-      // If flicked with sufficient momentum, trigger inertia; otherwise, ease back immediately
-      if (currentSpeed > 0.25) {
-        interactionMode = "INERTIA";
-      } else {
-        velocityX = 0;
-        velocityY = 0;
-        interactionMode = "RETURNING";
-      }
-    };
-
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      const scaleMultiplier = e.deltaY > 0 ? 0.94 : 1.06;
-      const newRadius = Math.max(
-        radius * 0.6,
-        Math.min(radius * 2.2, projection.scale() * scaleMultiplier)
-      );
-      projection.scale(newRadius);
-    };
-
-    canvas.addEventListener("pointerdown", onPointerDown);
-    canvas.addEventListener("pointermove", onPointerMove);
-    canvas.addEventListener("pointerup", onPointerUp);
-    canvas.addEventListener("pointercancel", onPointerUp);
-    canvas.addEventListener("wheel", onWheel, { passive: false });
-
-    // 9. Load Map Data with Fallback
+    // 8. Load Map Data with Fallback
     generateFallbackDots();
 
     fetch(
@@ -505,11 +383,6 @@ export default function RotatingEarth({
       cancelAnimationFrame(rafId);
       observer.disconnect();
       document.removeEventListener("visibilitychange", handleVisibilityChange);
-      canvas.removeEventListener("pointerdown", onPointerDown);
-      canvas.removeEventListener("pointermove", onPointerMove);
-      canvas.removeEventListener("pointerup", onPointerUp);
-      canvas.removeEventListener("pointercancel", onPointerUp);
-      canvas.removeEventListener("wheel", onWheel);
     };
   }, [width, height, connections, markers]);
 
@@ -520,20 +393,16 @@ export default function RotatingEarth({
   return (
     <div
       ref={containerRef}
-      className={`relative bg-transparent flex items-center justify-center select-none ${className}`}
+      className={`relative bg-transparent flex items-center justify-center select-none pointer-events-none ${className}`}
     >
       <canvas
         ref={canvasRef}
-        className="w-full h-auto cursor-grab active:cursor-grabbing bg-transparent"
+        className="w-full h-auto bg-transparent pointer-events-none select-none"
         style={{
           maxWidth: "100%",
           height: "auto",
-          touchAction: "none", // Prevents page scrolling while dragging on touch screens
         }}
       />
-      <div className="absolute bottom-3 left-4 text-[10px] text-[#A3A3A3] px-2.5 py-1 rounded-full bg-[#171717]/80 backdrop-blur-md border border-white/10 pointer-events-none">
-        Arraste para girar • Retorna ao centro
-      </div>
     </div>
   );
 }

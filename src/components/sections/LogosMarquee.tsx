@@ -1,46 +1,34 @@
 import React from "react";
-
-const TECHNOLOGIES = [
-  { name: "Figma", category: "UI/UX & Design System" },
-  { name: "Next.js 15", category: "App Router & SSR" },
-  { name: "React 19", category: "Frontend Moderno" },
-  { name: "Tailwind CSS", category: "Estilização Ágil" },
-  { name: "Three.js", category: "Experiências 3D" },
-  { name: "TypeScript", category: "Código Seguro" },
-  { name: "Framer", category: "Prototipagem Rápida" },
-  { name: "Webflow", category: "Sites Visuais" },
-  { name: "Vercel", category: "Edge Infrastructure" },
-];
+import { CLIENT_INDUSTRIES } from "@/lib/constants";
 
 export function LogosMarquee() {
-  // Duplicating array for infinite continuous loop
-  const doubleTech = [...TECHNOLOGIES, ...TECHNOLOGIES];
+  const doubleIndustries = [...CLIENT_INDUSTRIES, ...CLIENT_INDUSTRIES];
 
   return (
-    <section className="relative py-12 md:py-16 border-y border-white/5 bg-[#0D0D0D]/60 overflow-hidden">
-      {/* Lateral gradient masks for seamless fade out matching the reference */}
-      <div className="absolute left-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-r from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 md:w-40 bg-gradient-to-l from-[#0A0A0A] to-transparent z-10 pointer-events-none" />
+    <section className="relative py-10 md:py-12 border-y border-[#262521] bg-[#141413] overflow-hidden">
+      {/* Lateral gradient masks */}
+      <div className="absolute left-0 top-0 bottom-0 w-20 md:w-36 bg-gradient-to-r from-[#121211] to-transparent z-10 pointer-events-none" />
+      <div className="absolute right-0 top-0 bottom-0 w-20 md:w-36 bg-gradient-to-l from-[#121211] to-transparent z-10 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto px-4 mb-5 text-center">
-        <p className="text-xs uppercase tracking-widest font-semibold text-[#A3A3A3]/70">
-          Tecnologias de ponta utilizadas nos nossos projetos
+      <div className="max-w-7xl mx-auto px-4 mb-4 text-center">
+        <p className="text-[11px] uppercase tracking-widest font-semibold text-[#A3A096]">
+          Atendemos empresas e líderes nos setores mais exigentes
         </p>
       </div>
 
       <div className="relative flex overflow-hidden">
-        <div className="animate-marquee flex items-center gap-10 md:gap-14">
-          {doubleTech.map((tech, idx) => (
+        <div className="animate-marquee flex items-center gap-6 md:gap-8">
+          {doubleIndustries.map((item, idx) => (
             <div
-              key={`${tech.name}-${idx}`}
-              className="flex items-center gap-3 px-4 py-2 rounded-xl bg-white/[0.02] border border-white/5 text-[#A3A3A3] hover:text-[#FAFAFA] hover:border-[#34D399]/30 transition-all duration-300 group cursor-default shrink-0"
+              key={`${item.title}-${idx}`}
+              className="flex items-center gap-3 px-4 py-2 rounded-md bg-[#181816] border border-[#262521] text-[#A3A096] hover:text-[#F5F4EE] hover:border-[#3D3C36] transition-all shrink-0 cursor-default"
             >
-              <div className="w-2 h-2 rounded-full bg-[#34D399]/40 group-hover:bg-[#34D399] transition-colors shadow-[0_0_8px_rgba(52,211,153,0.3)]" />
-              <span className="text-sm md:text-base font-semibold tracking-tight text-[#E5E5E5] group-hover:text-white transition-colors">
-                {tech.name}
+              <div className="w-1.5 h-1.5 rounded-full bg-[#2FA882]" />
+              <span className="text-xs md:text-sm font-semibold tracking-tight text-[#E2DDD2]">
+                {item.title}
               </span>
-              <span className="text-[10px] text-[#737373] hidden sm:inline-block border-l border-white/10 pl-2">
-                {tech.category}
+              <span className="text-[10px] text-[#A3A096] border-l border-[#262521] pl-2 hidden sm:inline-block">
+                {item.desc}
               </span>
             </div>
           ))}

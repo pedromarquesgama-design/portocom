@@ -12,7 +12,7 @@ const inter = Inter({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portocom.agency";
 
 export const viewport: Viewport = {
-  themeColor: "#0A0A0A",
+  themeColor: "#121211",
   colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
@@ -26,17 +26,13 @@ export const metadata: Metadata = {
   },
   description: AGENCY_DESCRIPTION,
   keywords: [
-    "agência digital",
-    "desenvolvimento web",
-    "landing pages alta conversão",
-    "UX/UI design",
-    "Next.js",
-    "React",
-    "Framer",
-    "Webflow",
-    "design system",
-    "estúdio de produto digital",
-    "sites premium",
+    "criação de sites comerciais",
+    "estúdio de design digital",
+    "páginas de venda e conversão",
+    "design de sistemas e aplicativos",
+    "sites para empresas",
+    "redesign de sites",
+    "presença digital profissional",
   ],
   authors: [{ name: AGENCY_NAME }],
   creator: AGENCY_NAME,
@@ -121,7 +117,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] antialiased selection:bg-[#34D399]/30 selection:text-[#34D399]">
+      <body className="min-h-screen bg-[#121211] text-[#F5F4EE] antialiased selection:bg-[#1A5446]/40 selection:text-[#F5F4EE]">
         {children}
       </body>
     </html>

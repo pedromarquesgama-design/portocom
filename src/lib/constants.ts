@@ -1,19 +1,27 @@
 export const AGENCY_NAME = "PORTOCOM";
-export const AGENCY_TAGLINE = "Estúdio de Engenharia & UX/UI";
+export const AGENCY_TAGLINE = "Estúdio de Design & Engenharia Digital";
 export const AGENCY_DESCRIPTION =
-  "Construímos a presença digital completa da sua marca: desde sites de alta conversão para atrair e fechar novos clientes, até o design de interface (UX/UI) para escalar seus produtos e sistemas digitais.";
+  "Desenhamos e construímos a presença digital de marcas que não podem parecer amadoras. Transformamos visitantes em clientes pagantes por meio de sites rápidos, objetivos e plataformas fáceis de usar.";
 
 export const NAV_LINKS = [
-  { label: "Serviços", href: "#servicos" },
+  { label: "O que fazemos", href: "#servicos" },
   { label: "Resultados", href: "#resultados" },
-  { label: "Planos", href: "#planos" },
-  { label: "Depoimentos", href: "#depoimentos" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Formatos de trabalho", href: "#planos" },
+  { label: "Dúvidas", href: "#faq" },
 ];
 
 export const SOCIAL_LINKS = [
-  { name: "LinkedIn", href: "https://linkedin.com", icon: "Linkedin" },
-  { name: "Instagram", href: "https://instagram.com", icon: "Instagram" },
-  { name: "GitHub", href: "https://github.com", icon: "Github" },
-  { name: "WhatsApp", href: "https://wa.me/5511999999999", icon: "MessageCircle" },
+  { name: "LinkedIn", href: "https://linkedin.com" },
+  { name: "Instagram", href: "https://instagram.com" },
+  { name: "WhatsApp", href: "https://wa.me/5511999999999" },
+  { name: "E-mail", href: "mailto:contato@suaagencia.com.br" },
+];
+
+export const CLIENT_INDUSTRIES = [
+  { title: "Consultorias & Serviços B2B", desc: "Autoridade comercial imediata" },
+  { title: "Empresas de Tecnologia", desc: "Sistemas simples e intuitivos" },
+  { title: "Indústria & Operações", desc: "Catálogos e páginas de cotação" },
+  { title: "Finanças & Gestão de Recursos", desc: "Segurança e clareza para investidores" },
+  { title: "Saúde & Clínicas Premium", desc: "Agendamento rápido e direto" },
+  { title: "Educação & Treinamentos", desc: "Páginas com alta conversão de matrículas" },
 ];

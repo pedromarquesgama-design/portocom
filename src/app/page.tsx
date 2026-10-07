@@ -2,6 +2,7 @@ import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { LogosMarquee } from "@/components/sections/LogosMarquee";
 import { Pilares } from "@/components/sections/Pilares";
+import { Processo } from "@/components/sections/Processo";
 import { Resultados } from "@/components/sections/Resultados";
 import { Planos } from "@/components/sections/Planos";
 import { Depoimentos } from "@/components/sections/Depoimentos";
@@ -11,7 +12,7 @@ import { Footer } from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0A0A0A] text-[#FAFAFA] relative selection:bg-[#34D399]/30 selection:text-[#34D399]">
+    <main className="min-h-screen bg-[#121211] text-[#F5F4EE] relative selection:bg-[#1A5446]/40 selection:text-[#F5F4EE]">
       {/* 1. Header flutuante com navegação e botão mobile */}
       <Header />
 
@@ -24,7 +25,10 @@ export default function Home() {
       {/* 4. Bento Grid de 4 cards com mockups CSS dos pilares */}
       <Pilares />
 
-      {/* 5. Resultados e métricas de impacto em perspectiva 3D */}
+      {/* 5. Processo de Trabalho em 7 Etapas Interativas (Timeline Carousel) */}
+      <Processo />
+
+      {/* 6. Resultados e métricas de impacto em perspectiva 3D */}
       <Resultados />
 
       {/* 6. Planos de investimento com card central iluminado */}

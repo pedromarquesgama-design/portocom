@@ -4,109 +4,122 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { AGENCY_TAGLINE, AGENCY_DESCRIPTION } from "@/lib/constants";
-import { ArrowUpRight, Sparkles, Layers } from "lucide-react";
+import { AGENCY_TAGLINE } from "@/lib/constants";
+import { ArrowUpRight, Check, ShieldCheck, Clock } from "lucide-react";
 
-// Dotted Wireframe Earth loaded dynamically with ssr: false
 const RotatingEarth = dynamic(
   () => import("@/components/ui/wireframe-dotted-globe"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full aspect-square max-w-[480px] mx-auto flex items-center justify-center rounded-3xl bg-[#121212]/50 border border-white/5 backdrop-blur-md">
-        <div className="flex flex-col items-center gap-3">
-          <div className="w-12 h-12 rounded-full border-2 border-dashed border-[#34D399]/40 animate-spin" />
-          <span className="text-xs text-[#A3A3A3]">Carregando globo interativo...</span>
-        </div>
-      </div>
-    ),
-  }
+  { ssr: false }
 );
+
+const PILL_ITEMS = [
+  "Site comercial rápido e objetivo",
+  "Sem intermediários técnicos",
+  "Clareza total para o visitante",
+  "Acompanhamento pós-lançamento",
+];
 
 export function Hero() {
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen pt-32 pb-20 md:pt-40 md:pb-28 flex items-center overflow-hidden">
-      {/* Background Subtle Grid Pattern matching reference */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" />
-      <div className="absolute inset-0 bg-grid-radial-mask pointer-events-none" />
+    <section className="relative min-h-[72vh] md:min-h-[76vh] lg:min-h-[80vh] pt-18 sm:pt-20 md:pt-22 lg:pt-24 pb-12 md:pb-16 flex items-start md:items-center overflow-hidden">
+      {/* Tactile paper/millimeter grid background across full viewport */}
+      <div className="absolute inset-0 bg-tactile-grid opacity-75 pointer-events-none" />
+      <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
 
-      {/* Atmospheric Ambient Lighting Glows */}
-      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#34D399]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/4 w-[420px] h-[420px] bg-[#60A5FA]/10 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: Value Proposition & CTAs */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
-            {/* Pill Badge matching reference */}
-            <div className="mb-6 inline-flex">
-              <Badge
-                variant="default"
-                icon={<Sparkles className="w-3.5 h-3.5 text-[#34D399]" />}
-              >
+      {/* Panoramic Wide Container */}
+      <div className="max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
+          
+          {/* Left Column: Bold Typography & CTAs Anchored to the Left Edge */}
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start text-left">
+            {/* Grounded Badge */}
+            <div className="mb-3.5 inline-flex">
+              <Badge variant="default" className="text-xs sm:text-sm font-medium px-4 py-1.5">
                 {AGENCY_TAGLINE}
               </Badge>
             </div>
 
-            {/* Main Headline: Two-line large metallic sheen */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-extrabold tracking-tight leading-[1.08] mb-6 text-metallic">
-              Construa produtos digitais que{" "}
-              <span className="text-gradient-emerald">convertem e escalam</span>
+            {/* High-Impact Editorial Headline - Increased Font Scale */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-extrabold tracking-tight leading-[1.05] mb-5 text-[#F5F4EE] uppercase">
+              Construa uma <br />
+              presença digital <br />
+              <span className="inline-block sm:whitespace-nowrap">
+                que <span className="text-[#3DBA95]">inspira confiança</span>
+              </span>
             </h1>
 
-            {/* Subtitle / Value proposition */}
-            <p className="text-base sm:text-lg md:text-xl text-[#A3A3A3] leading-relaxed max-w-2xl mb-10 font-normal">
-              {AGENCY_DESCRIPTION}
+            {/* Clear Plain-Language Subtitle - Increased Font Scale */}
+            <p className="text-lg sm:text-xl md:text-[21px] lg:text-[23px] text-[#A3A096] leading-relaxed max-w-2xl mb-8 font-normal">
+              Transformamos visitantes em clientes por meio de sites rápidos e sistemas fáceis de usar.
             </p>
 
-            {/* Action Buttons Row */}
-            <div className="flex flex-wrap items-center gap-4 w-full sm:w-auto">
+            {/* Action Buttons with Increased Font Size and Padding */}
+            <div className="flex flex-wrap items-center gap-4 mb-8 w-full sm:w-auto">
               <Button
                 href="#contato"
                 variant="primary"
                 size="lg"
-                className="w-full sm:w-auto font-semibold shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:shadow-[0_0_35px_rgba(52,211,153,0.3)] transition-all"
+                className="w-full sm:w-auto !px-8 !py-4 text-base sm:text-lg font-semibold shadow-[0_2px_12px_rgba(0,0,0,0.3)]"
               >
-                Iniciar Projeto
-                <ArrowUpRight className="w-4 h-4 ml-2" />
+                Solicitar Proposta
+                <ArrowUpRight className="w-5 h-5 ml-2" />
               </Button>
 
               <Button
                 href="#servicos"
                 variant="secondary"
                 size="lg"
-                className="w-full sm:w-auto"
+                className="w-full sm:w-auto !px-8 !py-4 text-base sm:text-lg font-medium"
               >
-                <Layers className="w-4 h-4 mr-2 text-[#34D399]" />
-                Conhecer os Pilares
+                Ver Como Ajudamos
               </Button>
             </div>
 
-            {/* Trust Micro-Metrics Row */}
-            <div className="mt-12 pt-8 border-t border-white/5 flex flex-wrap items-center gap-8 text-xs text-[#A3A3A3]">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#34D399] shadow-[0_0_8px_#34D399]" />
-                <span>Next.js 15 & React 19 Stack</span>
+            {/* Trust Micro-Row - Increased Font Scale */}
+            <div className="pt-6 border-t border-[#262521] flex flex-wrap items-center gap-6 sm:gap-8 text-xs sm:text-sm md:text-[15px] text-[#A3A096]">
+              <div className="flex items-center gap-2.5">
+                <ShieldCheck className="w-4.5 h-4.5 text-[#2FA882] flex-shrink-0" />
+                <span>Entrega com prazo garantido</span>
               </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#60A5FA] shadow-[0_0_8px_#60A5FA]" />
-                <span>Score 95+ Core Web Vitals</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-neutral-400" />
-                <span>Design Systems no Figma</span>
+              <div className="flex items-center gap-2.5">
+                <Clock className="w-4.5 h-4.5 text-[#2FA882] flex-shrink-0" />
+                <span>Carregamento em menos de 1s</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Wireframe Dotted Earth Globe */}
-          <div className="lg:col-span-5 flex items-center justify-center relative w-full">
-            <div className="relative w-full max-w-[500px] flex items-center justify-center">
-              {/* Radial ambient glow behind globe */}
-              <div className="absolute inset-0 bg-radial from-[#34D399]/15 via-[#60A5FA]/10 to-transparent blur-3xl pointer-events-none -z-10" />
-              <RotatingEarth width={500} height={500} className="w-full flex items-center justify-center" />
+          {/* Right Column: Wide Scaled-Up Globe & Expanded Pills with Sleeker Height */}
+          <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end relative w-full">
+            <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[680px] xl:max-w-[760px] aspect-square flex items-center justify-center">
+              
+              {/* Scaled-up Interactive 3D Wireframe Globe */}
+              <RotatingEarth
+                width={760}
+                height={760}
+                showHint={false}
+                className="w-full h-full flex items-center justify-center"
+              />
+
+              {/* Wide Deliverable Pills Layered Over the Globe */}
+              <div className="absolute inset-0 flex flex-col justify-center items-center gap-3 sm:gap-3.5 lg:gap-4 z-10 px-2 sm:px-4 pointer-events-none">
+                {PILL_ITEMS.map((item, index) => (
+                  <div
+                    key={index}
+                    className="w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[520px] xl:max-w-[560px] flex items-center gap-3.5 px-5 py-2.5 sm:px-6 sm:py-3 lg:px-7 lg:py-3.5 rounded-full bg-[#161614]/92 backdrop-blur-md border border-[#2E2D28] shadow-[0_8px_24px_rgba(0,0,0,0.6)] select-none transition-transform duration-200"
+                  >
+                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#18382E] border border-[#2FA882]/50 flex items-center justify-center flex-shrink-0 text-[#3DBA95]">
+                      <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
+                    </div>
+                    <span className="text-xs sm:text-sm md:text-[14.5px] lg:text-[15px] font-medium text-[#F5F4EE] tracking-tight">
+                      {item}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
             </div>
           </div>
+
         </div>
       </div>
     </section>

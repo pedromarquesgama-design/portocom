@@ -33,10 +33,10 @@ export function Accordion({
         return (
           <div
             key={item.id}
-            className={`rounded-2xl transition-all duration-300 border ${
+            className={`rounded-xl transition-all duration-200 border ${
               isOpen
-                ? "bg-[#171717] border-[#34D399]/40 shadow-[0_0_20px_rgba(52,211,153,0.1)]"
-                : "bg-[#141414]/80 border-white/5 hover:border-white/15"
+                ? "bg-[#181816] border-[#3D3C36] shadow-sm"
+                : "bg-[#141413] border-[#242320] hover:border-[#2F2E29]"
             }`}
           >
             <button
@@ -44,26 +44,26 @@ export function Accordion({
               onClick={() => toggle(item.id)}
               aria-expanded={isOpen}
               aria-controls={`accordion-content-${item.id}`}
-              className="flex w-full items-center justify-between p-5 md:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#34D399] rounded-2xl cursor-pointer"
+              className="flex w-full items-center justify-between p-5 md:p-6 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] rounded-xl cursor-pointer"
             >
-              <span className="text-base md:text-lg font-medium text-[#FAFAFA]">
+              <span className="text-base font-semibold text-[#F5F4EE]">
                 {item.question}
               </span>
               <span
-                className={`ml-4 shrink-0 p-1 rounded-full transition-transform duration-300 ${
+                className={`ml-4 shrink-0 p-1.5 rounded-md transition-transform duration-200 ${
                   isOpen
-                    ? "rotate-180 bg-[#34D399]/20 text-[#34D399]"
-                    : "text-[#A3A3A3] bg-white/5"
+                    ? "rotate-180 bg-[#1C1B19] text-[#2FA882] border border-[#2E2D28]"
+                    : "text-[#A3A096] bg-[#1A1A18]"
                 }`}
               >
-                <ChevronDown className="w-5 h-5" />
+                <ChevronDown className="w-4 h-4" />
               </span>
             </button>
 
             {isOpen && (
               <div
                 id={`accordion-content-${item.id}`}
-                className="px-5 pb-6 md:px-6 md:pb-6 text-sm md:text-base text-[#A3A3A3] leading-relaxed border-t border-white/5 pt-4 transition-all"
+                className="px-5 pb-6 md:px-6 md:pb-6 text-sm text-[#A3A096] leading-relaxed border-t border-[#242320] pt-4"
               >
                 {item.answer}
               </div>

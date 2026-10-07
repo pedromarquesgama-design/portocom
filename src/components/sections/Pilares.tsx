@@ -1,256 +1,180 @@
 import React from "react";
 import { Badge } from "@/components/ui/Badge";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/Card";
-import { Sparkles, Zap, LayoutTemplate, Layers, CheckCircle2, TrendingUp, Cpu, Gauge } from "lucide-react";
+import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/Card";
+import { LayoutTemplate, AppWindow, Palette, ShieldCheck, CheckCircle2 } from "lucide-react";
 
 export function Pilares() {
   return (
-    <section id="servicos" className="relative py-24 md:py-32 overflow-hidden">
-      {/* Background radial glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#34D399]/5 rounded-full blur-[160px] pointer-events-none" />
-
+    <section id="servicos" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Section Header matching reference */}
+        
+        {/* Section Header in Plain Language */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <div className="inline-flex mb-4">
-            <Badge variant="default" icon={<Sparkles className="w-3.5 h-3.5 text-[#34D399]" />}>
-              Nossos Pilares
+            <Badge variant="default">
+              O Que Fazemos Por Você
             </Badge>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-metallic mb-6">
-            Design & Engenharia Que Geram Resultados Reais
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-6">
+            Serviços Desenhados Para Resolver Problemas Reais do Seu Negócio
           </h2>
-          <p className="text-base sm:text-lg text-[#A3A3A3] leading-relaxed">
-            Unimos a precisão do desenvolvimento de alta performance à sofisticação de interfaces centradas no usuário. Conheça as bases da nossa entrega:
+          <p className="text-base sm:text-lg text-[#A3A096] leading-relaxed">
+            Eliminamos jargões de software e ferramentas. Nossa missão é entregar ferramentas digitais que geram autoridade, facilitam o dia a dia e aumentam o faturamento da sua empresa.
           </p>
         </div>
 
-        {/* Bento Grid: 4 Cards matching the reference layout */}
+        {/* 4 Grounded Bento Cards */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
           
-          {/* Bento Card 1: Pilar 1 - Web Design & Landing Pages (Col span 7) */}
+          {/* Card 1: Sites Comerciais & Páginas de Venda (Col span 7) */}
           <Card
-            variant="glass-interactive"
+            variant="tactile"
             className="md:col-span-7 flex flex-col justify-between group"
           >
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="p-2 rounded-xl bg-[#34D399]/10 text-[#34D399] border border-[#34D399]/20">
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="p-2 rounded-md bg-[#1C1B19] text-[#2FA882] border border-[#2A2925]">
                   <LayoutTemplate className="w-5 h-5" />
                 </span>
-                <span className="text-xs uppercase font-bold tracking-widest text-[#34D399]">
-                  Pilar 1 — Conversão
+                <span className="text-xs uppercase font-bold tracking-wider text-[#2FA882]">
+                  Mais Clientes & Fechamentos
                 </span>
               </div>
               <CardHeader className="!p-0 mb-4">
-                <CardTitle className="text-2xl md:text-3xl">
-                  Sites Institucionais & Landing Pages de Alta Conversão
+                <CardTitle className="text-2xl md:text-3xl text-[#F5F4EE]">
+                  Criação de Sites Comerciais & Páginas de Venda
                 </CardTitle>
-                <CardDescription className="text-base text-[#A3A3A3] mt-2">
-                  Projetados com arquitetura persuasiva, carregamento instantâneo e SEO técnico para transformar tráfego em clientes qualificados.
+                <CardDescription className="text-base text-[#A3A096] mt-2">
+                  Se o seu site atual não gera pedidos de orçamento ou passa uma imagem menor do que a sua empresa é, nós construímos uma estrutura pensada especificamente para transmitir valor e fechar negócios.
                 </CardDescription>
               </CardHeader>
             </div>
 
-            {/* CSS Mockup: Dark Glass Metrics Table */}
-            <div className="mt-8 p-5 rounded-2xl bg-[#0F0F0F]/90 border border-white/10 shadow-inner">
-              <div className="flex items-center justify-between pb-3 mb-3 border-b border-white/5 text-xs text-[#737373]">
-                <span>MÉTRICA CHAVE</span>
-                <span>DESEMPENHO</span>
-                <span>STATUS</span>
+            {/* Plain Deliverables Box */}
+            <div className="mt-7 p-4 rounded-lg bg-[#141413] border border-[#242320] space-y-2.5 text-xs text-[#C4C2B9]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2FA882] shrink-0" />
+                <span><strong>Roteiro claro:</strong> Responde às dúvidas do visitante antes que ele decida ir embora.</span>
               </div>
-              <div className="space-y-3">
-                <div className="flex items-center justify-between text-xs sm:text-sm">
-                  <span className="text-[#E5E5E5] font-medium flex items-center gap-2">
-                    <Gauge className="w-4 h-4 text-[#34D399]" />
-                    PageSpeed Score (Google)
-                  </span>
-                  <span className="font-mono font-bold text-[#34D399]">99 / 100</span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] bg-[#34D399]/10 text-[#34D399] border border-[#34D399]/30">
-                    Excelente
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs sm:text-sm">
-                  <span className="text-[#E5E5E5] font-medium flex items-center gap-2">
-                    <TrendingUp className="w-4 h-4 text-[#60A5FA]" />
-                    Taxa Média de Conversão
-                  </span>
-                  <span className="font-mono font-bold text-[#FAFAFA]">+14.8%</span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] bg-[#60A5FA]/10 text-[#60A5FA] border border-[#60A5FA]/30">
-                    Otimizado
-                  </span>
-                </div>
-                <div className="flex items-center justify-between text-xs sm:text-sm">
-                  <span className="text-[#E5E5E5] font-medium flex items-center gap-2">
-                    <Cpu className="w-4 h-4 text-emerald-400" />
-                    Tempo de Carregamento
-                  </span>
-                  <span className="font-mono font-bold text-[#34D399]">0.42s LCP</span>
-                  <span className="px-2 py-0.5 rounded-full text-[10px] bg-white/5 text-[#A3A3A3]">
-                    Instantâneo
-                  </span>
-                </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2FA882] shrink-0" />
+                <span><strong>Abertura instantânea:</strong> Menos de 1 segundo no celular para não perder clientes impacientes.</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2FA882] shrink-0" />
+                <span><strong>Pronto para anúncios:</strong> Integrado diretamente com WhatsApp e ferramentas de captação.</span>
               </div>
             </div>
           </Card>
 
-          {/* Bento Card 2: Pilar 1 - Micro-interações & Gráfico de Performance (Col span 5) */}
+          {/* Card 2: Sistemas & Plataformas Intuitivas (Col span 5) */}
           <Card
-            variant="glass-interactive"
+            variant="tactile"
             className="md:col-span-5 flex flex-col justify-between group"
           >
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="p-2 rounded-xl bg-[#60A5FA]/10 text-[#60A5FA] border border-[#60A5FA]/20">
-                  <Zap className="w-5 h-5" />
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="p-2 rounded-md bg-[#1C1B19] text-[#2FA882] border border-[#2A2925]">
+                  <AppWindow className="w-5 h-5" />
                 </span>
-                <span className="text-xs uppercase font-bold tracking-widest text-[#60A5FA]">
-                  Pilar 1 — Engenharia
+                <span className="text-xs uppercase font-bold tracking-wider text-[#2FA882]">
+                  Operação Simples
                 </span>
               </div>
               <CardHeader className="!p-0 mb-4">
-                <CardTitle className="text-xl md:text-2xl">
-                  Micro-interações & Engenharia Fluida
+                <CardTitle className="text-xl md:text-2xl text-[#F5F4EE]">
+                  Design de Sistemas, Aplicativos & Portais
                 </CardTitle>
-                <CardDescription className="text-sm text-[#A3A3A3] mt-1">
-                  Desenvolvimento em Next.js 15, Framer ou Webflow com sensibilidade de produto premium e transições sem engasgos.
+                <CardDescription className="text-sm text-[#A3A096] mt-1">
+                  Seus usuários acham seu software difícil de usar ou o suporte vive sobrecarregado? Desenhamos interfaces nas quais qualquer pessoa navega sem precisar de manual.
                 </CardDescription>
               </CardHeader>
             </div>
 
-            {/* CSS Mockup: Glowing Vector Chart matching the reference top-right card */}
-            <div className="mt-6 p-4 rounded-2xl bg-[#0F0F0F]/90 border border-white/10 relative overflow-hidden">
-              <div className="flex justify-between items-center mb-3 text-xs">
-                <div>
-                  <div className="text-[11px] text-[#A3A3A3]">Visitas Únicas</div>
-                  <div className="text-lg font-bold text-white">48.2k</div>
-                </div>
-                <div className="px-2.5 py-1 rounded-full bg-[#34D399]/15 text-[#34D399] border border-[#34D399]/30 text-xs font-semibold">
-                  +38% Crescimento
-                </div>
+            <div className="mt-6 p-4 rounded-lg bg-[#141413] border border-[#242320] space-y-2 text-xs text-[#C4C2B9]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#2FA882] shrink-0" />
+                <span>Telas organizadas e sem poluição visual</span>
               </div>
-
-              {/* Glowing SVG Curve */}
-              <div className="h-28 w-full relative flex items-end">
-                <svg className="w-full h-full overflow-visible" viewBox="0 0 200 80" fill="none">
-                  <defs>
-                    <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="0%" stopColor="#34D399" stopOpacity="0.4" />
-                      <stop offset="100%" stopColor="#34D399" stopOpacity="0.0" />
-                    </linearGradient>
-                  </defs>
-                  <path
-                    d="M0,65 Q30,55 60,40 T120,30 T170,12 T200,5"
-                    fill="none"
-                    stroke="#34D399"
-                    strokeWidth="2.5"
-                    strokeLinecap="round"
-                  />
-                  <path
-                    d="M0,65 Q30,55 60,40 T120,30 T170,12 T200,5 L200,80 L0,80 Z"
-                    fill="url(#chartGradient)"
-                  />
-                  <circle cx="170" cy="12" r="4" fill="#34D399" />
-                  <circle cx="170" cy="12" r="8" fill="#34D399" fillOpacity="0.3" className="animate-ping" />
-                </svg>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#2FA882] shrink-0" />
+                <span>Menos chamados de suporte técnico</span>
               </div>
-
-              <div className="mt-2 flex justify-between text-[10px] text-[#737373]">
-                <span>Semana 1</span>
-                <span>Semana 2</span>
-                <span>Semana 3</span>
-                <span>Semana 4</span>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#2FA882] shrink-0" />
+                <span>Maior retenção e satisfação dos usuários</span>
               </div>
             </div>
           </Card>
 
-          {/* Bento Card 3: Pilar 2 - Design Systems no Figma (Col span 5) */}
+          {/* Card 3: Identidade & Padronização (Col span 5) */}
           <Card
-            variant="glass-interactive"
+            variant="tactile"
             className="md:col-span-5 flex flex-col justify-between group"
           >
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="p-2 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20">
-                  <Layers className="w-5 h-5" />
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="p-2 rounded-md bg-[#1C1B19] text-[#2FA882] border border-[#2A2925]">
+                  <Palette className="w-5 h-5" />
                 </span>
-                <span className="text-xs uppercase font-bold tracking-widest text-purple-400">
-                  Pilar 2 — UX/UI
+                <span className="text-xs uppercase font-bold tracking-wider text-[#2FA882]">
+                  Credibilidade de Marca
                 </span>
               </div>
               <CardHeader className="!p-0 mb-4">
-                <CardTitle className="text-xl md:text-2xl">
-                  Design Systems no Figma
+                <CardTitle className="text-xl md:text-2xl text-[#F5F4EE]">
+                  Identidade Visual & Padronização
                 </CardTitle>
-                <CardDescription className="text-sm text-[#A3A3A3] mt-1">
-                  Bibliotecas de componentes reutilizáveis, tokens escaláveis e documentação pronta para desenvolvimento ágil.
+                <CardDescription className="text-sm text-[#A3A096] mt-1">
+                  Padronizamos as cores, tipografias e telas da sua empresa para que seu produto transmita o valor de uma empresa madura e líder de mercado.
                 </CardDescription>
               </CardHeader>
             </div>
 
-            {/* CSS Mockup: Integration Connection Badge matching bottom-left card */}
-            <div className="mt-6 p-5 rounded-2xl bg-[#0F0F0F]/90 border border-white/10 flex flex-col items-center justify-center text-center">
-              <div className="w-12 h-12 rounded-2xl bg-white/5 border border-white/15 flex items-center justify-center mb-3 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-                <span className="font-extrabold text-lg text-white">DS</span>
+            <div className="mt-6 p-4 rounded-lg bg-[#141413] border border-[#242320] space-y-2 text-xs text-[#C4C2B9]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#2FA882] shrink-0" />
+                <span>Consistência em todos os canais digitais</span>
               </div>
-              <div className="text-sm font-semibold text-white mb-1">
-                Figma + Storybook Sync
-              </div>
-              <p className="text-xs text-[#A3A3A3] max-w-[220px]">
-                Tokens de cor, tipografia e 120+ componentes prontos para escala.
-              </p>
-              <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-medium bg-[#34D399]/10 text-[#34D399] border border-[#34D399]/20">
-                <CheckCircle2 className="w-3 h-3" /> 100% Componentizado
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-3.5 h-3.5 text-[#2FA882] shrink-0" />
+                <span>Manual visual simples para seu time interno</span>
               </div>
             </div>
           </Card>
 
-          {/* Bento Card 4: Pilar 2 - Interfaces de Sistemas e Apps (Col span 7) */}
+          {/* Card 4: Estabilidade, Segurança & Suporte Humano (Col span 7) */}
           <Card
-            variant="glass-interactive"
+            variant="tactile"
             className="md:col-span-7 flex flex-col justify-between group"
           >
             <div>
-              <div className="flex items-center gap-2 mb-4">
-                <span className="p-2 rounded-xl bg-[#34D399]/10 text-[#34D399] border border-[#34D399]/20">
-                  <Cpu className="w-5 h-5" />
+              <div className="flex items-center gap-2.5 mb-4">
+                <span className="p-2 rounded-md bg-[#1C1B19] text-[#2FA882] border border-[#2A2925]">
+                  <ShieldCheck className="w-5 h-5" />
                 </span>
-                <span className="text-xs uppercase font-bold tracking-widest text-[#34D399]">
-                  Pilar 2 — Produto
+                <span className="text-xs uppercase font-bold tracking-wider text-[#2FA882]">
+                  Paz de Espírito
                 </span>
               </div>
               <CardHeader className="!p-0 mb-4">
-                <CardTitle className="text-2xl md:text-3xl">
-                  UX/UI & Interfaces de Sistemas SaaS e Aplicativos
+                <CardTitle className="text-2xl md:text-3xl text-[#F5F4EE]">
+                  Estabilidade, Segurança & Acompanhamento Contínuo
                 </CardTitle>
-                <CardDescription className="text-base text-[#A3A3A3] mt-2">
-                  Pesquisa com usuários reais, prototipagem de alta fidelidade e dashboards modernos criados para reter usuários e diminuir churn.
+                <CardDescription className="text-base text-[#A3A096] mt-2">
+                  Você não precisa se preocupar com servidores, travamentos ou códigos desatualizados. Cuidamos da estabilidade técnica e mantemos canal direto com você para ajustes e melhorias.
                 </CardDescription>
               </CardHeader>
             </div>
 
-            {/* CSS Mockup: Stacked UI Component Cards matching bottom-right card */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3">
-              <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-[#34D399]/40 transition-colors">
-                <div className="text-[11px] text-[#A3A3A3] mb-1">SaaS Dashboards</div>
-                <div className="text-sm font-bold text-white">Analytics 360°</div>
-                <div className="mt-2 text-[10px] text-[#34D399] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#34D399]" /> Alta densidade
-                </div>
+            <div className="mt-7 p-4 rounded-lg bg-[#141413] border border-[#242320] space-y-2.5 text-xs text-[#C4C2B9]">
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2FA882] shrink-0" />
+                <span><strong>Garantia pós-entrega:</strong> 30 dias de acompanhamento assistido após o lançamento.</span>
               </div>
-              <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-[#60A5FA]/40 transition-colors">
-                <div className="text-[11px] text-[#A3A3A3] mb-1">Jornada do Usuário</div>
-                <div className="text-sm font-bold text-white">Onboarding Flow</div>
-                <div className="mt-2 text-[10px] text-[#60A5FA] flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#60A5FA]" /> Testes A/B
-                </div>
-              </div>
-              <div className="p-3.5 rounded-xl bg-white/[0.04] border border-white/10 hover:border-purple-400/40 transition-colors">
-                <div className="text-[11px] text-[#A3A3A3] mb-1">Mobile Apps</div>
-                <div className="text-sm font-bold text-white">iOS & Android</div>
-                <div className="mt-2 text-[10px] text-purple-400 flex items-center gap-1">
-                  <span className="w-1.5 h-1.5 rounded-full bg-purple-400" /> Human Interface
-                </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle2 className="w-4 h-4 text-[#2FA882] shrink-0" />
+                <span><strong>Canal direto no WhatsApp:</strong> Sem abrir tickets burocráticos ou falar com robôs.</span>
               </div>
             </div>
           </Card>

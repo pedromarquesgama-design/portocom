@@ -1,79 +1,76 @@
 import React from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Check, Sparkles, ArrowUpRight } from "lucide-react";
+import { Check, ArrowUpRight } from "lucide-react";
 
 export function Planos() {
   return (
-    <section id="planos" className="relative py-24 md:py-32 overflow-hidden bg-[#0D0D0D]/40">
-      {/* Background glow behind center card */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] bg-[#34D399]/10 rounded-full blur-[180px] pointer-events-none" />
-
+    <section id="planos" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
           <div className="inline-flex mb-4">
-            <Badge variant="default" icon={<Sparkles className="w-3.5 h-3.5 text-[#34D399]" />}>
-              Investimento Estruturado
+            <Badge variant="default">
+              Formatos de Trabalho
             </Badge>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-metallic mb-6">
-            Planos Claros Para Cada Momento da Sua Empresa
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-6">
+            Investimento Transparente, Sem Surpresas no Orçamento
           </h2>
-          <p className="text-base sm:text-lg text-[#A3A3A3] leading-relaxed">
-            Sem surpresas no orçamento. Cada escopo é desenhado com entregas claras, código proprietário e suporte pós-entrega.
+          <p className="text-base sm:text-lg text-[#A3A096] leading-relaxed">
+            Trabalhamos com escopo fechado e prazos combinados em contrato. Você sabe exatamente o que vai receber, quando vai ao ar e quanto vai custar.
           </p>
         </div>
 
-        {/* 3 Pricing Cards Grid matching the reference */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+        {/* 3 Pricing Cards Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-stretch">
           
-          {/* Card 1: Essencial (Dark Glass) */}
-          <div className="relative rounded-3xl p-8 bg-[#171717]/85 backdrop-blur-xl border border-white/10 flex flex-col justify-between shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:border-white/20 transition-all duration-300">
+          {/* Card 1: Página Comercial */}
+          <div className="rounded-xl p-7 bg-[#181816] border border-[#2A2925] flex flex-col justify-between shadow-sm hover:border-[#3D3C36] transition-all">
             <div>
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-white">Essencial</h3>
-                <span className="text-xs uppercase font-semibold text-[#A3A3A3] px-2.5 py-1 rounded-full bg-white/5 border border-white/10">
-                  Landing Page
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="text-lg font-bold text-[#F5F4EE]">Página de Vendas</h3>
+                <span className="text-[11px] font-semibold text-[#A3A096] px-2.5 py-0.5 rounded bg-[#1F1E1B] border border-[#262521]">
+                  Validação & Campanhas
                 </span>
               </div>
-              <p className="text-xs text-[#A3A3A3] mb-6 leading-relaxed">
-                Ideal para validar campanhas com uma página de conversão agressiva e ultra-rápida.
+              <p className="text-xs text-[#A3A096] mb-6 leading-relaxed">
+                Ideal para empresas que precisam de uma página rápida e convincente para receber contatos comerciais no WhatsApp.
               </p>
 
-              {/* Price (PLACEHOLDER) */}
-              <div className="mb-6 pb-6 border-b border-white/10">
-                <span className="text-xs text-[#A3A3A3] block mb-1">Investimento a partir de</span>
+              {/* Price placeholder */}
+              <div className="mb-6 pb-6 border-b border-[#242320]">
+                <span className="text-xs text-[#A3A096] block mb-1">Investimento a partir de</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-white">
-                    {/* PLACEHOLDER: edite este valor */}
+                  <span className="text-3xl font-extrabold text-[#F5F4EE]">
                     R$ 4.500
                   </span>
-                  <span className="text-xs text-[#A3A3A3]">/ projeto</span>
+                  <span className="text-xs text-[#A3A096]">/ projeto</span>
                 </div>
               </div>
 
-              {/* Benefits list */}
-              <ul className="space-y-3 mb-8 text-xs sm:text-sm text-[#D4D4D8]">
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Landing Page One-Page de alta conversão</span>
+              {/* Deliverables list */}
+              <ul className="space-y-3 mb-8 text-xs text-[#C4C2B9]">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Página única focada em gerar pedidos de orçamento</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>UI exclusiva no Figma adaptada à sua marca</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Textos revisados para responder às dúvidas do cliente</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Desenvolvimento Next.js 15 ou Framer</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Abertura instantânea no celular (menos de 1 segundo)</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Integração com WhatsApp e formulários</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Integração direta com WhatsApp e e-mail da sua equipe</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Otimização SEO e velocidade mobile</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Prazo de entrega ágil: cerca de 10 a 14 dias úteis</span>
                 </li>
               </ul>
             </div>
@@ -84,67 +81,56 @@ export function Planos() {
               size="md"
               className="w-full text-center"
             >
-              Iniciar Essencial
+              Consultar Disponibilidade
               <ArrowUpRight className="w-4 h-4 ml-1.5" />
             </Button>
           </div>
 
-          {/* Card 2: Profissional (CENTER HIGHLIGHT - WHITE/LIGHT CARD) */}
-          <div className="relative rounded-3xl p-8 bg-white text-[#0A0A0A] border-2 border-white flex flex-col justify-between shadow-[0_20px_60px_rgba(255,255,255,0.18),0_0_40px_rgba(52,211,153,0.3)] lg:-translate-y-3 z-20 transition-all duration-300">
-            {/* Top Badge */}
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-[#0A0A0A] text-[#34D399] border border-[#34D399]/40 text-xs font-bold tracking-wide shadow-md flex items-center gap-1.5">
-              <Sparkles className="w-3.5 h-3.5 text-[#34D399]" />
-              MAIS ESCOLHIDO
-            </div>
-
+          {/* Card 2: Presença Institucional Completa (HIGHLIGHTED WARM OFF-WHITE CARD) */}
+          <div className="rounded-xl p-7 bg-[#F4F2EC] text-[#121211] border border-[#E0DDCF] flex flex-col justify-between shadow-[0_4px_16px_rgba(0,0,0,0.18)] lg:-translate-y-2 z-10 transition-all">
             <div>
-              <div className="flex justify-between items-center mb-4 mt-2">
-                <h3 className="text-2xl font-black text-black">Profissional</h3>
-                <span className="text-xs uppercase font-bold text-neutral-800 px-2.5 py-1 rounded-full bg-neutral-100 border border-neutral-300">
-                  Presença Completa
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="text-xl font-extrabold text-[#121211]">Site Institucional</h3>
+                <span className="text-[11px] font-bold text-[#145344] px-2.5 py-0.5 rounded bg-[#E4ECE7] border border-[#CADCD2]">
+                  MAIS PROCURADO
                 </span>
               </div>
-              <p className="text-xs text-neutral-600 mb-6 leading-relaxed">
-                A solução definitiva para empresas que exigem autoridade máxima, páginas institucionais e SEO profundo.
+              <p className="text-xs text-[#525049] mb-6 leading-relaxed">
+                A solução definitiva para marcas que precisam transmitir autoridade inquestionável para grandes clientes e investidores.
               </p>
 
-              {/* Price (PLACEHOLDER) */}
-              <div className="mb-6 pb-6 border-b border-neutral-200">
-                <span className="text-xs text-neutral-500 block mb-1">Investimento a partir de</span>
+              {/* Price placeholder */}
+              <div className="mb-6 pb-6 border-b border-[#D8D4C5]">
+                <span className="text-xs text-[#6B685E] block mb-1">Investimento a partir de</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl sm:text-4xl font-black text-black">
-                    {/* PLACEHOLDER: edite este valor */}
+                  <span className="text-3xl font-black text-[#121211]">
                     R$ 9.800
                   </span>
-                  <span className="text-xs text-neutral-600">/ projeto</span>
+                  <span className="text-xs text-[#6B685E]">/ projeto</span>
                 </div>
               </div>
 
-              {/* Benefits list */}
-              <ul className="space-y-3.5 mb-8 text-xs sm:text-sm text-neutral-800 font-medium">
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 font-bold" />
-                  <span>Site multipáginas institucional completo</span>
+              {/* Deliverables list */}
+              <ul className="space-y-3 mb-8 text-xs text-[#2A2926] font-medium">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#1A5446] shrink-0 mt-0.5 font-bold" />
+                  <span>Estrutura completa de páginas institucionais</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 font-bold" />
-                  <span>UX Research e arquitetura de informação</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#1A5446] shrink-0 mt-0.5 font-bold" />
+                  <span>Design visual 100% exclusivo feito sob medida</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 font-bold" />
-                  <span>Design System exclusivo no Figma</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#1A5446] shrink-0 mt-0.5 font-bold" />
+                  <span>Otimização técnica para aparecer bem posicionado no Google</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 font-bold" />
-                  <span>Engenharia Next.js 15 com SSR e micro-interações</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#1A5446] shrink-0 mt-0.5 font-bold" />
+                  <span>Treinamento para sua equipe atualizar textos e fotos</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 font-bold" />
-                  <span>Garantia de Score 95+ nos Core Web Vitals</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-emerald-600 shrink-0 font-bold" />
-                  <span>Integrações CRM, Analytics & Meta Pixel</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#1A5446] shrink-0 mt-0.5 font-bold" />
+                  <span>30 dias de acompanhamento e suporte após o ar</span>
                 </li>
               </ul>
             </div>
@@ -152,59 +138,54 @@ export function Planos() {
             <Button
               href="#contato"
               variant="primary"
-              size="lg"
-              className="w-full text-center !bg-black !text-white hover:!bg-neutral-800 shadow-xl font-bold"
+              size="md"
+              className="w-full text-center !bg-[#121211] !text-[#F5F4EE] hover:!bg-[#22211E] shadow-md font-semibold"
             >
-              Garantir Minha Vaga
+              Solicitar Proposta Completa
               <ArrowUpRight className="w-4 h-4 ml-1.5" />
             </Button>
           </div>
 
-          {/* Card 3: Sob Medida (Dark Glass) */}
-          <div className="relative rounded-3xl p-8 bg-[#171717]/85 backdrop-blur-xl border border-white/10 flex flex-col justify-between shadow-[0_8px_32px_rgba(0,0,0,0.4)] hover:border-white/20 transition-all duration-300">
+          {/* Card 3: Sistemas & Sob Medida */}
+          <div className="rounded-xl p-7 bg-[#181816] border border-[#2A2925] flex flex-col justify-between shadow-sm hover:border-[#3D3C36] transition-all">
             <div>
-              <div className="flex justify-between items-center mb-4">
-                <h3 className="text-xl font-bold text-white">Sob Medida</h3>
-                <span className="text-xs uppercase font-semibold text-[#A3A3A3] px-2.5 py-1 rounded-full bg-white/5 border border-white/10">
-                  SaaS & App
+              <div className="flex justify-between items-center mb-3">
+                <h3 className="text-lg font-bold text-[#F5F4EE]">Sistemas & Apps</h3>
+                <span className="text-[11px] font-semibold text-[#A3A096] px-2.5 py-0.5 rounded bg-[#1F1E1B] border border-[#262521]">
+                  Sob Medida
                 </span>
               </div>
-              <p className="text-xs text-[#A3A3A3] mb-6 leading-relaxed">
-                Para produtos digitais, sistemas complexos, dashboards e contratos com squad dedicado.
+              <p className="text-xs text-[#A3A096] mb-6 leading-relaxed">
+                Para empresas com softwares, plataformas de clientes, aplicativos ou demandas recorrentes de melhoria de produto.
               </p>
 
-              {/* Price (PLACEHOLDER) */}
-              <div className="mb-6 pb-6 border-b border-white/10">
-                <span className="text-xs text-[#A3A3A3] block mb-1">Investimento sob medida</span>
+              {/* Price placeholder */}
+              <div className="mb-6 pb-6 border-b border-[#242320]">
+                <span className="text-xs text-[#A3A096] block mb-1">Investimento com escopo</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-3xl sm:text-4xl font-extrabold text-white">
-                    {/* PLACEHOLDER: edite este valor */}
+                  <span className="text-3xl font-extrabold text-[#F5F4EE]">
                     Personalizado
                   </span>
                 </div>
               </div>
 
-              {/* Benefits list */}
-              <ul className="space-y-3 mb-8 text-xs sm:text-sm text-[#D4D4D8]">
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Design de interfaces de Software (SaaS / App)</span>
+              {/* Deliverables list */}
+              <ul className="space-y-3 mb-8 text-xs text-[#C4C2B9]">
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Desenho de telas simples e intuitivas para seus usuários</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Biblioteca de componentes Figma + Tokens de código</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Testes práticos de navegação para eliminar dúvidas</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Engenharia Front-end completa sob demanda</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Padronização visual para criação rápida de novos recursos</span>
                 </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>Prototipagem interativa para validação de produto</span>
-                </li>
-                <li className="flex items-center gap-2.5">
-                  <Check className="w-4 h-4 text-[#34D399] shrink-0" />
-                  <span>SLA prioritário e acompanhamento quinzenal</span>
+                <li className="flex items-start gap-2.5">
+                  <Check className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
+                  <span>Reuniões quinzenais de alinhamento com os fundadores</span>
                 </li>
               </ul>
             </div>
@@ -215,7 +196,7 @@ export function Planos() {
               size="md"
               className="w-full text-center"
             >
-              Falar com Especialista
+              Conversar com o Especialista
               <ArrowUpRight className="w-4 h-4 ml-1.5" />
             </Button>
           </div>
