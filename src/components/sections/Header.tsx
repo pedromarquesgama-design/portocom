@@ -65,12 +65,12 @@ export function Header() {
         <div className="hidden md:flex items-center gap-4">
           <Button
             href="#contato"
-            variant="primary"
+            variant="glass-emerald"
             size="sm"
-            className="!px-4 !py-2 text-xs font-semibold"
+            className="!px-4 !py-2 text-xs font-semibold rounded-full border-[#2FA882]/40 shadow-[0_0_15px_rgba(47,168,130,0.15)]"
           >
             Fale com o Sócio
-            <ArrowUpRight className="w-3.5 h-3.5 ml-1" />
+            <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#3DBA95]" />
           </Button>
         </div>
 

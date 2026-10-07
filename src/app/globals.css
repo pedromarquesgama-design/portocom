@@ -48,6 +48,7 @@
   --color-accent-emerald: var(--accent-emerald);
   --color-accent-pine: var(--accent-pine);
   --color-accent-warm: var(--accent-warm);
+  --font-roman: "Times New Roman", Times, Georgia, serif;
 }
 
 /* Base resets & typography */
@@ -80,6 +81,10 @@ body {
 }
 
 /* Grounded editorial headline styling (natural ivory with warm metallic tint) */
+.font-roman {
+  font-family: "Times New Roman", Times, Georgia, serif;
+}
+
 .text-editorial-title {
   color: #F5F4EE;
   letter-spacing: -0.03em;

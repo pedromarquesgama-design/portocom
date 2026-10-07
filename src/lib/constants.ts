@@ -5,7 +5,6 @@ export const AGENCY_DESCRIPTION =
 
 export const NAV_LINKS = [
   { label: "O que fazemos", href: "#servicos" },
-  { label: "Resultados", href: "#resultados" },
   { label: "Formatos de trabalho", href: "#planos" },
   { label: "Dúvidas", href: "#faq" },
 ];
