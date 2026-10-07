@@ -1,6 +1,7 @@
 import { Header } from "@/components/sections/Header";
 import { Hero } from "@/components/sections/Hero";
 import { LogosMarquee } from "@/components/sections/LogosMarquee";
+import { Servicos } from "@/components/sections/Servicos";
 import { Pilares } from "@/components/sections/Pilares";
 import { Processo } from "@/components/sections/Processo";
 import { Resultados } from "@/components/sections/Resultados";
@@ -22,7 +23,10 @@ export default function Home() {
       {/* 3. Faixa de logos em movimento (Marquee) */}
       <LogosMarquee />
 
-      {/* 4. Bento Grid de 4 cards com mockups CSS dos pilares */}
+      {/* 4. Explore Nossos Serviços - As 6 soluções digitais interativas com linha do tempo */}
+      <Servicos />
+
+      {/* 5. Bento Grid com os 4 pilares estratégicos de entrega */}
       <Pilares />
 
       {/* 5. Processo de Trabalho em 7 Etapas Interativas (Timeline Carousel) */}

@@ -5,7 +5,7 @@ import { LayoutTemplate, AppWindow, Palette, ShieldCheck, CheckCircle2 } from "l
 
 export function Pilares() {
   return (
-    <section id="servicos" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]">
+    <section id="pilares" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header in Plain Language */}
