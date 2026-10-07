@@ -4,6 +4,7 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { ColumnLines } from "@/components/ui/columnlines";
 import { AGENCY_TAGLINE } from "@/lib/constants";
 import { ArrowUpRight, Check, ShieldCheck, Clock } from "lucide-react";
 
@@ -21,11 +22,16 @@ const PILL_ITEMS = [
 
 export function Hero() {
   return (
-    <section className="relative min-h-[72vh] md:min-h-[76vh] lg:min-h-[80vh] pt-18 sm:pt-20 md:pt-22 lg:pt-24 pb-12 md:pb-16 flex items-start md:items-center overflow-hidden">
-      {/* Tactile paper/millimeter grid background across full viewport */}
-      <div className="absolute inset-0 bg-tactile-grid opacity-75 pointer-events-none" />
-      <div className="absolute inset-0 bg-radial-fade pointer-events-none" />
-
+    <ColumnLines
+      columnWidth={84}
+      columnCount={22}
+      radialFadeStart={20}
+      radialFadeEnd={75}
+      opacity={0.85}
+      showNoise={true}
+      noiseOpacity={0.05}
+      className="relative min-h-[72vh] md:min-h-[76vh] lg:min-h-[80vh] pt-18 sm:pt-20 md:pt-22 lg:pt-24 pb-12 md:pb-16 flex items-start md:items-center overflow-hidden bg-[#121211]"
+    >
       {/* Panoramic Wide Container */}
       <div className="max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
@@ -122,6 +128,6 @@ export function Hero() {
 
         </div>
       </div>
-    </section>
+    </ColumnLines>
   );
 }
