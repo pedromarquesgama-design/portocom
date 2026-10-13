@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
 import { Resend } from "resend";
 
+export const dynamic = "force-dynamic";
+
 // Simple in-memory rate limiter per IP (max 5 requests per 10 minutes)
 const rateLimitMap = new Map<string, { count: number; expiresAt: number }>();
 

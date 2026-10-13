@@ -4,9 +4,8 @@ export const AGENCY_DESCRIPTION =
   "Desenhamos e construímos a presença digital de marcas que não podem parecer amadoras. Transformamos visitantes em clientes pagantes por meio de sites rápidos, objetivos e plataformas fáceis de usar.";
 
 export const NAV_LINKS = [
-  { label: "O que fazemos", href: "#servicos" },
+  { label: "Soluções", href: "#servicos" },
   { label: "Formatos de trabalho", href: "#planos" },
-  { label: "Dúvidas", href: "#faq" },
 ];
 
 export const SOCIAL_LINKS = [

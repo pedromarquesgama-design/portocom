@@ -1,6 +1,9 @@
+"use client";
+
 import React from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Accordion, AccordionItem } from "@/components/ui/Accordion";
+import { motion } from "motion/react";
 
 const FAQ_ITEMS: AccordionItem[] = [
   {
@@ -37,11 +40,17 @@ const FAQ_ITEMS: AccordionItem[] = [
 
 export function FAQ() {
   return (
-    <section id="faq" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]">
+    <section id="faq" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]/75 backdrop-blur-md border-b border-[#242320]/60">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="text-center mb-16">
+        {/* Section Header with Scroll-driven Entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-16"
+        >
           <div className="inline-flex mb-4">
             <Badge variant="default">
               Perguntas Frequentes
@@ -53,13 +62,20 @@ export function FAQ() {
           <p className="text-base sm:text-lg text-[#A3A096] max-w-2xl mx-auto leading-relaxed">
             Respostas diretas e transparentes sobre prazos, processo de trabalho e garantias.
           </p>
-        </div>
+        </motion.div>
 
         {/* Accordion Component */}
         <Accordion items={FAQ_ITEMS} defaultOpenId="faq-1" />
 
         {/* Direct question box */}
-        <div className="mt-12 p-6 rounded-xl bg-[#181816] border border-[#2A2925] flex flex-col sm:flex-row items-center justify-between gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+          whileHover={{ y: -2 }}
+          className="mt-12 p-6 rounded-xl bg-[#181816] border border-[#2A2925] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm hover:border-[#3D3C36] transition-all"
+        >
           <div className="text-left">
             <h4 className="text-sm font-bold text-[#F5F4EE]">Tem alguma dúvida específica sobre o seu caso?</h4>
             <p className="text-xs text-[#A3A096] mt-0.5">Respondemos com clareza e sem compromisso pelo WhatsApp.</p>
@@ -70,8 +86,7 @@ export function FAQ() {
           >
             Fazer Pergunta Direta
           </a>
-        </div>
-
+        </motion.div>
       </div>
     </section>
   );

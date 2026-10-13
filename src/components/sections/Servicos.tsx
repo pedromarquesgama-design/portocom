@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { motion, AnimatePresence } from "motion/react";
 import {
   Layout,
   Sparkles,
@@ -23,6 +24,8 @@ import {
   Clock,
   Activity,
   Lock,
+  Smartphone,
+  Laptop,
 } from "lucide-react";
 
 interface ServiceData {
@@ -33,87 +36,57 @@ interface ServiceData {
   title: string;
   description: string;
   extraInfo: string;
-  deliverables: string[];
-  ctaLabel: string;
   accentColor: string;
 }
 
 const SERVICES: ServiceData[] = [
   {
     id: "web-design",
-    tabLabel: "Design Web Sob Medida",
+    tabLabel: "Sites & Páginas de Venda",
     icon: Layout,
-    badge: "Custom Web Design",
-    title: "Design de Sites Exclusivos & Alta Conversão",
+    badge: "Alta Conversão & Custom Design",
+    title: "Criação de Sites Comerciais & Páginas de Venda",
     description:
-      "Desenhamos sites sob medida baseados no comportamento e nos critérios de decisão do seu cliente ideal. Cada layout, tipografia e interação nasce de pesquisas sólidas de UX e arquitetura comercial.",
+      "Desenhamos sites sob medida baseados no comportamento e nos critérios de decisão do seu cliente ideal. Sua empresa recebe uma presença visual única que transmite prestígio instantâneo e conduz os visitantes diretamente para a tomada de ação.",
     extraInfo:
-      "Sem templates pré-fabricados. Sua empresa recebe uma presença visual única que transmite prestígio instantâneo e conduz os visitantes diretamente para a tomada de ação.",
-    deliverables: [
-      "Pesquisa de Comportamento & Jornada do Usuário",
-      "Wireframes & Protótipos Interativos no Figma",
-      "Design Responsivo Mobile-First de Alta Fidelidade",
-      "Arquitetura Estruturada para Conversão e Vendas",
-    ],
-    ctaLabel: "EXPLORAR SERVIÇOS DE WEB DESIGN",
+      "Mapeamos o seu mercado, analisamos os principais concorrentes e identificamos os argumentos mais convincentes do seu negócio. Definimos os objetivos comerciais claros que o novo site precisa cumprir para gerar contatos qualificados.",
     accentColor: "#2FA882",
   },
   {
     id: "branding",
     tabLabel: "Branding & Identidade",
     icon: Sparkles,
-    badge: "Branding & Brand Identity",
+    badge: "Autoridade de Marca & Posicionamento",
     title: "Branding, Posicionamento & Identidade Visual",
     description:
       "Criamos identidades visuais completas do zero ou conduzimos rebrandings estratégicos para empresas consolidadas que precisam alinhar sua imagem ao seu valor real de mercado.",
     extraInfo:
       "Definimos logotipo, sistemas visuais, diretrizes tipográficas, paleta de cores e tom de voz, garantindo que sua nova marca inspire consistência e autoridade em todos os canais.",
-    deliverables: [
-      "Logotipo, Símbolo & Sistema de Assinaturas",
-      "Brandbook Completo & Diretrizes de Aplicação",
-      "Tipografia Exclusiva & Paleta Cromática Editorial",
-      "Aplicações Digitais, Materiais e Redes Sociais",
-    ],
-    ctaLabel: "EXPLORAR SERVIÇOS DE BRANDING",
     accentColor: "#3DBA95",
   },
   {
-    id: "seo-marketing",
-    tabLabel: "SEO & Marketing Digital",
-    icon: TrendingUp,
-    badge: "SEO & Digital Marketing",
-    title: "SEO Técnico & Estratégias de Crescimento Digital",
-    description:
-      "Boas práticas de SEO são arquitetadas desde a primeira linha de código da sua página. Nossa equipe garante que seu site seja encontrado e priorizado pelo algoritmo do Google.",
-    extraInfo:
-      "Combinamos SEO on-page avançado, dados estruturados (Schema.org) e campanhas orientadas a dados para atrair visitantes qualificados prontos para contratar seu serviço.",
-    deliverables: [
-      "SEO Técnico On-Page & Schema Markup Completo",
-      "Core Web Vitals Impecáveis (Notas 95+ no Google)",
-      "Mapeamento de Palavras-Chave de Alta Intenção Comercial",
-      "Páginas de Aterrissagem (Landing Pages) de Alta Conversão",
-    ],
-    ctaLabel: "EXPLORAR SERVIÇOS DE MARKETING & SEO",
-    accentColor: "#2FA882",
-  },
-  {
     id: "redesign",
-    tabLabel: "Redesign & Otimização",
+    tabLabel: "Redesign Estratégico",
     icon: RefreshCw,
-    badge: "Website Redesign & Optimization",
+    badge: "Otimização de Performance & UX",
     title: "Redesign Estratégico & Otimização de Performance",
     description:
       "Se o seu site atual está lento, desatualizado ou não gera oportunidades comerciais, uma reformulação profunda transforma sua presença sem comprometer seu histórico conquistado.",
     extraInfo:
-      "Auditamos sua plataforma existente, blindamos sua autoridade de SEO sem perda de posições e reconstruímos seu ecossistema para ser até 4x mais rápido, moderno e envolvente.",
-    deliverables: [
-      "Auditoria Completa de UX, Velocidade & Gargalos",
-      "Migração Segura com Preservação de Rankings SEO",
-      "Redução Drástica no Tempo de Carregamento (< 1s)",
-      "Modernização Estética & Alinhamento às Melhores Práticas",
-    ],
-    ctaLabel: "EXPLORAR SERVIÇOS DE REDESIGN",
+      "Auditamos sua plataforma existente, blindamos sua autoridade de SEO sem perda de posições e reconstruímos seu ecossistema para ser até 4x mais rápido, moderno e rentável.",
     accentColor: "#3DBA95",
+  },
+  {
+    id: "dev-integracoes",
+    tabLabel: "Desenvolvimento & QA",
+    icon: Code2,
+    badge: "Engenharia de Alta Velicidade & Validação Rigorosa",
+    title: "Desenvolvimento de Alta Performance & Integrações",
+    description:
+      "Construímos o site com código limpo e carregamento instantâneo em menos de 1 segundo. Conectamos seu WhatsApp, formulários de contato seguros, e-mails corporativos e ferramentas analíticas sem você se preocupar com aspectos técnicos.",
+    extraInfo:
+      "Antes de ir ao ar, testamos o site em dezenas de aparelhos e navegadores reais (iPhone, Android, Mac e Windows). Validamos velocidade, segurança, links e envio de formulários. Só lançamos quando tudo estiver 100% aprovado.",
+    accentColor: "#2FA882",
   },
 ];
 
@@ -200,7 +173,7 @@ export function Servicos() {
   const [activeServiceIdx, setActiveServiceIdx] = useState(0);
   const [activeStepIdx, setActiveStepIdx] = useState(0);
 
-  const currentService = SERVICES[activeServiceIdx];
+  const currentService = SERVICES[activeServiceIdx] || SERVICES[0];
   const currentStep = PROCESS_STEPS[activeStepIdx];
 
   const prevService = () => {
@@ -222,7 +195,7 @@ export function Servicos() {
   return (
     <section
       id="servicos"
-      className="relative py-24 md:py-32 overflow-hidden bg-[#121211] border-b border-[#242320]"
+      className="relative py-24 md:py-32 overflow-hidden bg-[#121211]/75 backdrop-blur-md border-b border-[#242320]"
     >
       {/* Background ambient lighting */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-[#1A5446]/10 blur-[130px] rounded-full pointer-events-none" />
@@ -230,19 +203,25 @@ export function Servicos() {
       <div className="max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
         
         {/* 1. Header: 2 Columns with Category Toggle */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 md:mb-16 pb-8 border-b border-[#242320]">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-end mb-12 md:mb-16 pb-8 border-b border-[#242320]"
+        >
           <div className="lg:col-span-7">
             <span className="text-xs uppercase font-extrabold tracking-widest text-[#2FA882] mb-3 block">
-              COMO TRABALHAMOS & ENTREGAMOS
+              SOLUÇÕES DIGITAIS DE ALTA RENTABILIDADE
             </span>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F4EE]">
-              Conheça Nosso Trabalho
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F4EE] whitespace-nowrap">
+              IDENTIDADE DIGITAL ATRAI LUCRO REAL
             </h2>
           </div>
 
           <div className="lg:col-span-5 flex flex-col items-start lg:items-end gap-4">
             <p className="text-base sm:text-lg text-[#A3A096] leading-relaxed">
-              Cuidamos de cada etapa do ecossistema digital da sua empresa: design de alta conversão, engenharia web e processos transparentes do início ao pós-lançamento.
+              Desenhamos sites sob medida, marcas de autoridade e engenharia focada no retorno do seu investimento.
             </p>
 
             {/* Seamless Segmented Mode Switcher */}
@@ -271,7 +250,7 @@ export function Servicos() {
               </button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         {/* ============================================================== */}
         {/* VIEW 1: SOLUÇÕES & SERVIÇOS                                    */}
@@ -279,7 +258,13 @@ export function Servicos() {
         {activeTab === "servicos" && (
           <div>
             {/* 2. Interactive Navigation Bar with Connecting Line */}
-            <div className="relative mb-14 md:mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="relative mb-14 md:mb-16"
+            >
               <div className="hidden md:block absolute top-[62px] left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#2E2D28] to-transparent z-0" />
 
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 relative z-10">
@@ -329,7 +314,7 @@ export function Servicos() {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
 
             {/* 3. Main Content Display Area with Carousel Arrow Controls */}
             <div className="relative">
@@ -352,7 +337,15 @@ export function Servicos() {
               </button>
 
               <div className="rounded-2xl bg-[#161614] border border-[#2A2925] p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentService.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
+                  >
                   
                   {/* Left Column: Comprehensive Service Description */}
                   <div className="lg:col-span-6 flex flex-col justify-between">
@@ -370,64 +363,40 @@ export function Servicos() {
                         {currentService.description}
                       </p>
 
-                      <p className="text-sm sm:text-base text-[#8E8C82] leading-relaxed mb-8">
+                      <p className="text-sm sm:text-base text-[#8E8C82] leading-relaxed">
                         {currentService.extraInfo}
                       </p>
-
-                      {/* Deliverables Checklist */}
-                      <div className="space-y-2.5 mb-10 pb-8 border-b border-[#242320]">
-                        <span className="text-xs font-bold uppercase tracking-wider text-[#A3A096] block mb-3">
-                          Entregáveis & Diferenciais Chave:
-                        </span>
-                        {currentService.deliverables.map((item) => (
-                          <div key={item} className="flex items-start gap-3">
-                            <CheckCircle2 className="w-4 h-4 text-[#2FA882] shrink-0 mt-0.5" />
-                            <span className="text-sm text-[#E2DDD2]">{item}</span>
-                          </div>
-                        ))}
-                      </div>
                     </div>
 
-                    {/* CTA Action Row */}
-                    <div className="flex flex-wrap items-center gap-4">
-                      <a
-                        href="#contato"
-                        className="inline-flex items-center gap-2 text-xs sm:text-sm font-bold tracking-wider text-[#2FA882] hover:text-[#3DBA95] uppercase group transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] rounded"
+                    {/* Mobile Controls */}
+                    <div className="flex xl:hidden items-center gap-2 mt-6 pt-6 border-t border-[#242320]/60 justify-end">
+                      <button
+                        type="button"
+                        onClick={prevService}
+                        className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
+                        aria-label="Anterior"
                       >
-                        <span>{currentService.ctaLabel}</span>
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-200" />
-                      </a>
-
-                      {/* Mobile Controls */}
-                      <div className="flex xl:hidden items-center gap-2 ml-auto">
-                        <button
-                          type="button"
-                          onClick={prevService}
-                          className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
-                          aria-label="Anterior"
-                        >
-                          <ChevronLeft className="w-4 h-4" />
-                        </button>
-                        <span className="text-xs text-[#7A7972] px-1 font-mono">
-                          {activeServiceIdx + 1} / {SERVICES.length}
-                        </span>
-                        <button
-                          type="button"
-                          onClick={nextService}
-                          className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
-                          aria-label="Próximo"
-                        >
-                          <ChevronRight className="w-4 h-4" />
-                        </button>
-                      </div>
+                        <ChevronLeft className="w-4 h-4" />
+                      </button>
+                      <span className="text-xs text-[#7A7972] px-1 font-mono">
+                        {activeServiceIdx + 1} / {SERVICES.length}
+                      </span>
+                      <button
+                        type="button"
+                        onClick={nextService}
+                        className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
+                        aria-label="Próximo"
+                      >
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
                     </div>
                   </div>
 
-                  {/* Right Column: Interactive Mockups */}
+                  {/* Right Column: Interactive Visual Concept Mockups */}
                   <div className="lg:col-span-6 relative flex items-center justify-center">
                     <div className="w-full max-w-lg lg:max-w-none relative">
                       
-                      {/* Web Design Mockup */}
+                      {/* 1. Web Design & Vendas Visual Concept */}
                       {currentService.id === "web-design" && (
                         <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1C1C1A] to-[#141413] border border-white/10 shadow-2xl overflow-hidden">
                           <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#2FA882]/20 rounded-full blur-3xl pointer-events-none" />
@@ -440,7 +409,7 @@ export function Servicos() {
                                 <span className="w-2.5 h-2.5 rounded-full bg-[#10B981]/60" />
                               </div>
                               <div className="px-3 py-0.5 rounded-full bg-[#1C1B19] border border-[#2C2B27] text-[10px] text-[#A3A096] font-mono">
-                                portocom.agency/showroom
+                                portocom.agency/alta-conversao
                               </div>
                               <div className="w-8" />
                             </div>
@@ -449,35 +418,35 @@ export function Servicos() {
                               <div className="p-4 rounded-lg bg-gradient-to-r from-[#181816] via-[#1E1E1C] to-[#181816] border border-white/5 flex items-center justify-between">
                                 <div>
                                   <span className="text-[9px] uppercase tracking-wider font-bold text-[#2FA882]">
-                                    Coleção Exclusiva
+                                    Arquitetura de Vendas
                                   </span>
                                   <div className="text-sm font-bold text-[#F5F4EE] mt-0.5">
-                                    Design Que Inspira Confiança
+                                    Design Que Transmite Prestígio Instantâneo
                                   </div>
                                 </div>
-                                <div className="px-2.5 py-1 rounded bg-[#2FA882] text-[#121211] text-[10px] font-bold">
-                                  Ver Projeto
+                                <div className="px-2.5 py-1 rounded bg-[#2FA882] text-[#121211] text-[10px] font-bold shadow-md">
+                                  Converter Agora
                                 </div>
                               </div>
 
                               <div className="grid grid-cols-3 gap-2">
                                 <div className="p-2.5 rounded-lg bg-[#181816] border border-[#262522]">
-                                  <div className="w-full h-12 rounded bg-[#22211E] mb-2 flex items-center justify-center text-[10px] text-[#7A7972]">
-                                    3D Studio
+                                  <div className="w-full h-10 rounded bg-[#22211E] mb-2 flex items-center justify-center text-[10px] text-[#2FA882] font-bold font-mono">
+                                    +45% Conv.
                                   </div>
                                   <div className="h-2 w-12 rounded bg-[#32312D] mb-1" />
                                   <div className="h-2 w-8 rounded bg-[#2FA882]/40" />
                                 </div>
                                 <div className="p-2.5 rounded-lg bg-[#181816] border border-[#262522]">
-                                  <div className="w-full h-12 rounded bg-[#22211E] mb-2 flex items-center justify-center text-[10px] text-[#7A7972]">
-                                    Editorial
+                                  <div className="w-full h-10 rounded bg-[#22211E] mb-2 flex items-center justify-center text-[10px] text-[#7A7972]">
+                                    UX Pesquisado
                                   </div>
                                   <div className="h-2 w-12 rounded bg-[#32312D] mb-1" />
                                   <div className="h-2 w-8 rounded bg-[#2FA882]/40" />
                                 </div>
                                 <div className="p-2.5 rounded-lg bg-[#181816] border border-[#262522]">
-                                  <div className="w-full h-12 rounded bg-[#22211E] mb-2 flex items-center justify-center text-[10px] text-[#7A7972]">
-                                    Portfólio
+                                  <div className="w-full h-10 rounded bg-[#22211E] mb-2 flex items-center justify-center text-[10px] text-[#7A7972]">
+                                    Lead Direct
                                   </div>
                                   <div className="h-2 w-12 rounded bg-[#32312D] mb-1" />
                                   <div className="h-2 w-8 rounded bg-[#2FA882]/40" />
@@ -486,42 +455,37 @@ export function Servicos() {
                             </div>
                           </div>
 
-                          <div className="absolute -bottom-4 -right-2 sm:-right-4 w-44 rounded-2xl bg-[#141413] border border-[#3D3C36] p-2.5 shadow-[0_15px_40px_rgba(0,0,0,0.8)] backdrop-blur-md">
-                            <div className="w-10 h-1 rounded-full bg-[#33322E] mx-auto mb-2" />
-                            <div className="p-2 rounded-lg bg-[#1C1B19] border border-[#2E2D28] mb-1.5">
-                              <div className="text-[10px] font-bold text-[#F5F4EE]">
-                                Mobile UX 100%
-                              </div>
-                              <div className="text-[9px] text-[#2FA882] font-mono mt-0.5">
-                                Touch-first interativo
-                              </div>
+                          <div className="absolute -bottom-2 -right-2 sm:-right-4 w-48 rounded-2xl bg-[#141413] border border-[#3D3C36] p-3 shadow-[0_15px_40px_rgba(0,0,0,0.8)] backdrop-blur-md">
+                            <div className="flex items-center gap-2 mb-1.5">
+                              <CheckCircle2 className="w-4 h-4 text-[#2FA882]" />
+                              <span className="text-[11px] font-bold text-[#F5F4EE]">ICP Alinhado</span>
                             </div>
-                            <div className="h-10 rounded bg-[#22211E] flex items-center justify-center text-[9px] text-[#A3A096]">
-                              0.6s LCP Instantâneo
+                            <div className="text-[10px] text-[#A3A096] leading-tight">
+                              Decisão rápida do visitante no primeiro acesso.
                             </div>
                           </div>
                         </div>
                       )}
 
-                      {/* Branding Mockup */}
+                      {/* 2. Branding Visual Concept */}
                       {currentService.id === "branding" && (
                         <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1C1C1A] to-[#141413] border border-white/10 shadow-2xl overflow-hidden">
                           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#3DBA95]/15 rounded-full blur-3xl pointer-events-none" />
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="p-5 rounded-xl bg-[#0F0F0E] border border-[#2E2D28] shadow-2xl flex flex-col justify-between h-52">
-                              <div className="w-8 h-8 rounded-md bg-[#1C1B19] border border-[#3D3C36] flex items-center justify-center text-xs font-bold text-[#F5F4EE]">
+                              <div className="w-9 h-9 rounded-md bg-[#1C1B19] border border-[#3D3C36] flex items-center justify-center text-xs font-bold text-[#F5F4EE]">
                                 P
                               </div>
                               <div>
                                 <span className="text-[9px] uppercase tracking-widest text-[#2FA882] font-bold block mb-1">
-                                  SISTEMA DE IDENTIDADE
+                                  IDENTIDADE & BRANDING
                                 </span>
                                 <div className="text-base font-bold text-[#F5F4EE] leading-tight">
-                                  Brand Guidelines 2026
+                                  Brand Guidelines & System
                                 </div>
                                 <span className="text-[10px] text-[#7A7972] mt-1 block">
-                                  Regras de Marca & Tom de Voz
+                                  Consistência, Tom de Voz & Valor
                                 </span>
                               </div>
                             </div>
@@ -532,13 +496,13 @@ export function Servicos() {
                                   Aa
                                 </div>
                                 <div className="text-[10px] text-[#A3A096]">
-                                  Tipografia Editorial & Clássica
+                                  Tipografia Premium & Autoral
                                 </div>
                               </div>
 
                               <div className="p-3.5 rounded-xl bg-[#141413] border border-[#2A2925]">
                                 <div className="text-[10px] font-bold text-[#A3A096] mb-2 uppercase tracking-wider">
-                                  Paleta Cromática
+                                  Paleta de Cores
                                 </div>
                                 <div className="flex items-center gap-2">
                                   <div className="w-6 h-6 rounded-full bg-[#121211] border border-[#3A3934]" title="Obsidian" />
@@ -552,102 +516,108 @@ export function Servicos() {
                         </div>
                       )}
 
-                      {/* SEO Mockup */}
-                      {currentService.id === "seo-marketing" && (
+                      {/* 3. Redesign Visual Concept */}
+                      {currentService.id === "redesign" && (
                         <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1C1C1A] to-[#141413] border border-white/10 shadow-2xl overflow-hidden">
-                          <div className="absolute top-0 left-0 w-48 h-48 bg-[#2FA882]/15 rounded-full blur-3xl pointer-events-none" />
+                          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#3DBA95]/15 rounded-full blur-3xl pointer-events-none" />
 
-                          <div className="rounded-xl bg-[#121211] border border-[#2E2D28] p-5 shadow-2xl">
-                            <div className="flex items-center justify-between pb-3 mb-4 border-b border-[#242320]">
-                              <span className="text-xs font-bold text-[#F5F4EE]">
-                                Visibilidade Orgânica no Google
-                              </span>
-                              <span className="px-2 py-0.5 rounded bg-[#1C2C26] text-[#2FA882] text-[10px] font-bold">
-                                +142% Tráfego
-                              </span>
+                          <div className="space-y-4 relative">
+                            {/* Visual Before / After Comparison */}
+                            <div className="p-4 rounded-xl bg-[#0F0F0E] border border-[#2A2925] shadow-lg">
+                              <div className="flex items-center justify-between pb-2 mb-2.5 border-b border-[#22211E]">
+                                <span className="text-[10px] font-mono uppercase tracking-wider text-[#7A7972]">
+                                  Estrutura Anterior
+                                </span>
+                                <span className="text-[10px] font-mono text-[#EF4444]/75">
+                                  Lento & Baixa Conversão
+                                </span>
+                              </div>
+                              <div className="space-y-2 opacity-35">
+                                <div className="h-3 bg-[#2A2925] rounded w-1/2" />
+                                <div className="h-2 bg-[#22211E] rounded w-full" />
+                                <div className="h-2 bg-[#22211E] rounded w-4/5" />
+                              </div>
                             </div>
 
-                            <div className="h-24 w-full flex items-end gap-1.5 pt-4 pb-2 px-1 mb-4 border-b border-[#22211E]">
-                              <div className="w-full bg-[#242320] h-[35%] rounded-t" />
-                              <div className="w-full bg-[#242320] h-[45%] rounded-t" />
-                              <div className="w-full bg-[#242320] h-[40%] rounded-t" />
-                              <div className="w-full bg-[#242320] h-[60%] rounded-t" />
-                              <div className="w-full bg-[#242320] h-[55%] rounded-t" />
-                              <div className="w-full bg-[#2FA882]/60 h-[75%] rounded-t" />
-                              <div className="w-full bg-[#2FA882]/80 h-[85%] rounded-t" />
-                              <div className="w-full bg-[#2FA882] h-[100%] rounded-t shadow-[0_0_12px_rgba(47,168,130,0.5)]" />
-                            </div>
-
-                            <div className="grid grid-cols-3 gap-2 text-center">
-                              <div className="p-2 rounded-lg bg-[#181816] border border-[#2A2925]">
-                                <span className="text-sm font-extrabold text-[#2FA882] block">
-                                  99
+                            <div className="p-4 sm:p-5 rounded-xl bg-gradient-to-br from-[#181816] to-[#141413] border border-[#2FA882]/40 shadow-xl ring-1 ring-[#2FA882]/20">
+                              <div className="flex items-center justify-between pb-2 mb-3 border-b border-[#242320]">
+                                <span className="text-[10px] font-mono uppercase tracking-wider text-[#2FA882] font-bold">
+                                  Redesign Reformulado PORTOCOM
                                 </span>
-                                <span className="text-[9px] text-[#8E8C82]">Performance</span>
+                                <span className="text-[10px] font-mono text-[#3DBA95] font-bold">
+                                  até 4x Mais Rápido
+                                </span>
                               </div>
-                              <div className="p-2 rounded-lg bg-[#181816] border border-[#2A2925]">
-                                <span className="text-sm font-extrabold text-[#2FA882] block">
-                                  100
-                                </span>
-                                <span className="text-[9px] text-[#8E8C82]">SEO Score</span>
-                              </div>
-                              <div className="p-2 rounded-lg bg-[#181816] border border-[#2A2925]">
-                                <span className="text-sm font-extrabold text-[#3DBA95] block">
-                                  0.3s
-                                </span>
-                                <span className="text-[9px] text-[#8E8C82]">LCP Speed</span>
+                              <div className="space-y-2.5">
+                                <div className="h-3.5 bg-gradient-to-r from-[#2FA882] to-[#1A5446] rounded w-3/4 shadow-sm" />
+                                <div className="h-2 bg-[#3A3933] rounded w-full" />
+                                <div className="h-2 bg-[#3A3933] rounded w-5/6" />
+                                <div className="flex items-center gap-2 pt-2">
+                                  <div className="px-3 py-1 rounded bg-[#2FA882] text-[9px] font-bold text-[#121211]">
+                                    SEO Blindado
+                                  </div>
+                                  <div className="px-2.5 py-1 rounded bg-[#1C1B19] border border-[#33322E] text-[9px] text-[#A3A096]">
+                                    60 FPS Fluidez
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
                         </div>
                       )}
 
-                      {/* Redesign Mockup */}
-                      {currentService.id === "redesign" && (
+                      {/* 4. Desenvolvimento & QA Visual Concept */}
+                      {currentService.id === "dev-integracoes" && (
                         <div className="relative p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-[#1C1C1A] to-[#141413] border border-white/10 shadow-2xl overflow-hidden">
-                          <div className="absolute -bottom-10 -right-10 w-48 h-48 bg-[#3DBA95]/20 rounded-full blur-3xl pointer-events-none" />
+                          <div className="absolute top-0 right-0 w-48 h-48 bg-[#2FA882]/15 rounded-full blur-3xl pointer-events-none" />
 
-                          <div className="space-y-3 relative">
-                            <div className="p-4 rounded-xl bg-[#1A1A18] border border-[#2FA882]/40 shadow-xl relative z-30">
-                              <div className="flex items-center justify-between mb-1">
-                                <span className="text-xs font-bold text-[#F5F4EE]">
-                                  1. Nova Experiência Visual & UI Moderna
-                                </span>
-                                <span className="text-[10px] text-[#2FA882] font-mono">
-                                  98% Aprovação
+                          <div className="space-y-4 relative">
+                            <div className="p-4 sm:p-5 rounded-xl bg-[#0F0F0E] border border-[#2E2D28] shadow-xl">
+                              <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#242320]">
+                                <div className="flex items-center gap-2">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-[#3DBA95] animate-pulse" />
+                                  <span className="text-xs font-bold text-[#F5F4EE]">Engenharia & QA Rigoroso</span>
+                                </div>
+                                <span className="text-[10px] font-mono text-[#3DBA95] bg-[#18382E] px-2.5 py-1 rounded-full border border-[#2FA882]/30">
+                                  &lt; 1s LCP Instantâneo
                                 </span>
                               </div>
-                              <span className="text-[10px] text-[#A3A096]">
-                                Estética alinhada às maiores referências mundiais de design
-                              </span>
+
+                              {/* Required Mobile and Browser Verification Badges */}
+                              <div className="space-y-2.5 pt-1">
+                                <div className="p-3 rounded-lg bg-[#151514] border border-[#242320]">
+                                  <div className="text-[10px] font-bold text-[#A3A096] uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                                    <span className="flex items-center gap-1.5"><Smartphone className="w-3.5 h-3.5 text-[#3DBA95]" /> Testado em Dispositivos Móveis</span>
+                                    <span className="text-[#3DBA95] font-mono">100% OK</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-xs font-semibold text-[#3DBA95] bg-[#18382E]/50 px-3 py-1.5 rounded-md border border-[#2FA882]/30">
+                                    <CheckCircle2 className="w-4 h-4 shrink-0 text-[#3DBA95]" />
+                                    <span>✓ iPhone & Android 100%</span>
+                                  </div>
+                                </div>
+
+                                <div className="p-3 rounded-lg bg-[#151514] border border-[#242320]">
+                                  <div className="text-[10px] font-bold text-[#A3A096] uppercase tracking-wider mb-1.5 flex items-center justify-between">
+                                    <span className="flex items-center gap-1.5"><Laptop className="w-3.5 h-3.5 text-[#3DBA95]" /> Testado em Navegadores</span>
+                                    <span className="text-[#3DBA95] font-mono">Compatível</span>
+                                  </div>
+                                  <div className="flex items-center gap-2 text-xs font-semibold text-[#3DBA95] bg-[#18382E]/50 px-3 py-1.5 rounded-md border border-[#2FA882]/30">
+                                    <ShieldCheck className="w-4 h-4 shrink-0 text-[#3DBA95]" />
+                                    <span>✓ Chrome, Safari, Edge</span>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
 
-                            <div className="p-4 rounded-xl bg-[#161615] border border-[#2E2D28] shadow-lg relative z-20">
-                              <div className="flex items-center justify-between mb-1">
-                                <span className="text-xs font-bold text-[#F5F4EE]">
-                                  2. Velocidade Extrema & Otimização
-                                </span>
-                                <span className="text-[10px] text-[#3DBA95] font-mono">
-                                  +320% Mais Rápido
-                                </span>
+                            <div className="grid grid-cols-2 gap-3">
+                              <div className="p-2.5 rounded-lg bg-[#181816] border border-[#262522] flex items-center gap-2 text-xs text-[#E2DDD2]">
+                                <Zap className="w-3.5 h-3.5 text-[#3DBA95] shrink-0" />
+                                <span>WhatsApp Direto</span>
                               </div>
-                              <span className="text-[10px] text-[#A3A096]">
-                                Carregamento reduzido de 4.2s para 0.6s
-                              </span>
-                            </div>
-
-                            <div className="p-4 rounded-xl bg-[#121211] border border-[#242320] shadow-md relative z-10">
-                              <div className="flex items-center justify-between mb-1">
-                                <span className="text-xs font-bold text-[#F5F4EE]">
-                                  3. Preservação de Autoridade de SEO
-                                </span>
-                                <span className="text-[10px] text-[#2FA882] font-mono">
-                                  0 Posições Perdidas
-                                </span>
+                              <div className="p-2.5 rounded-lg bg-[#181816] border border-[#262522] flex items-center gap-2 text-xs text-[#E2DDD2]">
+                                <Lock className="w-3.5 h-3.5 text-[#3DBA95] shrink-0" />
+                                <span>Formulários SSL</span>
                               </div>
-                              <span className="text-[10px] text-[#A3A096]">
-                                Redirecionamentos 301 estruturados sem quebra de links
-                              </span>
                             </div>
                           </div>
                         </div>
@@ -656,7 +626,8 @@ export function Servicos() {
                     </div>
                   </div>
 
-                </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>
@@ -668,7 +639,13 @@ export function Servicos() {
         {activeTab === "processo" && (
           <div>
             {/* 2. Interactive Timeline Rail */}
-            <div className="relative mb-14 md:mb-16">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="relative mb-14 md:mb-16"
+            >
               <div className="hidden md:block absolute top-[62px] left-8 right-8 h-[2px] bg-gradient-to-r from-transparent via-[#2E2D28] to-transparent z-0" />
 
               <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 relative z-10">
@@ -721,7 +698,7 @@ export function Servicos() {
                   );
                 })}
               </div>
-            </div>
+            </motion.div>
 
             {/* 3. Main Step Display Area with Carousel Arrow Controls */}
             <div className="relative">
@@ -744,7 +721,15 @@ export function Servicos() {
               </button>
 
               <div className="rounded-2xl bg-[#161614] border border-[#2A2925] p-6 sm:p-10 lg:p-12 shadow-2xl relative overflow-hidden">
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={currentStep.id}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center"
+                  >
                   
                   {/* Left Column: Step Details */}
                   <div className="lg:col-span-6 flex flex-col justify-between">
@@ -957,7 +942,8 @@ export function Servicos() {
                     </div>
                   </div>
 
-                </div>
+                  </motion.div>
+                </AnimatePresence>
               </div>
             </div>
           </div>

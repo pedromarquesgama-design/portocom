@@ -1,13 +1,7 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import { AGENCY_NAME, AGENCY_TAGLINE, AGENCY_DESCRIPTION } from "@/lib/constants";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-inter",
-});
+import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portocom.agency";
 
@@ -110,8 +104,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${inter.variable} dark scroll-smooth`}>
+    <html lang="pt-BR" className="dark scroll-smooth">
       <head>
+        <link rel="preconnect" href="https://api.fontshare.com" crossOrigin="anonymous" />
+        <link
+          href="https://api.fontshare.com/v2/css?f[]=nippo@200,300,400,500,700&f[]=gambarino@400&display=swap"
+          rel="stylesheet"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
@@ -119,6 +118,7 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-[#121211] text-[#F5F4EE] antialiased selection:bg-[#1A5446]/40 selection:text-[#F5F4EE]">
         {children}
+        <FloatingWhatsApp />
       </body>
     </html>
   );

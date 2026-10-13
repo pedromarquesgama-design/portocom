@@ -1,127 +1,151 @@
 "use client";
 
 import React from "react";
-import dynamic from "next/dynamic";
-import { Button } from "@/components/ui/Button";
-import { ColumnLines } from "@/components/ui/columnlines";
-import { AGENCY_TAGLINE } from "@/lib/constants";
-import { ArrowUpRight, Check, ShieldCheck, Clock } from "lucide-react";
-
-const RotatingEarth = dynamic(
-  () => import("@/components/ui/wireframe-dotted-globe"),
-  { ssr: false }
-);
-
-const PILL_ITEMS = [
-  "Site comercial rápido e objetivo",
-  "Sem intermediários técnicos",
-  "Clareza total para o visitante",
-  "Acompanhamento pós-lançamento",
-];
+import { motion } from "motion/react";
+import { ArrowUpRight, Shield } from "lucide-react";
 
 export function Hero() {
   return (
-    <ColumnLines
-      columnWidth={84}
-      columnCount={22}
-      radialFadeStart={20}
-      radialFadeEnd={75}
-      opacity={0.85}
-      showNoise={true}
-      noiseOpacity={0.05}
-      className="relative min-h-[72vh] md:min-h-[76vh] lg:min-h-[80vh] pt-18 sm:pt-20 md:pt-22 lg:pt-24 pb-12 md:pb-16 flex items-start md:items-center overflow-hidden bg-[#121211]"
-    >
-      {/* Panoramic Wide Container */}
-      <div className="max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
-          
-          {/* Left Column: Bold Typography & CTAs Anchored to the Left Edge */}
-          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start text-left">
-            {/* Editorial Tagline in Times New Roman */}
-            <p
-              className="font-roman text-base sm:text-lg md:text-xl text-[#C4C2B9] mb-4 tracking-normal"
-              style={{ fontFamily: '"Times New Roman", Times, Georgia, serif' }}
-            >
-              {AGENCY_TAGLINE}
-            </p>
+    <section className="relative min-h-[92vh] lg:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#021715]">
+      {/* =========================================================================
+          BACKGROUND LAYER: Desk with Devices Image + Cinematic Emerald Atmospheres
+          ========================================================================= */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        {/* Desk scene with devices */}
+        <img
+          src="/images/hero-devices-desk.jpg"
+          alt="Dispositivos digitais — Smartphone, MacBook e Tablet com a sua marca"
+          className="w-full h-full object-cover object-right lg:object-[82%_center] xl:object-right"
+        />
 
-            {/* High-Impact Editorial Headline - Increased Font Scale */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-extrabold tracking-tight leading-[1.05] mb-5 text-[#F5F4EE] uppercase">
-              Construa uma <br />
-              presença digital <br />
-              <span className="inline-block sm:whitespace-nowrap">
-                que <span className="text-[#3DBA95]">inspira confiança</span>
-              </span>
-            </h1>
+        {/* Left Atmospheric Gradient: Dark emerald vignette ensuring 100% text contrast */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(90deg, #021715 0%, rgba(2, 23, 21, 0.98) 32%, rgba(2, 23, 21, 0.88) 46%, rgba(2, 23, 21, 0.35) 64%, transparent 85%)",
+          }}
+        />
 
-            {/* Clear Plain-Language Subtitle - In Times New Roman */}
-            <p
-              className="font-roman text-lg sm:text-xl md:text-[21px] lg:text-[23px] text-[#A3A096] leading-relaxed max-w-2xl mb-8 font-normal"
-              style={{ fontFamily: '"Times New Roman", Times, Georgia, serif' }}
-            >
-              Transformamos visitantes em clientes por meio de sites rápidos e sistemas fáceis de usar.
-            </p>
+        {/* Top-Left Volumetric Emerald Studio Glow */}
+        <div
+          className="absolute -top-16 -left-16 w-[560px] sm:w-[720px] h-[560px] sm:h-[720px] rounded-full pointer-events-none blur-[140px] opacity-90"
+          style={{
+            background:
+              "radial-gradient(ellipse at 25% 25%, rgba(34, 224, 167, 0.22) 0%, rgba(1, 58, 56, 0.45) 42%, transparent 75%)",
+          }}
+        />
 
-            {/* Single Action Button */}
-            <div className="mb-8 w-full sm:w-auto">
-              <Button
-                href="#contato"
-                variant="glass-emerald"
-                size="lg"
-                className="w-full sm:w-auto !px-8 !py-4 text-base sm:text-lg font-semibold rounded-2xl"
-              >
-                Investir na Minha Marca ou Negócio
-                <ArrowUpRight className="w-5 h-5 ml-2 text-[#3DBA95]" />
-              </Button>
-            </div>
+        {/* Bottom subtle edge blend to seamlessly transition into next section */}
+        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#121211] via-[#121211]/50 to-transparent" />
 
-            {/* Trust Micro-Row - Increased Font Scale */}
-            <div className="pt-6 border-t border-[#262521] flex flex-wrap items-center gap-6 sm:gap-8 text-xs sm:text-sm md:text-[15px] text-[#A3A096]">
-              <div className="flex items-center gap-2.5">
-                <ShieldCheck className="w-4.5 h-4.5 text-[#2FA882] flex-shrink-0" />
-                <span>Entrega com prazo garantido</span>
-              </div>
-              <div className="flex items-center gap-2.5">
-                <Clock className="w-4.5 h-4.5 text-[#2FA882] flex-shrink-0" />
-                <span>Carregamento em menos de 1s</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right Column: Wide Scaled-Up Globe & Expanded Pills with Sleeker Height */}
-          <div className="lg:col-span-6 xl:col-span-6 flex items-center justify-center lg:justify-end relative w-full">
-            <div className="relative w-full max-w-[500px] sm:max-w-[580px] lg:max-w-[680px] xl:max-w-[760px] aspect-square flex items-center justify-center">
-              
-              {/* Scaled-up Interactive 3D Wireframe Globe */}
-              <RotatingEarth
-                width={760}
-                height={760}
-                showHint={false}
-                className="w-full h-full flex items-center justify-center"
-              />
-
-              {/* Wide Deliverable Pills Layered Over the Globe with Translucent Glass */}
-              <div className="absolute inset-0 flex flex-col justify-center items-center gap-3 sm:gap-3.5 lg:gap-4 z-10 px-2 sm:px-4 pointer-events-none">
-                {PILL_ITEMS.map((item, index) => (
-                  <div
-                    key={index}
-                    className="w-full max-w-[360px] sm:max-w-[460px] lg:max-w-[520px] xl:max-w-[560px] flex items-center gap-3.5 px-5 py-2.5 sm:px-6 sm:py-3 lg:px-7 lg:py-3.5 rounded-full bg-[#141412]/45 backdrop-blur-md border border-white/10 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_8px_32px_rgba(0,0,0,0.4)] select-none transition-all duration-200"
-                  >
-                    <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#18382E]/70 border border-[#2FA882]/50 flex items-center justify-center flex-shrink-0 text-[#3DBA95]">
-                      <Check className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5]" />
-                    </div>
-                    <span className="text-xs sm:text-sm md:text-[14.5px] lg:text-[15px] font-medium text-[#F5F4EE] tracking-tight">
-                      {item}
-                    </span>
-                  </div>
-                ))}
-              </div>
-
-            </div>
-          </div>
-
+        {/* Cyber HUD decorative line between badge and laptop */}
+        <div className="absolute top-[22%] left-[38%] xl:left-[41%] hidden lg:block pointer-events-none opacity-30 z-10">
+          <svg width="140" height="40" viewBox="0 0 140 40" fill="none">
+            <path d="M0 28 H90 L110 8 H140" stroke="#2EE5A7" strokeWidth="1" strokeDasharray="3 3" />
+            <path d="M70 28 H90 L110 8 H130" stroke="#2EE5A7" strokeWidth="1.2" />
+            <circle cx="130" cy="8" r="2" fill="#2EE5A7" />
+            <circle cx="4" cy="28" r="1.5" fill="#2EE5A7" />
+          </svg>
         </div>
       </div>
-    </ColumnLines>
+
+      {/* =========================================================================
+          HERO CONTENT LAYER: Perfectly aligned with the reference measures
+          ========================================================================= */}
+      <div className="relative z-10 w-full flex-1 flex flex-col justify-center pt-28 sm:pt-32 pb-8">
+        <div className="w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
+          <div className="max-w-xl xl:max-w-2xl flex flex-col items-start text-left">
+            
+            {/* Overline Badge Pill */}
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D281E]/85 border border-[#1A4B38] mb-5 sm:mb-6 shadow-sm"
+            >
+              <span className="w-2 h-2 rounded-full bg-[#2EE5A7] animate-pulse" />
+              <span className="text-xs font-semibold text-[#34D399] tracking-wide font-sans">
+                Estúdio de Design & Engenharia Digital
+              </span>
+            </motion.div>
+
+            {/* High-Impact 3-Line Headline matching reference composition & Nippo font */}
+            <motion.h1
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="font-nippo font-black uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[54px] 2xl:text-[62px] leading-[1.08] sm:leading-[1.1] mb-5 sm:mb-6"
+            >
+              <span className="block text-white">CONSTRUA UMA</span>
+              <span className="block text-[#22E0A7] drop-shadow-[0_0_32px_rgba(34,224,167,0.35)] mt-0.5 sm:mt-1">
+                PRESENÇA DIGITAL
+              </span>
+              <span className="block text-white mt-0.5 sm:mt-1">QUE INSPIRA CONFIANÇA</span>
+            </motion.h1>
+
+            {/* Subtitle - clean readable 2-line layout */}
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
+              className="font-sans text-sm sm:text-base lg:text-[17px] text-[#A1A1AA] leading-relaxed max-w-[480px] mb-8 font-normal"
+            >
+              Desenvolvemos sites rápidos e sistemas fáceis de usar, com foco em performance, design e resultados.
+            </motion.p>
+
+            {/* CTA Button + Trust Badge in a clean row */}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
+              className="flex flex-wrap items-center gap-4 sm:gap-6"
+            >
+              {/* Primary CTA Button */}
+              <a
+                href="#contato"
+                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-[#22E0A7] hover:bg-[#1FD69E] text-[#052018] font-bold text-sm sm:text-base tracking-tight shadow-[0_0_30px_rgba(34,224,167,0.45)] hover:shadow-[0_0_46px_rgba(34,224,167,0.7)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22E0A7] font-sans"
+              >
+                <span>Falar com um Especialista</span>
+                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#052018] stroke-[2.5]" />
+              </a>
+
+              {/* Vertical Divider */}
+              <div className="hidden sm:block h-8 w-[1px] bg-white/20" />
+
+              {/* Trust Signal Badge (Shield + 2-line text) */}
+              <div className="flex items-center gap-2.5 text-left font-sans">
+                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-[#22E0A7] stroke-[1.8] shrink-0" />
+                <div className="text-xs text-[#CBD5E1] leading-tight font-medium">
+                  <div>Seu projeto em</div>
+                  <div className="text-white/90 font-semibold">boas mãos</div>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </div>
+      </div>
+
+      {/* =========================================================================
+          BOTTOM SCROLL CUE: Aligned with the left margin (as in reference)
+          ========================================================================= */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        className="relative z-10 w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pb-6 lg:pb-10"
+      >
+        <div className="flex items-center gap-3 text-[#94A3B8]/80 text-xs font-normal select-none font-sans">
+          <div className="flex flex-col items-center">
+            <div className="w-[18px] h-[28px] rounded-full border border-white/40 flex items-start justify-center pt-1.5">
+              <span className="w-1 h-2 rounded-full bg-[#22E0A7] animate-bounce" />
+            </div>
+            <div className="w-[1px] h-5 bg-white/30 mt-1" />
+          </div>
+          <span className="text-white/60 tracking-wide text-xs">Role para descobrir</span>
+        </div>
+      </motion.div>
+    </section>
   );
 }

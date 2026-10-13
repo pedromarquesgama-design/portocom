@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Send, CheckCircle2, AlertCircle, Loader2, MessageCircle, Mail, ShieldCheck } from "lucide-react";
+import { motion } from "motion/react";
 
 const PROJECT_TYPES = [
   "Criação de Site Comercial ou Institucional",
@@ -96,23 +97,28 @@ export function ContactForm() {
   };
 
   return (
-    <section id="contato" className="relative py-24 md:py-32 overflow-hidden bg-[#151514] border-t border-[#262521]">
+    <section id="contato" className="relative py-12 md:py-16 overflow-hidden bg-transparent border-b border-[#242320]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* Left Column: Human Reassurance */}
-          <div className="lg:col-span-5 flex flex-col items-start">
-            <div className="mb-4">
-              <Badge variant="default">
-                Iniciar Conversa
-              </Badge>
+          {/* Left Column: Human Reassurance with Smooth Slide Entrance */}
+          <motion.div
+            initial={{ opacity: 0, x: -80 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-5 flex flex-col items-start"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/[0.04] border border-white/10 mb-3 badge-pill-label">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#2EE5A7]" />
+              <span>✦ Iniciar Conversa</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-6">
-              Vamos Conversar Sobre o Seu Próximo Projeto?
+            <h2 className="section-title text-3xl sm:text-4xl md:text-5xl mb-5">
+              Vamos Conversar Sobre o <span className="gradient-text-h">Seu Próximo Projeto?</span>
             </h2>
 
-            <p className="text-base sm:text-lg text-[#A3A096] leading-relaxed mb-8">
+            <p className="section-description leading-relaxed mb-8">
               Conte-nos brevemente o que sua empresa faz e o que você precisa resolver. Nossa equipe analisará sua demanda e responderá em até 24 horas úteis com uma avaliação sincera e sem pressão de vendas.
             </p>
 
@@ -122,9 +128,9 @@ export function ContactForm() {
                 href="https://wa.me/5511999999999"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] transition-all group"
+                className="flex items-center gap-4 p-4 rounded-xl bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] hover:translate-x-1 transition-all group"
               >
-                <div className="p-2.5 rounded-lg bg-[#1F1E1B] text-[#2FA882] border border-[#2A2925]">
+                <div className="p-2.5 rounded-lg bg-[#1F1E1B] text-[#2FA882] border border-[#2A2925] group-hover:bg-[#253830] transition-colors">
                   <MessageCircle className="w-5 h-5" />
                 </div>
                 <div>
@@ -135,9 +141,9 @@ export function ContactForm() {
 
               <a
                 href="mailto:contato@suaagencia.com.br"
-                className="flex items-center gap-4 p-4 rounded-xl bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] transition-all group"
+                className="flex items-center gap-4 p-4 rounded-xl bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] hover:translate-x-1 transition-all group"
               >
-                <div className="p-2.5 rounded-lg bg-[#1F1E1B] text-[#A3A096] border border-[#2A2925]">
+                <div className="p-2.5 rounded-lg bg-[#1F1E1B] text-[#A3A096] border border-[#2A2925] group-hover:text-[#F5F4EE] transition-colors">
                   <Mail className="w-5 h-5" />
                 </div>
                 <div>
@@ -151,10 +157,16 @@ export function ContactForm() {
               <ShieldCheck className="w-4 h-4 text-[#2FA882]" />
               <span>Garantia de sigilo profissional e atendimento sem burocracia</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Grounded Tactile Form */}
-          <div className="lg:col-span-7 w-full">
+          <motion.div
+            initial={{ opacity: 0, x: -120 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.4, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+            className="lg:col-span-7 w-full"
+          >
             <div className="rounded-xl p-6 sm:p-9 bg-[#181816] border border-[#2A2925] shadow-sm">
               {status === "success" ? (
                 <div className="py-10 px-4 text-center flex flex-col items-center">
@@ -305,7 +317,7 @@ export function ContactForm() {
                 </form>
               )}
             </div>
-          </div>
+          </motion.div>
 
         </div>
       </div>

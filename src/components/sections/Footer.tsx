@@ -1,14 +1,25 @@
+"use client";
+
 import React from "react";
 import { AGENCY_NAME, AGENCY_TAGLINE, NAV_LINKS, SOCIAL_LINKS } from "@/lib/constants";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "motion/react";
 
 export function Footer() {
   return (
-    <footer className="relative pt-16 pb-12 bg-[#121211] border-t border-[#262521] overflow-hidden">
+    <footer className="relative pt-10 pb-8 bg-transparent border-t border-[#262521] overflow-hidden">
+      {/* Dark scrim so footer content stays readable over bright video frames */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#121211]/60 via-[#121211]/85 to-[#121211]/95 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Upper Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-[#242320]">
+        {/* Upper Columns with Scroll-driven Entrance */}
+        <motion.div
+          initial={{ opacity: 0, x: -120 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-[#242320]"
+        >
           
           {/* Col 1: Brand & Bio */}
           <div className="lg:col-span-5 flex flex-col items-start">
@@ -95,14 +106,20 @@ export function Footer() {
             </ul>
           </div>
 
-        </div>
+        </motion.div>
 
         {/* Editorial Clean Signature */}
-        <div className="py-10 text-center select-none pointer-events-none">
-          <div className="font-extrabold tracking-tight text-3xl sm:text-5xl md:text-6xl text-[#1E1E1B] uppercase">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.96 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: false, amount: 0.1 }}
+          transition={{ duration: 0.4, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+          className="py-10 text-center select-none pointer-events-none"
+        >
+          <div className="brand-display-outline font-black tracking-tighter text-4xl sm:text-6xl md:text-7xl uppercase">
             {AGENCY_NAME} · ESTÚDIO DIGITAL
           </div>
-        </div>
+        </motion.div>
 
         {/* Bottom Bar */}
         <div className="pt-6 border-t border-[#242320] flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#A3A096]">

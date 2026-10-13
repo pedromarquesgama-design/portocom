@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { Badge } from "@/components/ui/Badge";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { motion } from "motion/react";
 
 const TESTIMONIALS = [
   {
@@ -43,11 +44,17 @@ export function Depoimentos() {
   };
 
   return (
-    <section id="depoimentos" className="relative py-24 md:py-32 overflow-hidden bg-[#151514] border-t border-[#262521]">
+    <section id="depoimentos" className="relative py-24 md:py-32 overflow-hidden bg-[#121211]/75 backdrop-blur-md border-b border-[#242320]/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        {/* Section Header with Scroll-driven Entrance */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6"
+        >
           <div className="max-w-2xl">
             <div className="inline-flex mb-4">
               <Badge variant="default">
@@ -81,50 +88,63 @@ export function Depoimentos() {
               <ChevronRight className="w-5 h-5" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Testimonials Cards Grid */}
+        {/* Testimonials Cards Grid with Staggered Entrance */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {TESTIMONIALS.map((item, index) => {
             const isFeatured = index === currentIndex;
             return (
-              <div
+              <motion.div
                 key={index}
-                className={`rounded-xl p-7 bg-[#181816] border transition-all duration-200 flex flex-col justify-between ${
-                  isFeatured
-                    ? "border-[#3D3C36] shadow-[0_4px_16px_rgba(0,0,0,0.3)] md:-translate-y-1"
-                    : "border-[#262521] hover:border-[#33312B]"
-                }`}
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{
+                  duration: 0.7,
+                  delay: index * 0.15,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.2 } }}
+                className="flex"
               >
-                <div>
-                  {/* Star Rating */}
-                  <div className="flex items-center gap-1 mb-5 text-[#2FA882]">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-[#2FA882]" />
-                    ))}
-                  </div>
-
-                  {/* Quote */}
-                  <p className="text-sm text-[#C4C2B9] leading-relaxed mb-7 italic">
-                    &ldquo;{item.quote}&rdquo;
-                  </p>
-                </div>
-
-                {/* Author Info */}
-                <div className="flex items-center gap-3 pt-5 border-t border-[#242320]">
-                  <div className="w-9 h-9 rounded-md bg-[#1F1E1B] border border-[#2A2925] flex items-center justify-center font-bold text-xs text-[#2FA882] shrink-0">
-                    {item.avatarInitials}
-                  </div>
+                <div
+                  className={`w-full rounded-xl p-7 bg-[#181816] border transition-all duration-200 flex flex-col justify-between ${
+                    isFeatured
+                      ? "border-[#3D3C36] shadow-[0_8px_24px_rgba(0,0,0,0.35),0_0_25px_rgba(47,168,130,0.12)] md:-translate-y-1"
+                      : "border-[#262521] hover:border-[#3D3C36] hover:shadow-[0_6px_20px_rgba(0,0,0,0.25)]"
+                  }`}
+                >
                   <div>
-                    <h4 className="text-sm font-bold text-[#F5F4EE]">
-                      {item.name}
-                    </h4>
-                    <p className="text-xs text-[#A3A096]">
-                      {item.role} · <span className="text-[#E2DDD2]">{item.company}</span>
+                    {/* Star Rating */}
+                    <div className="flex items-center gap-1 mb-5 text-[#2FA882]">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-[#2FA882]" />
+                      ))}
+                    </div>
+
+                    {/* Quote */}
+                    <p className="text-sm text-[#C4C2B9] leading-relaxed mb-7 italic">
+                      &ldquo;{item.quote}&rdquo;
                     </p>
                   </div>
+
+                  {/* Author Info */}
+                  <div className="flex items-center gap-3 pt-5 border-t border-[#242320]">
+                    <div className="w-9 h-9 rounded-md bg-[#1F1E1B] border border-[#2A2925] flex items-center justify-center font-bold text-xs text-[#2FA882] shrink-0">
+                      {item.avatarInitials}
+                    </div>
+                    <div>
+                      <h4 className="text-sm font-bold text-[#F5F4EE]">
+                        {item.name}
+                      </h4>
+                      <p className="text-xs text-[#A3A096]">
+                        {item.role} · <span className="text-[#E2DDD2]">{item.company}</span>
+                      </p>
+                    </div>
+                  </div>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

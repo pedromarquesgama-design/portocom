@@ -32,14 +32,14 @@ export function Header() {
           className="flex items-center gap-3 text-[#F5F4EE] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] rounded-md"
           aria-label={`${AGENCY_NAME} - Página inicial`}
         >
-          <div className="w-7 h-7 rounded-md bg-[#1C1B19] border border-[#2E2D29] flex items-center justify-center text-xs font-bold text-[#F5F4EE] shadow-sm group-hover:border-[#3D3C36] transition-colors">
+          <div className="w-8 h-8 rounded-lg bg-[#071914] border border-[#1B3D30] flex items-center justify-center text-xs font-bold text-white shadow-sm group-hover:border-[#2EE5A7]/40 transition-colors">
             P
           </div>
           <div className="flex flex-col">
-            <span className="font-semibold text-base tracking-tight leading-tight">
+            <span className="font-bold text-base tracking-wider leading-tight font-nippo text-white">
               {AGENCY_NAME}
             </span>
-            <span className="text-[10px] text-[#A3A096] uppercase tracking-wider font-medium">
+            <span className="text-[9px] text-[#A1A1AA] uppercase tracking-[0.22em] font-medium font-sans">
               Estúdio Digital
             </span>
           </div>
@@ -47,14 +47,14 @@ export function Header() {
 
         {/* Desktop Navigation */}
         <nav
-          className="hidden md:flex items-center gap-7 text-sm font-medium text-[#A3A096]"
+          className="hidden md:flex items-center gap-8"
           aria-label="Navegação principal"
         >
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="hover:text-[#F5F4EE] transition-colors duration-150 py-1"
+              className="text-sm text-[#D1D5DB] hover:text-[#2EE5A7] transition-colors font-medium py-1 font-sans"
             >
               {link.label}
             </a>
@@ -63,15 +63,13 @@ export function Header() {
 
         {/* CTA Button */}
         <div className="hidden md:flex items-center gap-4">
-          <Button
+          <a
             href="#contato"
-            variant="glass-emerald"
-            size="sm"
-            className="!px-4 !py-2 text-xs font-semibold rounded-full border-[#2FA882]/40 shadow-[0_0_15px_rgba(47,168,130,0.15)]"
+            className="inline-flex items-center gap-1.5 px-5 py-2 text-xs font-semibold rounded-full bg-[#051C15]/80 hover:bg-[#07241B] border border-[#2EE5A7]/70 hover:border-[#2EE5A7] text-white shadow-[0_0_15px_rgba(46,229,167,0.18)] hover:shadow-[0_0_24px_rgba(46,229,167,0.35)] transition-all cursor-pointer font-sans"
           >
-            Fale com o Sócio
-            <ArrowUpRight className="w-3.5 h-3.5 ml-1 text-[#3DBA95]" />
-          </Button>
+            <span>Investir no meu Negócio</span>
+            <ArrowUpRight className="w-3.5 h-3.5 text-[#2EE5A7]" />
+          </a>
         </div>
 
         {/* Mobile menu trigger */}
@@ -108,7 +106,7 @@ export function Header() {
                 size="md"
                 className="w-full text-center"
               >
-                Fale com o Sócio
+                Investir no meu Negócio
                 <ArrowUpRight className="w-4 h-4 ml-1.5" />
               </Button>
             </div>
