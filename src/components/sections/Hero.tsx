@@ -107,10 +107,10 @@ export function Hero() {
             />
           </motion.div>
 
-          {/* Left text-zone shade: boxed to content area, feathered right edge */}
+          {/* Left text-zone shade (Desktop/Tablet): boxed to content area, feathered right edge */}
           <motion.div
             style={{ opacity: contentOpacity }}
-            className="absolute inset-y-0 left-0 w-[70%] sm:w-1/2 lg:w-[42%] pointer-events-none bg-[linear-gradient(to_right,#0A0A0E_0%,rgba(10,10,14,0.95)_55%,rgba(10,10,14,0.50)_80%,transparent_100%)]"
+            className="hidden sm:block absolute inset-y-0 left-0 sm:w-1/2 lg:w-[42%] pointer-events-none bg-[linear-gradient(to_right,#0A0A0E_0%,rgba(10,10,14,0.95)_55%,rgba(10,10,14,0.50)_80%,transparent_100%)]"
           />
 
           {/* Mid-scene lift: soft tungsten bloom over the dark window zone */}
@@ -132,8 +132,15 @@ export function Hero() {
           />
         </div>
 
-        {/* Mobile backdrop tint: soft top-to-bottom shading to guarantee headline legibility over the portrait image */}
-        <div className="absolute inset-0 sm:hidden bg-gradient-to-b from-[#0A0A0E]/80 via-[#0A0A0E]/35 to-transparent pointer-events-none" />
+        {/* Mobile shading effect: confined strictly ABOVE the red line (logo, headline, subtitle, CTA button) */}
+        <motion.div
+          style={{
+            opacity: contentOpacity,
+            background:
+              "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.94) 50%, rgba(10, 10, 14, 0.75) 75%, rgba(10, 10, 14, 0.25) 92%, transparent 100%)",
+          }}
+          className="sm:hidden absolute top-0 inset-x-0 h-[315px] pointer-events-none"
+        />
         {/* Tablet backdrop tint */}
         <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
 
