@@ -44,11 +44,11 @@ export function Hero() {
   const contentOpacity = useTransform(scrollYProgress, [0, HERO_CONTENT_FADE_END], [1, 0]);
 
   // Scroll down indicator cue fade
-  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
-  const scrollCueY = useTransform(scrollYProgress, [0, 0.12], [0, 16]);
+  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
+  const scrollCueY = useTransform(scrollYProgress, [0, 0.15], [0, 16]);
 
-  // Height of the pinned hero viewport (matches the section's h + min-h below)
-  const pinnedHeight = "max(100vh - 60px, 580px)";
+  // Height of the pinned hero viewport (matches the section's h + min-h below, uses dvh for mobile address bar)
+  const pinnedHeight = "max(100dvh - 60px, 580px)";
 
   return (
     // Outer wrapper is extended by one hero-height and pulled back with a negative
@@ -76,7 +76,7 @@ export function Hero() {
       />
       <motion.section
         style={{ opacity: isMobile ? 1 : heroOpacity }}
-        className="sticky top-[60px] z-0 h-[calc(100vh-60px)] min-h-[580px] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0E]"
+        className="sticky top-[60px] z-0 h-[calc(100dvh-60px)] min-h-[580px] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0E]"
       >
         {/* =========================================================================
             BACKGROUND LAYER: Desk with Devices Image + Cinematic Amber Atmospheres
@@ -237,7 +237,7 @@ export function Hero() {
             ========================================================================= */}
         <motion.div
           style={{ opacity: scrollCueOpacity, y: scrollCueY }}
-          className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer group select-none"
+          className="absolute bottom-5 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer group select-none"
           onClick={() => {
             const next = document.getElementById("trabalho");
             if (next) {
@@ -247,7 +247,7 @@ export function Hero() {
             }
           }}
         >
-          <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-[0.25em] text-white group-hover:text-[#F59E0B] transition-colors mb-1 flex items-center gap-1.5">
+          <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-[0.25em] text-white group-hover:text-[#F59E0B] transition-colors mb-1 flex items-center gap-1.5 [text-shadow:0_1px_8px_rgba(0,0,0,0.95),0_0_16px_rgba(0,0,0,0.85)]">
             <span>Role para baixo</span>
           </span>
           <div className="flex flex-col items-center">
