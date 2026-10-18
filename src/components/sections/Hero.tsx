@@ -144,7 +144,7 @@ export function Hero() {
               {/* Brand logo anchor on top */}
               <div
                 id="hero-logo-anchor"
-                className="h-52 sm:h-64 lg:h-80 w-auto max-w-full -mt-10 sm:-mt-16 lg:-mt-[4.75rem] -ml-[7px] sm:-ml-[9px] lg:-ml-[11px] mb-1.5 sm:mb-1 lg:mb-1 flex items-center"
+                className="h-[110px] sm:h-44 md:h-56 lg:h-72 xl:h-80 w-auto max-w-[calc(100vw-32px)] -mt-6 sm:-mt-10 lg:-mt-[4.75rem] -ml-[3px] sm:-ml-[6px] lg:-ml-[11px] mb-1.5 sm:mb-1 lg:mb-1 flex items-center"
               >
                 <img
                   src="/images/logo-portocom.png"

@@ -120,11 +120,11 @@ export function ContactForm() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: false, amount: 0.1 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-6"
+            className="lg:col-span-6 flex flex-col items-start pr-0 lg:pr-6 w-full"
           >
-            <h2 className="section-title text-2xl sm:text-3xl lg:text-[26px] xl:text-[30px] font-heading font-extrabold mb-5 tracking-tight uppercase leading-[1.2] text-[#FDFDFC]">
-              <span className="block text-[#FDFDFC] whitespace-nowrap">MANDE UMA MENSAGEM E</span>
-              <span className="block text-[#F59E0B] whitespace-nowrap mt-1">COLOQUE SEU SITE NO AR</span>
+            <h2 className="section-title text-xl sm:text-2xl md:text-3xl lg:text-[26px] xl:text-[30px] font-heading font-extrabold mb-5 tracking-tight uppercase leading-[1.2] text-[#FDFDFC]">
+              <span className="block text-[#FDFDFC] sm:whitespace-nowrap">MANDE UMA MENSAGEM E</span>
+              <span className="block text-[#F59E0B] sm:whitespace-nowrap mt-1">COLOQUE SEU SITE NO AR</span>
             </h2>
 
             <p className="section-description leading-relaxed mb-8 text-[#B8B8C2] font-sans">

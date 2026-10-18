@@ -104,7 +104,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className="dark scroll-smooth">
+    <html lang="pt-BR" className="dark scroll-smooth overflow-x-hidden">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -122,7 +122,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="min-h-screen bg-[#0A0A0E] text-[#FDFDFC] font-sans antialiased selection:bg-[#F59E0B]/30 selection:text-[#FDFDFC]">
+      <body className="min-h-screen bg-[#0A0A0E] text-[#FDFDFC] font-sans antialiased selection:bg-[#F59E0B]/30 selection:text-[#FDFDFC] overflow-x-hidden">
         {children}
         <FloatingWhatsApp />
       </body>

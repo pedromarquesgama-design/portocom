@@ -72,7 +72,8 @@ export function useLogoTransitionGeometry() {
         startX = section.getBoundingClientRect().left + offX;
         startY = stickyTop + offY;
       }
-      const startH = heroAnchor.offsetHeight || 260;
+      const fallbackH = typeof window !== "undefined" && window.innerWidth < 640 ? 110 : 260;
+      const startH = heroAnchor.offsetHeight || fallbackH;
 
       // Document position of the incoming section's top edge
       const sheetDocTop = sheet.getBoundingClientRect().top + window.scrollY;
@@ -181,7 +182,7 @@ export function HeroNavLogoTransition() {
       className="pointer-events-none select-none"
     >
       <motion.div
-        initial={{ opacity: 0, x: -80 }}
+        initial={{ opacity: 0, x: -24 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
       >
