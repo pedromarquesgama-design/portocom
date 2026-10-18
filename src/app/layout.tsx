@@ -39,6 +39,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/",
   },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "32x32" },
+      { url: "/icon.png", type: "image/png", sizes: "512x512" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
     description: AGENCY_DESCRIPTION,
@@ -49,9 +59,19 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.jpg",
+        secureUrl: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
-        alt: `${AGENCY_NAME} — Estúdio de Engenharia & UX/UI`,
+        type: "image/jpeg",
+        alt: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
+      },
+      {
+        url: "/og-image.png",
+        secureUrl: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        type: "image/png",
+        alt: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
       },
     ],
   },
@@ -59,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
     description: AGENCY_DESCRIPTION,
-    images: ["/og-image.jpg"],
+    images: [`${siteUrl}/og-image.jpg`],
   },
   robots: {
     index: true,
@@ -80,7 +100,8 @@ const jsonLd = {
   name: AGENCY_NAME,
   alternateName: AGENCY_TAGLINE,
   url: siteUrl,
-  logo: `${siteUrl}/logo.png`,
+  logo: `${siteUrl}/images/logo-portocom.png`,
+  image: `${siteUrl}/og-image.jpg`,
   description: AGENCY_DESCRIPTION,
   address: {
     "@type": "PostalAddress",
