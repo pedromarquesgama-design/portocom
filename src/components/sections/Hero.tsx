@@ -143,14 +143,14 @@ export function Hero() {
           />
         </div>
 
-        {/* Mobile shading effect: confined strictly ABOVE the red line (logo, headline, subtitle, CTA button) */}
+        {/* Mobile shading effect: confined strictly behind logo, headline, and subtitle */}
         <motion.div
           style={{
             opacity: contentOpacity,
             background:
-              "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.94) 50%, rgba(10, 10, 14, 0.75) 75%, rgba(10, 10, 14, 0.25) 92%, transparent 100%)",
+              "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.94) 50%, rgba(10, 10, 14, 0.70) 75%, rgba(10, 10, 14, 0.20) 90%, transparent 100%)",
           }}
-          className="sm:hidden absolute top-0 inset-x-0 h-[315px] pointer-events-none"
+          className="sm:hidden absolute top-0 inset-x-0 h-[250px] pointer-events-none"
         />
         {/* Tablet backdrop tint */}
         <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
@@ -209,12 +209,12 @@ export function Hero() {
                   Sites rápidos e sistemas fáceis de usar.
                 </motion.p>
 
-                {/* Call to Action Button */}
+                {/* Call to Action Button (Desktop and Tablet only) */}
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.20, ease: "easeOut" }}
-                  className="mt-4 sm:mt-5 flex items-center"
+                  className="hidden sm:flex mt-4 sm:mt-5 items-center"
                 >
                   <Button
                     href="#contato"

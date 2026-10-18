@@ -91,12 +91,12 @@ export function Header() {
               <Button
                 href="#contato"
                 onClick={() => setMobileMenuOpen(false)}
-                variant="accent"
+                variant="primary"
                 size="md"
-                className="w-full text-center"
+                className="w-full text-center font-bold"
               >
-                Crescer meu Negócio
-                <ArrowUpRight className="w-4 h-4 ml-1.5" />
+                <span>Experimente gratuitamente</span>
+                <ArrowUpRight className="w-4 h-4 ml-1.5 stroke-[2.5]" />
               </Button>
             </div>
           </nav>
