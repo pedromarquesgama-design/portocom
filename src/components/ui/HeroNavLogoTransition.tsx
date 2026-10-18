@@ -143,7 +143,11 @@ export function useLogoTransitionGeometry() {
   return geometry;
 }
 
-export function HeroNavLogoTransition() {
+export function HeroNavLogoTransition({
+  hidden = false,
+}: {
+  hidden?: boolean;
+} = {}) {
   const { scrollY } = useScroll();
   const metrics = useLogoTransitionGeometry();
 
@@ -169,6 +173,8 @@ export function HeroNavLogoTransition() {
   return (
     <motion.div
       key={`${Math.round(metrics.startX)}-${Math.round(metrics.startY)}-${metrics.startH}`}
+      animate={{ opacity: hidden ? 0 : 1 }}
+      transition={{ duration: 0.2 }}
       style={{
         position: "fixed",
         left: 0,
@@ -177,7 +183,8 @@ export function HeroNavLogoTransition() {
         y: logoY,
         scale: logoScale,
         transformOrigin: "top left",
-        zIndex: 60,
+        zIndex: hidden ? 0 : 20,
+        pointerEvents: hidden ? "none" : undefined,
       }}
       className="pointer-events-none select-none"
     >
@@ -189,12 +196,14 @@ export function HeroNavLogoTransition() {
         <a
           href="#"
           onClick={(e) => {
+            if (hidden) return;
             if (window.scrollY > 100) {
               e.preventDefault();
               window.scrollTo({ top: 0, behavior: "smooth" });
             }
           }}
-          className="block pointer-events-auto focus-visible:outline-none"
+          style={{ pointerEvents: hidden ? "none" : "auto" }}
+          className="block focus-visible:outline-none"
           aria-label={`${AGENCY_NAME} - Página inicial`}
         >
           <img

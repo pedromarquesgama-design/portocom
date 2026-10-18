@@ -14,8 +14,17 @@ export function Header() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
+    const handleResize = () => {
+      if (window.innerWidth >= 768) {
+        setMobileMenuOpen(false);
+      }
+    };
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   return (
@@ -30,9 +39,9 @@ export function Header() {
       style={{ WebkitBackdropFilter: "blur(16px) saturate(160%)" }}
     >
       {/* Floating Transitioning Logo */}
-      <HeroNavLogoTransition />
+      <HeroNavLogoTransition hidden={mobileMenuOpen} />
 
-      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 h-[60px] flex items-center justify-between gap-6">
+      <div className="relative z-50 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 h-[60px] flex items-center justify-between gap-6">
         {/* Brand Logo Anchor (receives transitioning Portocom logo) */}
         <div
           id="navbar-logo-anchor"
