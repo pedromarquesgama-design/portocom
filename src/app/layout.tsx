@@ -3,7 +3,16 @@ import "./globals.css";
 import { AGENCY_NAME, AGENCY_TAGLINE, AGENCY_DESCRIPTION } from "@/lib/constants";
 import { FloatingWhatsApp } from "@/components/ui/FloatingWhatsApp";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portocom.agency";
+// Detect the public site URL with automatic Vercel fallback
+const rawSiteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_PROJECT_PRODUCTION_URL
+    ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+    : process.env.VERCEL_URL
+    ? `https://${process.env.VERCEL_URL}`
+    : "https://portocom.agency");
+
+const siteUrl = rawSiteUrl.startsWith("http") ? rawSiteUrl : `https://${rawSiteUrl}`;
 
 export const viewport: Viewport = {
   themeColor: "#0A0A0E",
@@ -15,10 +24,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
-    template: `%s | ${AGENCY_NAME}`,
+    default: "PORTOCOM | Design & Engenharia Digital",
+    template: "%s | PORTOCOM",
   },
-  description: AGENCY_DESCRIPTION,
+  description: "Sites rápidos e plataformas digitais de alto padrão.",
   keywords: [
     "criação de sites comerciais",
     "estúdio de design digital",
@@ -50,8 +59,8 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
-    description: AGENCY_DESCRIPTION,
+    title: "PORTOCOM | Design & Engenharia Digital",
+    description: "Sites rápidos e plataformas digitais de alto padrão.",
     url: siteUrl,
     siteName: AGENCY_NAME,
     locale: "pt_BR",
@@ -59,27 +68,25 @@ export const metadata: Metadata = {
     images: [
       {
         url: "/og-image.jpg",
-        secureUrl: `${siteUrl}/og-image.jpg`,
         width: 1200,
         height: 630,
         type: "image/jpeg",
-        alt: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
+        alt: "PORTOCOM | Design & Engenharia Digital",
       },
       {
         url: "/og-image.png",
-        secureUrl: `${siteUrl}/og-image.png`,
         width: 1200,
         height: 630,
         type: "image/png",
-        alt: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
+        alt: "PORTOCOM | Design & Engenharia Digital",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${AGENCY_NAME} — ${AGENCY_TAGLINE}`,
-    description: AGENCY_DESCRIPTION,
-    images: [`${siteUrl}/og-image.jpg`],
+    title: "PORTOCOM | Design & Engenharia Digital",
+    description: "Sites rápidos e plataformas digitais de alto padrão.",
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
