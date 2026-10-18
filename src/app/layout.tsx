@@ -127,6 +127,16 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark scroll-smooth">
       <head>
+        {/* Priority Open Graph tags for WhatsApp full-width top banner */}
+        <meta property="og:image" content={`${siteUrl}/og-image.jpg`} />
+        <meta property="og:image:secure_url" content={`${siteUrl}/og-image.jpg`} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:alt" content="PORTOCOM | Design &amp; Engenharia Digital" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
+
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link

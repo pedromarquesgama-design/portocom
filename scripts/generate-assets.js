@@ -36,15 +36,15 @@ async function generateAssets() {
   fs.writeFileSync(path.join(appDir, 'favicon.ico'), fav32);
   console.log('Created favicon.ico (32x32)');
 
-  // Apple touch icon (180x180 on dark background #0A0A0E)
+  // Apple touch icon (512x512 on dark background #0A0A0E)
   const pApple = await sharp(path.join(publicDir, 'images/logo-mark-p.png'))
-    .resize({ height: 135, fit: 'contain' })
+    .resize({ height: 400, fit: 'contain' })
     .toBuffer();
 
   const appleIcon = await sharp({
     create: {
-      width: 180,
-      height: 180,
+      width: 512,
+      height: 512,
       channels: 4,
       background: { r: 10, g: 10, b: 14, alpha: 1 }
     }
@@ -55,7 +55,7 @@ async function generateAssets() {
 
   fs.writeFileSync(path.join(publicDir, 'apple-touch-icon.png'), appleIcon);
   fs.writeFileSync(path.join(appDir, 'apple-icon.png'), appleIcon);
-  console.log('Created apple-touch-icon.png (180x180)');
+  console.log('Created apple-touch-icon.png (512x512)');
 
   // 2. WhatsApp OG Image (1200x630) - Full Horizontal Logo Banner matching BTT reference
   console.log('Generating WhatsApp OG image with full horizontal logo...');
@@ -100,7 +100,6 @@ async function generateAssets() {
 
   fs.writeFileSync(path.join(publicDir, 'og-image.jpg'), ogCompositeJpg);
   fs.writeFileSync(path.join(publicDir, 'og-image.png'), ogCompositePng);
-  fs.writeFileSync(path.join(appDir, 'opengraph-image.png'), ogCompositePng);
   console.log(`Created og-image.jpg (${(ogCompositeJpg.length / 1024).toFixed(1)} KB)`);
   console.log(`Created og-image.png (${(ogCompositePng.length / 1024).toFixed(1)} KB)`);
 
