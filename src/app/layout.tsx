@@ -10,7 +10,7 @@ const rawSiteUrl =
     ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
     : process.env.VERCEL_URL
     ? `https://${process.env.VERCEL_URL}`
-    : "https://portocom.agency");
+    : "https://www.portocom.net");
 
 const siteUrl = rawSiteUrl.startsWith("http") ? rawSiteUrl : `https://${rawSiteUrl}`;
 

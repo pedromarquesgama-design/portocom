@@ -57,43 +57,43 @@ async function generateAssets() {
   fs.writeFileSync(path.join(appDir, 'apple-icon.png'), appleIcon);
   console.log('Created apple-touch-icon.png (180x180)');
 
-  // 2. WhatsApp OG Image (1200x630) using single P logo (logo-mark-p.png)
-  console.log('Generating WhatsApp OG image with single P logo...');
+  // 2. WhatsApp OG Image (1200x630) - Full Horizontal Logo Banner matching BTT reference
+  console.log('Generating WhatsApp OG image with full horizontal logo...');
 
   const glowSvg = Buffer.from(`
     <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <radialGradient id="amberGlow" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.25" />
-          <stop offset="35%" stop-color="#F59E0B" stop-opacity="0.10" />
-          <stop offset="70%" stop-color="#0A0A0E" stop-opacity="0" />
+        <radialGradient id="amberGlow" cx="50%" cy="50%" r="55%">
+          <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.22" />
+          <stop offset="45%" stop-color="#F59E0B" stop-opacity="0.08" />
+          <stop offset="80%" stop-color="#0A0A0E" stop-opacity="0" />
         </radialGradient>
         <radialGradient id="topLight" cx="50%" cy="0%" r="60%">
-          <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.14" />
+          <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.12" />
           <stop offset="100%" stop-color="#0A0A0E" stop-opacity="0" />
         </radialGradient>
       </defs>
       <rect width="1200" height="630" fill="#0A0A0E" />
       <rect width="1200" height="630" fill="url(#amberGlow)" />
       <rect width="1200" height="630" fill="url(#topLight)" />
-      <line x1="300" y1="626" x2="900" y2="626" stroke="#F59E0B" stroke-opacity="0.4" stroke-width="2" />
+      <line x1="180" y1="626" x2="1020" y2="626" stroke="#F59E0B" stroke-opacity="0.35" stroke-width="2" />
     </svg>
   `);
 
   const glowBase = await sharp(glowSvg).png().toBuffer();
 
-  // Resize single P logo to height 430px (width ~294px)
-  const pLogoBuffer = await sharp(path.join(publicDir, 'images/logo-mark-p.png'))
-    .resize({ height: 430, fit: 'contain' })
+  // Resize full horizontal PortoCom logo to width 960px (height ~374px) for prominent, bold banner presence
+  const fullLogoBuffer = await sharp(path.join(publicDir, 'images/logo-portocom.png'))
+    .resize({ width: 960, fit: 'contain' })
     .toBuffer();
 
   const ogCompositeJpg = await sharp(glowBase)
-    .composite([{ input: pLogoBuffer, gravity: 'center' }])
+    .composite([{ input: fullLogoBuffer, gravity: 'center' }])
     .jpeg({ quality: 92 })
     .toBuffer();
 
   const ogCompositePng = await sharp(glowBase)
-    .composite([{ input: pLogoBuffer, gravity: 'center' }])
+    .composite([{ input: fullLogoBuffer, gravity: 'center' }])
     .png({ quality: 92 })
     .toBuffer();
 
