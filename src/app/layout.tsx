@@ -73,13 +73,6 @@ export const metadata: Metadata = {
         type: "image/jpeg",
         alt: "PORTOCOM | Design & Engenharia Digital",
       },
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        type: "image/png",
-        alt: "PORTOCOM | Design & Engenharia Digital",
-      },
     ],
   },
   twitter: {
