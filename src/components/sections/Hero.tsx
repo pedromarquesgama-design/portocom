@@ -10,9 +10,14 @@ export function Hero() {
   const containerRef = React.useRef<HTMLDivElement>(null);
   const overlapRef = React.useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+    const checkMobile = () => setIsMobile(window.innerWidth < 640);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   // Track scroll progress through the hero section (motion.dev react-scroll-zoom-hero)
@@ -32,8 +37,7 @@ export function Hero() {
   const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.45]);
   const bgFilter = useTransform(scrollYProgress, [0, 0.75], ["blur(0px)", "blur(12px)"]);
 
-  // Whole pinned hero fades out only as the sheet finishes covering it, so the
-  // glassy sheet hands off seamlessly to the fixed site background
+  // Whole pinned hero fades out only as the sheet finishes covering it (desktop only; on mobile image doesn't fade)
   const heroOpacity = useTransform(overlapProgress, [0.6, 1], [1, 0]);
 
   // Foreground content transforms: fade as user scrolls down
@@ -71,40 +75,47 @@ export function Hero() {
         style={{ height: pinnedHeight }}
       />
       <motion.section
-        style={{ opacity: heroOpacity }}
+        style={{ opacity: isMobile ? 1 : heroOpacity }}
         className="sticky top-[60px] z-0 h-[calc(100vh-60px)] min-h-[580px] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0E]"
       >
         {/* =========================================================================
             BACKGROUND LAYER: Desk with Devices Image + Cinematic Amber Atmospheres
             ========================================================================= */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          {/* Zooming, blurring, and fading background container */}
+          {/* Zooming background container (zooms on all screens) */}
           <motion.div
             style={{
               scale: bgScale,
-              filter: bgFilter,
-              transformOrigin: "70% 50%",
+              transformOrigin: isMobile ? "50% 65%" : "70% 50%",
             }}
             className="w-full h-full relative will-change-transform"
           >
-            {/* Desktop / Tablet Landscape image */}
-            <img
-              src="/images/hero-background.jpg"
-              alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
-              className="hidden sm:block w-full h-full object-contain object-right bg-[#0A0A0E] sm:translate-x-10 lg:translate-x-16"
-              style={{
-                imageRendering: "-webkit-optimize-contrast",
-              }}
-            />
-            {/* Mobile Portrait image */}
-            <img
-              src="/images/hero-background-mobile.jpg"
-              alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
-              className="block sm:hidden w-full h-full object-cover object-bottom bg-[#0A0A0E]"
-              style={{
-                imageRendering: "-webkit-optimize-contrast",
-              }}
-            />
+            {/* Desktop / Tablet Landscape image with blur/fade on scroll */}
+            <motion.div
+              style={{ filter: bgFilter }}
+              className="hidden sm:block w-full h-full relative"
+            >
+              <img
+                src="/images/hero-background.jpg"
+                alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
+                className="w-full h-full object-contain object-right bg-[#0A0A0E] sm:translate-x-10 lg:translate-x-16"
+                style={{
+                  imageRendering: "-webkit-optimize-contrast",
+                }}
+              />
+            </motion.div>
+
+            {/* Mobile Portrait image: zoom-in without any blur or fading */}
+            <div className="block sm:hidden w-full h-full relative">
+              <img
+                src="/images/hero-background-mobile.jpg"
+                alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
+                className="w-full h-full object-cover object-bottom bg-[#0A0A0E]"
+                style={{
+                  imageRendering: "-webkit-optimize-contrast",
+                }}
+              />
+            </div>
           </motion.div>
 
           {/* Left text-zone shade (Desktop/Tablet): boxed to content area, feathered right edge */}
