@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { AGENCY_NAME, NAV_LINKS } from "@/lib/constants";
 import { Button } from "@/components/ui/Button";
 import { Menu, X, ArrowUpRight } from "lucide-react";
+import { HeroNavLogoTransition } from "@/components/ui/HeroNavLogoTransition";
 
 export function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -19,64 +20,52 @@ export function Header() {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b ${
         isScrolled
-          ? "bg-[#121211]/90 backdrop-blur-md border-b border-[#2A2925] py-3.5 shadow-[0_2px_8px_rgba(0,0,0,0.3)]"
-          : "bg-transparent py-5"
+          ? "bg-[rgba(10,10,14,0.72)] backdrop-blur-[16px] backdrop-saturate-[160%] border-white/[0.08] shadow-[0_8px_32px_rgba(0,0,0,0.45)]"
+          : "bg-[rgba(10,10,14,0.38)] backdrop-blur-[14px] backdrop-saturate-[150%] border-white/[0.06] shadow-[0_4px_24px_rgba(0,0,0,0.25)]"
       }`}
+      style={{ WebkitBackdropFilter: "blur(16px) saturate(160%)" }}
     >
-      <div className="max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex items-center justify-between">
-        {/* Brand Monogram & Name */}
-        <a
-          href="#"
-          className="flex items-center gap-3 text-[#F5F4EE] group focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] rounded-md"
-          aria-label={`${AGENCY_NAME} - Página inicial`}
-        >
-          <div className="w-8 h-8 rounded-lg bg-[#071914] border border-[#1B3D30] flex items-center justify-center text-xs font-bold text-white shadow-sm group-hover:border-[#2EE5A7]/40 transition-colors">
-            P
-          </div>
-          <div className="flex flex-col">
-            <span className="font-bold text-base tracking-wider leading-tight font-nippo text-white">
-              {AGENCY_NAME}
-            </span>
-            <span className="text-[9px] text-[#A1A1AA] uppercase tracking-[0.22em] font-medium font-sans">
-              Estúdio Digital
-            </span>
-          </div>
-        </a>
+      {/* Floating Transitioning Logo */}
+      <HeroNavLogoTransition />
 
-        {/* Desktop Navigation */}
+      <div className="max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 h-[60px] flex items-center justify-between gap-6">
+        {/* Brand Logo Anchor (receives transitioning Portocom logo) */}
+        <div
+          id="navbar-logo-anchor"
+          className="relative flex items-center h-8 sm:h-9 w-28 sm:w-36 shrink-0 justify-start"
+        />
+
+        {/* Desktop Navigation - centered */}
         <nav
-          className="hidden md:flex items-center gap-8"
+          className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2"
           aria-label="Navegação principal"
         >
           {NAV_LINKS.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="text-sm text-[#D1D5DB] hover:text-[#2EE5A7] transition-colors font-medium py-1 font-sans"
+              className="text-[13px] leading-none text-white/85 hover:text-[#FDFDFC] hover:drop-shadow-[0_0_10px_rgba(245,158,11,0.75)] transition-all duration-200 font-medium font-sans tracking-wide"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
-        {/* CTA Button */}
-        <div className="hidden md:flex items-center gap-4">
-          <a
-            href="#contato"
-            className="inline-flex items-center gap-1.5 px-5 py-2 text-xs font-semibold rounded-full bg-[#051C15]/80 hover:bg-[#07241B] border border-[#2EE5A7]/70 hover:border-[#2EE5A7] text-white shadow-[0_0_15px_rgba(46,229,167,0.18)] hover:shadow-[0_0_24px_rgba(46,229,167,0.35)] transition-all cursor-pointer font-sans"
-          >
-            <span>Investir no meu Negócio</span>
-            <ArrowUpRight className="w-3.5 h-3.5 text-[#2EE5A7]" />
-          </a>
+        {/* CTA Button — same as hero */}
+        <div className="hidden md:flex items-center shrink-0">
+          <Button href="#contato" variant="primary" size="sm" className="font-sans">
+            <span>Experimente gratuitamente</span>
+            <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
+          </Button>
         </div>
 
         {/* Mobile menu trigger */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-md text-[#A3A096] hover:text-[#F5F4EE] hover:bg-[#1A1A18] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882]"
+          className="md:hidden p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
@@ -86,19 +75,19 @@ export function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#151514] border-b border-[#2A2925] px-6 py-6 transition-all">
-          <nav className="flex flex-col gap-3 text-sm font-medium text-[#A3A096]">
+        <div className="md:hidden absolute top-full inset-x-0 bg-[rgba(10,10,14,0.92)] backdrop-blur-[16px] border-b border-white/[0.06] px-6 py-5 shadow-[0_24px_48px_-12px_rgba(0,0,0,0.85)]">
+          <nav className="flex flex-col gap-1 text-sm font-medium text-white/80">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2 hover:text-[#F5F4EE] border-b border-[#242320] transition-colors"
+                className="py-2.5 hover:text-[#FDFDFC] hover:drop-shadow-[0_0_8px_rgba(245,158,11,0.65)] border-b border-white/[0.06] transition-all"
               >
                 {link.label}
               </a>
             ))}
-            <div className="pt-3">
+            <div className="pt-4">
               <Button
                 href="#contato"
                 onClick={() => setMobileMenuOpen(false)}
@@ -106,7 +95,7 @@ export function Header() {
                 size="md"
                 className="w-full text-center"
               >
-                Investir no meu Negócio
+                Crescer meu Negócio
                 <ArrowUpRight className="w-4 h-4 ml-1.5" />
               </Button>
             </div>

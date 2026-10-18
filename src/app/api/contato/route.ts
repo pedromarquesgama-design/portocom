@@ -118,7 +118,7 @@ export async function POST(req: NextRequest) {
 
     // 6. Send email notification via Resend (if API key configured)
     const resendApiKey = process.env.RESEND_API_KEY;
-    const emailTo = process.env.EMAIL_TO || "contato@suaagencia.com.br";
+    const emailTo = process.env.EMAIL_TO || "joaomarquesgama@hotmail.com";
     const emailFrom = process.env.EMAIL_FROM || "onboarding@resend.dev";
 
     if (resendApiKey && !resendApiKey.startsWith("re_123456789")) {

@@ -15,11 +15,11 @@ export function Card({
 
   const variantStyles = {
     tactile:
-      "bg-[#181816] text-[#F5F4EE] border-[#2A2925] shadow-[0_1px_3px_rgba(0,0,0,0.25),0_4px_12px_rgba(0,0,0,0.15)] hover:border-[#3D3C36] hover:-translate-y-0.5",
+      "bg-[#121217] text-[#FDFDFC] border border-white/[0.08] border-t-[#F59E0B]/20 shadow-[0_4px_16px_rgba(0,0,0,0.5)] hover:border-[#F59E0B]/40 hover:-translate-y-0.5",
     highlight:
-      "bg-[#F4F2EC] text-[#121211] border-[#E5E2D8] shadow-[0_4px_12px_rgba(0,0,0,0.12),0_12px_32px_rgba(0,0,0,0.2)]",
+      "bg-[#1A1A24] text-[#FDFDFC] border border-[#F59E0B]/30 shadow-[0_4px_24px_rgba(245,158,11,0.15)]",
     muted:
-      "bg-[#151514] text-[#F5F4EE] border-[#242320]",
+      "bg-[#0E0E13] text-[#FDFDFC] border border-white/[0.04]",
   };
 
   return (
@@ -50,7 +50,7 @@ export function CardTitle({
   className?: string;
 }) {
   return (
-    <h3 className={`text-xl md:text-2xl font-bold tracking-tight ${className}`}>
+    <h3 className={`text-xl md:text-2xl font-heading font-bold tracking-tight text-[#FDFDFC] ${className}`}>
       {children}
     </h3>
   );
@@ -63,7 +63,7 @@ export function CardDescription({
   children: React.ReactNode;
   className?: string;
 }) {
-  return <p className={`text-sm text-[#A3A096] leading-relaxed ${className}`}>{children}</p>;
+  return <p className={`text-sm text-[#B8B8C2] leading-relaxed font-sans ${className}`}>{children}</p>;
 }
 
 export function CardContent({

@@ -61,7 +61,7 @@ export function Depoimentos() {
                 Experiências Reais
               </Badge>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-4">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FDFDFC] mb-4">
               O Que Diz Quem Já Confiou no Nosso Trabalho
             </h2>
             <p className="text-base sm:text-lg text-[#A3A096]">
@@ -74,7 +74,7 @@ export function Depoimentos() {
             <button
               onClick={prev}
               type="button"
-              className="p-2.5 rounded-md bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] text-[#F5F4EE] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882]"
+              className="p-2.5 rounded-md bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] text-[#FDFDFC] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882]"
               aria-label="Depoimento anterior"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -82,7 +82,7 @@ export function Depoimentos() {
             <button
               onClick={next}
               type="button"
-              className="p-2.5 rounded-md bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] text-[#F5F4EE] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882]"
+              className="p-2.5 rounded-md bg-[#181816] border border-[#2A2925] hover:border-[#3D3C36] text-[#FDFDFC] transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882]"
               aria-label="Próximo depoimento"
             >
               <ChevronRight className="w-5 h-5" />
@@ -135,7 +135,7 @@ export function Depoimentos() {
                       {item.avatarInitials}
                     </div>
                     <div>
-                      <h4 className="text-sm font-bold text-[#F5F4EE]">
+                      <h4 className="text-sm font-bold text-[#FDFDFC]">
                         {item.name}
                       </h4>
                       <p className="text-xs text-[#A3A096]">

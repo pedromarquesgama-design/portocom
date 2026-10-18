@@ -24,7 +24,7 @@ export function Pilares() {
               O Que Fazemos Por Você
             </Badge>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-6 whitespace-nowrap">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#FDFDFC] mb-6 whitespace-nowrap">
             IDENTIDADE DIGITAL ATRAI LUCRO REAL
           </h2>
           <p className="text-base sm:text-lg text-[#A3A096] leading-relaxed">
@@ -46,7 +46,7 @@ export function Pilares() {
           >
             <Card
               variant="tactile"
-              className="w-full flex flex-col justify-between group hover:border-[#2FA882]/40 hover:shadow-[0_8px_30px_rgba(47,168,130,0.12)] transition-all duration-300"
+              className="w-full flex flex-col justify-between border border-white/[0.08]"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-4">
@@ -58,7 +58,7 @@ export function Pilares() {
                   </span>
                 </div>
                 <CardHeader className="!p-0 mb-4">
-                  <CardTitle className="text-xl md:text-2xl text-[#F5F4EE]">
+                  <CardTitle className="text-xl md:text-2xl text-[#FDFDFC]">
                     Criação de Sites Comerciais & Páginas de Venda
                   </CardTitle>
                   <CardDescription className="text-sm text-[#A3A096] mt-2 leading-relaxed">
@@ -96,7 +96,7 @@ export function Pilares() {
           >
             <Card
               variant="tactile"
-              className="w-full flex flex-col justify-between group hover:border-[#2FA882]/40 hover:shadow-[0_8px_30px_rgba(47,168,130,0.12)] transition-all duration-300"
+              className="w-full flex flex-col justify-between border border-white/[0.08]"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-4">
@@ -108,7 +108,7 @@ export function Pilares() {
                   </span>
                 </div>
                 <CardHeader className="!p-0 mb-4">
-                  <CardTitle className="text-xl md:text-2xl text-[#F5F4EE]">
+                  <CardTitle className="text-xl md:text-2xl text-[#FDFDFC]">
                     Design de Sistemas, Aplicativos & Portais
                   </CardTitle>
                   <CardDescription className="text-sm text-[#A3A096] mt-2 leading-relaxed">
@@ -145,7 +145,7 @@ export function Pilares() {
           >
             <Card
               variant="tactile"
-              className="w-full flex flex-col justify-between group hover:border-[#2FA882]/40 hover:shadow-[0_8px_30px_rgba(47,168,130,0.12)] transition-all duration-300"
+              className="w-full flex flex-col justify-between border border-white/[0.08]"
             >
               <div>
                 <div className="flex items-center gap-2.5 mb-4">
@@ -157,7 +157,7 @@ export function Pilares() {
                   </span>
                 </div>
                 <CardHeader className="!p-0 mb-4">
-                  <CardTitle className="text-xl md:text-2xl text-[#F5F4EE]">
+                  <CardTitle className="text-xl md:text-2xl text-[#FDFDFC]">
                     Estabilidade, Segurança & Acompanhamento
                   </CardTitle>
                   <CardDescription className="text-sm text-[#A3A096] mt-2 leading-relaxed">

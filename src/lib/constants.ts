@@ -4,15 +4,14 @@ export const AGENCY_DESCRIPTION =
   "Desenhamos e construímos a presença digital de marcas que não podem parecer amadoras. Transformamos visitantes em clientes pagantes por meio de sites rápidos, objetivos e plataformas fáceis de usar.";
 
 export const NAV_LINKS = [
-  { label: "Soluções", href: "#servicos" },
-  { label: "Formatos de trabalho", href: "#planos" },
+  { label: "Nosso Trabalho", href: "#trabalho" },
+  { label: "Planos Acessíveis", href: "#planos" },
+  { label: "Contato", href: "#contato" },
 ];
 
 export const SOCIAL_LINKS = [
-  { name: "LinkedIn", href: "https://linkedin.com" },
-  { name: "Instagram", href: "https://instagram.com" },
-  { name: "WhatsApp", href: "https://wa.me/5511999999999" },
-  { name: "E-mail", href: "mailto:contato@suaagencia.com.br" },
+  { name: "E-mail", href: "mailto:joaomarquesgama@hotmail.com" },
+  { name: "WhatsApp", href: "https://wa.me/5573999943583" },
 ];
 
 export const CLIENT_INDUSTRIES = [

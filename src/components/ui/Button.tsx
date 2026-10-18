@@ -27,23 +27,23 @@ export function Button({
   ...props
 }: ButtonProps) {
   const baseStyles =
-    "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] focus-visible:ring-offset-2 focus-visible:ring-offset-[#121211] active:translate-y-[1px]";
+    "inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0A0E] active:translate-y-[1px]";
 
   const variantStyles = {
     primary:
-      "bg-[#F5F4EE] text-[#121211] hover:bg-[#E8E6DD] shadow-[0_1px_2px_rgba(0,0,0,0.3),inset_0_1px_0_rgba(255,255,255,0.4)] font-semibold",
+      "bg-[#F59E0B] text-[#0A0A0E] hover:bg-[#FBBF24] shadow-[0_4px_16px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_24px_rgba(245,158,11,0.5)] font-bold",
     secondary:
-      "bg-[#1A1A18] hover:bg-[#22211E] text-[#F5F4EE] border border-[#2C2B27] hover:border-[#3D3C36] shadow-[0_1px_2px_rgba(0,0,0,0.2)]",
+      "bg-white/[0.04] hover:bg-[#F59E0B]/10 text-[#FDFDFC] border border-white/10 hover:border-[#F59E0B]/40 shadow-[0_4px_12px_rgba(0,0,0,0.3)] backdrop-blur-md font-medium",
     outline:
-      "bg-transparent hover:bg-white/[0.04] text-[#F5F4EE] border border-[#2C2B27] hover:border-[#3D3C36]",
+      "bg-transparent hover:bg-white/[0.05] text-[#FDFDFC] border border-white/10 hover:border-[#F59E0B]/40",
     ghost:
-      "bg-transparent hover:bg-white/[0.05] text-[#A3A096] hover:text-[#F5F4EE]",
+      "bg-transparent hover:bg-[#F59E0B]/[0.06] text-[#B8B8C2] hover:text-[#F59E0B]",
     accent:
-      "bg-[#1F6B5C] hover:bg-[#185549] text-white font-semibold shadow-[0_2px_4px_rgba(0,0,0,0.25),inset_0_1px_0_rgba(255,255,255,0.2)]",
+      "bg-[#F59E0B] hover:bg-[#D97706] text-[#0A0A0E] font-bold shadow-[0_4px_16px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_24px_rgba(245,158,11,0.5)]",
     "glass-emerald":
-      "bg-[#132820]/75 hover:bg-[#183329]/85 text-[#F5F4EE] border border-[#2FA882]/80 hover:border-[#3DBA95] shadow-[0_0_24px_rgba(47,168,130,0.25)] hover:shadow-[0_0_32px_rgba(61,186,149,0.35)] backdrop-blur-md font-semibold",
+      "bg-[#1E1810]/75 hover:bg-[#2A2012]/85 text-[#FDFDFC] border border-[#F59E0B]/50 hover:border-[#F59E0B] shadow-[0_0_24px_rgba(245,158,11,0.25)] hover:shadow-[0_0_32px_rgba(245,158,11,0.4)] backdrop-blur-md font-semibold",
     "glass-secondary":
-      "bg-[#181816]/70 hover:bg-[#20201D]/80 text-[#E2DDD2] hover:text-[#F5F4EE] border border-[#2E2D28] hover:border-[#3D3C36] shadow-[0_2px_8px_rgba(0,0,0,0.3)] backdrop-blur-md font-medium",
+      "bg-[#121217]/70 hover:bg-[#1A1A24]/80 text-[#D8C3AD] hover:text-[#FDFDFC] border border-white/10 hover:border-[#F59E0B]/40 shadow-[0_2px_8px_rgba(0,0,0,0.3)] backdrop-blur-md font-medium",
   };
 
   const sizeStyles = {

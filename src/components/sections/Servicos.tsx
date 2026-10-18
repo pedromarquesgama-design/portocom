@@ -214,7 +214,7 @@ export function Servicos() {
             <span className="text-xs uppercase font-extrabold tracking-widest text-[#2FA882] mb-3 block">
               SOLUÇÕES DIGITAIS DE ALTA RENTABILIDADE
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F4EE] whitespace-nowrap">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#FDFDFC] whitespace-nowrap">
               IDENTIDADE DIGITAL ATRAI LUCRO REAL
             </h2>
           </div>
@@ -231,8 +231,8 @@ export function Servicos() {
                 onClick={() => setActiveTab("servicos")}
                 className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                   activeTab === "servicos"
-                    ? "bg-[#242320] text-[#F5F4EE] shadow-md border border-[#3E3D35]"
-                    : "text-[#A3A096] hover:text-[#F5F4EE] border border-transparent"
+                    ? "bg-[#242320] text-[#FDFDFC] shadow-md border border-[#3E3D35]"
+                    : "text-[#A3A096] hover:text-[#FDFDFC] border border-transparent"
                 }`}
               >
                 Soluções & Serviços
@@ -243,7 +243,7 @@ export function Servicos() {
                 className={`px-4 py-2 rounded-lg text-xs sm:text-sm font-semibold transition-all duration-200 cursor-pointer ${
                   activeTab === "processo"
                     ? "bg-[#18382E] text-[#3DBA95] shadow-md border border-[#2FA882]/40"
-                    : "text-[#A3A096] hover:text-[#F5F4EE] border border-transparent"
+                    : "text-[#A3A096] hover:text-[#FDFDFC] border border-transparent"
                 }`}
               >
                 Etapas do Processo
@@ -288,7 +288,7 @@ export function Servicos() {
                       <span
                         className={`text-xs sm:text-[13px] font-semibold leading-snug mb-3 min-h-[34px] flex items-center justify-center transition-colors ${
                           isActive
-                            ? "text-[#F5F4EE] font-bold"
+                            ? "text-[#FDFDFC] font-bold"
                             : "text-[#8E8C82] group-hover:text-[#D5D3C9]"
                         }`}
                       >
@@ -299,8 +299,8 @@ export function Servicos() {
                         <div
                           className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 shadow-md ${
                             isActive
-                              ? "bg-gradient-to-br from-[#2FA882] to-[#1A5446] text-[#F5F4EE] ring-4 ring-[#2FA882]/20 scale-110 shadow-[0_0_20px_rgba(47,168,130,0.4)]"
-                              : "bg-[#1C1B19] text-[#7A7972] border border-[#2E2D28] group-hover:text-[#F5F4EE] group-hover:border-[#3D3C36]"
+                              ? "bg-gradient-to-br from-[#2FA882] to-[#1A5446] text-[#FDFDFC] ring-4 ring-[#2FA882]/20 scale-110 shadow-[0_0_20px_rgba(47,168,130,0.4)]"
+                              : "bg-[#1C1B19] text-[#7A7972] border border-[#2E2D28] group-hover:text-[#FDFDFC] group-hover:border-[#3D3C36]"
                           }`}
                         >
                           <IconComponent className="w-5 h-5" />
@@ -321,7 +321,7 @@ export function Servicos() {
               <button
                 type="button"
                 onClick={prevService}
-                className="hidden xl:flex absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
+                className="hidden xl:flex absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
                 aria-label="Serviço anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -330,7 +330,7 @@ export function Servicos() {
               <button
                 type="button"
                 onClick={nextService}
-                className="hidden xl:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
+                className="hidden xl:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
                 aria-label="Próximo serviço"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -355,7 +355,7 @@ export function Servicos() {
                         {currentService.badge}
                       </div>
 
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#F5F4EE] mb-5 leading-tight">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#FDFDFC] mb-5 leading-tight">
                         {currentService.title}
                       </h3>
 
@@ -373,7 +373,7 @@ export function Servicos() {
                       <button
                         type="button"
                         onClick={prevService}
-                        className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
+                        className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] transition-colors"
                         aria-label="Anterior"
                       >
                         <ChevronLeft className="w-4 h-4" />
@@ -384,7 +384,7 @@ export function Servicos() {
                       <button
                         type="button"
                         onClick={nextService}
-                        className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
+                        className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] transition-colors"
                         aria-label="Próximo"
                       >
                         <ChevronRight className="w-4 h-4" />
@@ -420,7 +420,7 @@ export function Servicos() {
                                   <span className="text-[9px] uppercase tracking-wider font-bold text-[#2FA882]">
                                     Arquitetura de Vendas
                                   </span>
-                                  <div className="text-sm font-bold text-[#F5F4EE] mt-0.5">
+                                  <div className="text-sm font-bold text-[#FDFDFC] mt-0.5">
                                     Design Que Transmite Prestígio Instantâneo
                                   </div>
                                 </div>
@@ -455,10 +455,10 @@ export function Servicos() {
                             </div>
                           </div>
 
-                          <div className="absolute -bottom-2 -right-2 sm:-right-4 w-48 rounded-2xl bg-[#141413] border border-[#3D3C36] p-3 shadow-[0_15px_40px_rgba(0,0,0,0.8)] backdrop-blur-md">
+                          <div className="absolute -bottom-2 -right-2 sm:-right-4 w-48 rounded-2xl bg-[#141413] border border-[#3D3C36] p-3 shadow-[0_15px_40px_rgba(0,0,0,0.8)]">
                             <div className="flex items-center gap-2 mb-1.5">
                               <CheckCircle2 className="w-4 h-4 text-[#2FA882]" />
-                              <span className="text-[11px] font-bold text-[#F5F4EE]">ICP Alinhado</span>
+                              <span className="text-[11px] font-bold text-[#FDFDFC]">ICP Alinhado</span>
                             </div>
                             <div className="text-[10px] text-[#A3A096] leading-tight">
                               Decisão rápida do visitante no primeiro acesso.
@@ -474,14 +474,14 @@ export function Servicos() {
 
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             <div className="p-5 rounded-xl bg-[#0F0F0E] border border-[#2E2D28] shadow-2xl flex flex-col justify-between h-52">
-                              <div className="w-9 h-9 rounded-md bg-[#1C1B19] border border-[#3D3C36] flex items-center justify-center text-xs font-bold text-[#F5F4EE]">
+                              <div className="w-9 h-9 rounded-md bg-[#1C1B19] border border-[#3D3C36] flex items-center justify-center text-xs font-bold text-[#FDFDFC]">
                                 P
                               </div>
                               <div>
                                 <span className="text-[9px] uppercase tracking-widest text-[#2FA882] font-bold block mb-1">
                                   IDENTIDADE & BRANDING
                                 </span>
-                                <div className="text-base font-bold text-[#F5F4EE] leading-tight">
+                                <div className="text-base font-bold text-[#FDFDFC] leading-tight">
                                   Brand Guidelines & System
                                 </div>
                                 <span className="text-[10px] text-[#7A7972] mt-1 block">
@@ -492,7 +492,7 @@ export function Servicos() {
 
                             <div className="space-y-3">
                               <div className="p-4 rounded-xl bg-[#141413] border border-[#2A2925]">
-                                <div className="text-2xl font-serif text-[#F5F4EE] mb-1">
+                                <div className="text-2xl font-serif text-[#FDFDFC] mb-1">
                                   Aa
                                 </div>
                                 <div className="text-[10px] text-[#A3A096]">
@@ -576,7 +576,7 @@ export function Servicos() {
                               <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#242320]">
                                 <div className="flex items-center gap-2">
                                   <span className="w-2.5 h-2.5 rounded-full bg-[#3DBA95] animate-pulse" />
-                                  <span className="text-xs font-bold text-[#F5F4EE]">Engenharia & QA Rigoroso</span>
+                                  <span className="text-xs font-bold text-[#FDFDFC]">Engenharia & QA Rigoroso</span>
                                 </div>
                                 <span className="text-[10px] font-mono text-[#3DBA95] bg-[#18382E] px-2.5 py-1 rounded-full border border-[#2FA882]/30">
                                   &lt; 1s LCP Instantâneo
@@ -671,7 +671,7 @@ export function Servicos() {
                         <span
                           className={`text-xs sm:text-[13px] font-semibold transition-colors ${
                             isActive
-                              ? "text-[#F5F4EE] font-bold"
+                              ? "text-[#FDFDFC] font-bold"
                               : "text-[#8E8C82] group-hover:text-[#D5D3C9]"
                           }`}
                         >
@@ -683,8 +683,8 @@ export function Servicos() {
                         <div
                           className={`w-12 h-12 rounded-full flex items-center justify-center transition-all duration-200 shadow-md ${
                             isActive
-                              ? "bg-gradient-to-br from-[#2FA882] to-[#1A5446] text-[#F5F4EE] ring-4 ring-[#2FA882]/20 scale-110 shadow-[0_0_20px_rgba(47,168,130,0.4)]"
-                              : "bg-[#1C1B19] text-[#7A7972] border border-[#2E2D28] group-hover:text-[#F5F4EE] group-hover:border-[#3D3C36]"
+                              ? "bg-gradient-to-br from-[#2FA882] to-[#1A5446] text-[#FDFDFC] ring-4 ring-[#2FA882]/20 scale-110 shadow-[0_0_20px_rgba(47,168,130,0.4)]"
+                              : "bg-[#1C1B19] text-[#7A7972] border border-[#2E2D28] group-hover:text-[#FDFDFC] group-hover:border-[#3D3C36]"
                           }`}
                         >
                           <IconComponent className="w-5 h-5" />
@@ -705,7 +705,7 @@ export function Servicos() {
               <button
                 type="button"
                 onClick={prevStep}
-                className="hidden xl:flex absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
+                className="hidden xl:flex absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
                 aria-label="Etapa anterior"
               >
                 <ChevronLeft className="w-5 h-5" />
@@ -714,7 +714,7 @@ export function Servicos() {
               <button
                 type="button"
                 onClick={nextStep}
-                className="hidden xl:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
+                className="hidden xl:flex absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-[#1A1A18]/90 hover:bg-[#242320] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] hover:border-[#3D3C36] shadow-xl items-center justify-center transition-all duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2FA882] cursor-pointer"
                 aria-label="Próxima etapa"
               >
                 <ChevronRight className="w-5 h-5" />
@@ -745,7 +745,7 @@ export function Servicos() {
                         </div>
                       </div>
 
-                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#F5F4EE] mb-5 leading-tight">
+                      <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-[#FDFDFC] mb-5 leading-tight">
                         {currentStep.fullTitle}
                       </h3>
 
@@ -782,7 +782,7 @@ export function Servicos() {
                         <button
                           type="button"
                           onClick={prevStep}
-                          className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
+                          className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] transition-colors"
                           aria-label="Anterior"
                         >
                           <ChevronLeft className="w-4 h-4" />
@@ -793,7 +793,7 @@ export function Servicos() {
                         <button
                           type="button"
                           onClick={nextStep}
-                          className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#F5F4EE] border border-[#2E2D28] transition-colors"
+                          className="p-2 rounded-lg bg-[#1C1B19] text-[#A3A096] hover:text-[#FDFDFC] border border-[#2E2D28] transition-colors"
                           aria-label="Próximo"
                         >
                           <ChevronRight className="w-4 h-4" />
@@ -811,13 +811,13 @@ export function Servicos() {
                         <div className="space-y-4">
                           <div className="p-4 sm:p-5 rounded-xl bg-[#141413] border border-[#262521] shadow-2xl">
                             <div className="flex items-center justify-between pb-3 mb-3 border-b border-[#20201D]">
-                              <span className="text-xs font-semibold text-[#F5F4EE]">Diagnóstico Comercial & ICP</span>
+                              <span className="text-xs font-semibold text-[#FDFDFC]">Diagnóstico Comercial & ICP</span>
                               <span className="text-[10px] font-mono text-[#3DBA95] bg-[#18382E] px-2 py-0.5 rounded">Validação</span>
                             </div>
                             <div className="space-y-2 text-xs text-[#A3A096]">
                               <div className="flex justify-between py-1 border-b border-[#20201D]">
                                 <span>Público-Alvo:</span>
-                                <span className="text-[#F5F4EE] font-medium">Decisores & Líderes de Negócios</span>
+                                <span className="text-[#FDFDFC] font-medium">Decisores & Líderes de Negócios</span>
                               </div>
                               <div className="flex justify-between py-1 border-b border-[#20201D]">
                                 <span>Objetivo Principal:</span>
@@ -825,7 +825,7 @@ export function Servicos() {
                               </div>
                               <div className="flex justify-between py-1">
                                 <span>Diferencial de Mercado:</span>
-                                <span className="text-[#F5F4EE] font-medium">Atendimento Direto com Sócios</span>
+                                <span className="text-[#FDFDFC] font-medium">Atendimento Direto com Sócios</span>
                               </div>
                             </div>
                           </div>
@@ -833,7 +833,7 @@ export function Servicos() {
                           <div className="grid grid-cols-2 gap-3">
                             <div className="p-3 rounded-lg bg-[#181816] border border-[#242320] text-center">
                               <span className="text-[10px] uppercase text-[#A3A096] block mb-1">Prazo Definido</span>
-                              <span className="text-base font-bold text-[#F5F4EE]">15 a 21 Dias</span>
+                              <span className="text-base font-bold text-[#FDFDFC]">15 a 21 Dias</span>
                             </div>
                             <div className="p-3 rounded-lg bg-[#181816] border border-[#242320] text-center">
                               <span className="text-[10px] uppercase text-[#A3A096] block mb-1">Entregáveis</span>
@@ -848,7 +848,7 @@ export function Servicos() {
                         <div className="space-y-3.5">
                           <div className="p-4 sm:p-5 rounded-xl bg-[#141413] border border-[#262521] shadow-2xl">
                             <div className="flex items-center justify-between mb-3">
-                              <span className="text-xs font-semibold text-[#F5F4EE]">Integrações Ativas</span>
+                              <span className="text-xs font-semibold text-[#FDFDFC]">Integrações Ativas</span>
                               <span className="text-[10px] font-mono text-[#3DBA95] bg-[#18382E] px-2 py-0.5 rounded">Conectado</span>
                             </div>
                             <div className="grid grid-cols-2 gap-2 text-xs">
@@ -883,7 +883,7 @@ export function Servicos() {
                         <div className="space-y-4">
                           <div className="p-4 sm:p-5 rounded-xl bg-[#141413] border border-[#262521] shadow-2xl">
                             <div className="flex items-center justify-between mb-3">
-                              <span className="text-xs font-semibold text-[#F5F4EE]">Auditoria de Performance</span>
+                              <span className="text-xs font-semibold text-[#FDFDFC]">Auditoria de Performance</span>
                               <span className="text-xs font-bold text-[#3DBA95] font-mono">Score 98/100</span>
                             </div>
                             <div className="space-y-2 text-xs">
@@ -911,14 +911,14 @@ export function Servicos() {
                             <div className="flex items-center justify-between mb-3">
                               <div className="flex items-center gap-2">
                                 <span className="w-2 h-2 rounded-full bg-[#3DBA95] animate-pulse" />
-                                <span className="text-xs font-semibold text-[#F5F4EE]">Site Publicado com Sucesso</span>
+                                <span className="text-xs font-semibold text-[#FDFDFC]">Site Publicado com Sucesso</span>
                               </div>
                               <span className="text-[10px] font-mono text-[#3DBA95] bg-[#18382E] px-2 py-0.5 rounded">No Ar</span>
                             </div>
                             <div className="space-y-2 text-xs">
                               <div className="flex items-center justify-between py-1 border-b border-[#20201D]">
                                 <span className="text-[#A3A096]">Treinamento da Equipe:</span>
-                                <span className="text-[#F5F4EE] font-medium">Realizado com Sucesso</span>
+                                <span className="text-[#FDFDFC] font-medium">Realizado com Sucesso</span>
                               </div>
                               <div className="flex items-center justify-between py-1 border-b border-[#20201D]">
                                 <span className="text-[#A3A096]">Monitoramento de Visitas:</span>

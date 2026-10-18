@@ -56,7 +56,7 @@ export function FAQ() {
               Perguntas Frequentes
             </Badge>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FDFDFC] mb-6">
             Tire Suas Dúvidas Sem Complicação
           </h2>
           <p className="text-base sm:text-lg text-[#A3A096] max-w-2xl mx-auto leading-relaxed">
@@ -77,12 +77,12 @@ export function FAQ() {
           className="mt-12 p-6 rounded-xl bg-[#181816] border border-[#2A2925] flex flex-col sm:flex-row items-center justify-between gap-4 shadow-sm hover:border-[#3D3C36] transition-all"
         >
           <div className="text-left">
-            <h4 className="text-sm font-bold text-[#F5F4EE]">Tem alguma dúvida específica sobre o seu caso?</h4>
+            <h4 className="text-sm font-bold text-[#FDFDFC]">Tem alguma dúvida específica sobre o seu caso?</h4>
             <p className="text-xs text-[#A3A096] mt-0.5">Respondemos com clareza e sem compromisso pelo WhatsApp.</p>
           </div>
           <a
             href="#contato"
-            className="px-4 py-2.5 rounded-lg text-xs font-semibold bg-[#1F1E1B] hover:bg-[#282723] text-[#F5F4EE] border border-[#2E2D28] transition-all shrink-0 cursor-pointer"
+            className="px-4 py-2.5 rounded-lg text-xs font-semibold bg-[#1F1E1B] hover:bg-[#282723] text-[#FDFDFC] border border-[#2E2D28] transition-all shrink-0 cursor-pointer"
           >
             Fazer Pergunta Direta
           </a>

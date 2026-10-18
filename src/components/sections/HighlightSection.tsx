@@ -17,7 +17,7 @@ export function HighlightSection() {
           <span className="text-xs uppercase font-extrabold tracking-widest text-[#2FA882] mb-3 block">
             DESTAQUES DE ENGENHARIA DIGITAL
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#F5F4EE] whitespace-nowrap">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-[#FDFDFC] whitespace-nowrap">
             TECNOLOGIA E EXPERIÊNCIA DE ALTA RETENÇÃO
           </h2>
         </div>

@@ -31,3 +31,13 @@ next-env.d.ts
 # Graphify output
 graphify-out/
 
+# Temporary browser & debug files
+.tmp-cdp/
+.tmp-chrome/
+portocom/
+/*.png
+/scratch_*.js
+/analyze_ref.js
+stitch-project-data.json
+.agents/
+skills-lock.json

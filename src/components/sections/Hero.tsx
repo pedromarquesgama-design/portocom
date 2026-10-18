@@ -1,151 +1,244 @@
 "use client";
 
-import React from "react";
-import { motion } from "motion/react";
-import { ArrowUpRight, Shield } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { motion, useScroll, useTransform } from "motion/react";
+import { ArrowUpRight, ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/Button";
+import { HERO_CONTENT_FADE_END } from "@/components/ui/HeroNavLogoTransition";
 
 export function Hero() {
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const overlapRef = React.useRef<HTMLDivElement>(null);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  // Track scroll progress through the hero section (motion.dev react-scroll-zoom-hero)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  });
+
+  // Track the phase where the next sheet slides up over the pinned hero
+  // (0 = sheet's top edge enters the viewport, 1 = sheet fully covers the hero)
+  const { scrollYProgress: overlapProgress } = useScroll({
+    target: overlapRef,
+    offset: ["start end", "end end"],
+  });
+
+  // Background zoom and blur transformations (image stays pinned and visible)
+  const bgScale = useTransform(scrollYProgress, [0, 1], [1, 1.45]);
+  const bgFilter = useTransform(scrollYProgress, [0, 0.75], ["blur(0px)", "blur(12px)"]);
+
+  // Whole pinned hero fades out only as the sheet finishes covering it, so the
+  // glassy sheet hands off seamlessly to the fixed site background
+  const heroOpacity = useTransform(overlapProgress, [0.6, 1], [1, 0]);
+
+  // Foreground content transforms: fade as user scrolls down
+  const contentOpacity = useTransform(scrollYProgress, [0, HERO_CONTENT_FADE_END], [1, 0]);
+
+  // Scroll down indicator cue fade
+  const scrollCueOpacity = useTransform(scrollYProgress, [0, 0.12], [1, 0]);
+  const scrollCueY = useTransform(scrollYProgress, [0, 0.12], [0, 16]);
+
+  // Height of the pinned hero viewport (matches the section's h + min-h below)
+  const pinnedHeight = "max(100vh - 60px, 580px)";
+
   return (
-    <section className="relative min-h-[92vh] lg:min-h-screen w-full flex flex-col justify-between overflow-hidden bg-[#021715]">
-      {/* =========================================================================
-          BACKGROUND LAYER: Desk with Devices Image + Cinematic Emerald Atmospheres
-          ========================================================================= */}
-      <div className="absolute inset-0 z-0 pointer-events-none select-none">
-        {/* Desk scene with devices */}
-        <img
-          src="/images/hero-devices-desk.jpg"
-          alt="Dispositivos digitais — Smartphone, MacBook e Tablet com a sua marca"
-          className="w-full h-full object-cover object-right lg:object-[82%_center] xl:object-right"
-        />
-
-        {/* Left Atmospheric Gradient: Dark emerald vignette ensuring 100% text contrast */}
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(90deg, #021715 0%, rgba(2, 23, 21, 0.98) 32%, rgba(2, 23, 21, 0.88) 46%, rgba(2, 23, 21, 0.35) 64%, transparent 85%)",
-          }}
-        />
-
-        {/* Top-Left Volumetric Emerald Studio Glow */}
-        <div
-          className="absolute -top-16 -left-16 w-[560px] sm:w-[720px] h-[560px] sm:h-[720px] rounded-full pointer-events-none blur-[140px] opacity-90"
-          style={{
-            background:
-              "radial-gradient(ellipse at 25% 25%, rgba(34, 224, 167, 0.22) 0%, rgba(1, 58, 56, 0.45) 42%, transparent 75%)",
-          }}
-        />
-
-        {/* Bottom subtle edge blend to seamlessly transition into next section */}
-        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#121211] via-[#121211]/50 to-transparent" />
-
-        {/* Cyber HUD decorative line between badge and laptop */}
-        <div className="absolute top-[22%] left-[38%] xl:left-[41%] hidden lg:block pointer-events-none opacity-30 z-10">
-          <svg width="140" height="40" viewBox="0 0 140 40" fill="none">
-            <path d="M0 28 H90 L110 8 H140" stroke="#2EE5A7" strokeWidth="1" strokeDasharray="3 3" />
-            <path d="M70 28 H90 L110 8 H130" stroke="#2EE5A7" strokeWidth="1.2" />
-            <circle cx="130" cy="8" r="2" fill="#2EE5A7" />
-            <circle cx="4" cy="28" r="1.5" fill="#2EE5A7" />
-          </svg>
-        </div>
-      </div>
-
-      {/* =========================================================================
-          HERO CONTENT LAYER: Perfectly aligned with the reference measures
-          ========================================================================= */}
-      <div className="relative z-10 w-full flex-1 flex flex-col justify-center pt-28 sm:pt-32 pb-8">
-        <div className="w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
-          <div className="max-w-xl xl:max-w-2xl flex flex-col items-start text-left">
-            
-            {/* Overline Badge Pill */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#0D281E]/85 border border-[#1A4B38] mb-5 sm:mb-6 shadow-sm"
-            >
-              <span className="w-2 h-2 rounded-full bg-[#2EE5A7] animate-pulse" />
-              <span className="text-xs font-semibold text-[#34D399] tracking-wide font-sans">
-                Estúdio de Design & Engenharia Digital
-              </span>
-            </motion.div>
-
-            {/* High-Impact 3-Line Headline matching reference composition & Nippo font */}
-            <motion.h1
-              initial={{ opacity: 0, y: 22 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="font-nippo font-black uppercase tracking-tight text-3xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[54px] 2xl:text-[62px] leading-[1.08] sm:leading-[1.1] mb-5 sm:mb-6"
-            >
-              <span className="block text-white">CONSTRUA UMA</span>
-              <span className="block text-[#22E0A7] drop-shadow-[0_0_32px_rgba(34,224,167,0.35)] mt-0.5 sm:mt-1">
-                PRESENÇA DIGITAL
-              </span>
-              <span className="block text-white mt-0.5 sm:mt-1">QUE INSPIRA CONFIANÇA</span>
-            </motion.h1>
-
-            {/* Subtitle - clean readable 2-line layout */}
-            <motion.p
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.32, ease: [0.22, 1, 0.36, 1] }}
-              className="font-sans text-sm sm:text-base lg:text-[17px] text-[#A1A1AA] leading-relaxed max-w-[480px] mb-8 font-normal"
-            >
-              Desenvolvemos sites rápidos e sistemas fáceis de usar, com foco em performance, design e resultados.
-            </motion.p>
-
-            {/* CTA Button + Trust Badge in a clean row */}
-            <motion.div
-              initial={{ opacity: 0, y: 18 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.42, ease: [0.22, 1, 0.36, 1] }}
-              className="flex flex-wrap items-center gap-4 sm:gap-6"
-            >
-              {/* Primary CTA Button */}
-              <a
-                href="#contato"
-                className="group inline-flex items-center justify-center gap-2.5 px-6 sm:px-7 py-3.5 sm:py-4 rounded-2xl bg-[#22E0A7] hover:bg-[#1FD69E] text-[#052018] font-bold text-sm sm:text-base tracking-tight shadow-[0_0_30px_rgba(34,224,167,0.45)] hover:shadow-[0_0_46px_rgba(34,224,167,0.7)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-200 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#22E0A7] font-sans"
-              >
-                <span>Falar com um Especialista</span>
-                <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 text-[#052018] stroke-[2.5]" />
-              </a>
-
-              {/* Vertical Divider */}
-              <div className="hidden sm:block h-8 w-[1px] bg-white/20" />
-
-              {/* Trust Signal Badge (Shield + 2-line text) */}
-              <div className="flex items-center gap-2.5 text-left font-sans">
-                <Shield className="w-5 h-5 sm:w-6 sm:h-6 text-[#22E0A7] stroke-[1.8] shrink-0" />
-                <div className="text-xs text-[#CBD5E1] leading-tight font-medium">
-                  <div>Seu projeto em</div>
-                  <div className="text-white/90 font-semibold">boas mãos</div>
-                </div>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </div>
-
-      {/* =========================================================================
-          BOTTOM SCROLL CUE: Aligned with the left margin (as in reference)
-          ========================================================================= */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.8, delay: 0.6 }}
-        className="relative z-10 w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16 pb-6 lg:pb-10"
+    // Outer wrapper is extended by one hero-height and pulled back with a negative
+    // margin, so the hero stays pinned while the next sheet slides over it
+    <div
+      className="relative w-full"
+      style={{
+        height: `calc(180vh + ${pinnedHeight})`,
+        marginBottom: `calc(-1 * ${pinnedHeight})`,
+      }}
+    >
+      {/* Scroll track driving the hero animations (unchanged 180vh timing) */}
+      <div
+        ref={containerRef}
+        id="hero-scroll-container"
+        aria-hidden="true"
+        className="absolute inset-x-0 top-0 h-[180vh] pointer-events-none"
+      />
+      {/* Overlap track: the region where the next sheet covers the pinned hero */}
+      <div
+        ref={overlapRef}
+        aria-hidden="true"
+        className="absolute inset-x-0 bottom-0 pointer-events-none"
+        style={{ height: pinnedHeight }}
+      />
+      <motion.section
+        style={{ opacity: heroOpacity }}
+        className="sticky top-[60px] z-0 h-[calc(100vh-60px)] min-h-[580px] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0E]"
       >
-        <div className="flex items-center gap-3 text-[#94A3B8]/80 text-xs font-normal select-none font-sans">
-          <div className="flex flex-col items-center">
-            <div className="w-[18px] h-[28px] rounded-full border border-white/40 flex items-start justify-center pt-1.5">
-              <span className="w-1 h-2 rounded-full bg-[#22E0A7] animate-bounce" />
-            </div>
-            <div className="w-[1px] h-5 bg-white/30 mt-1" />
-          </div>
-          <span className="text-white/60 tracking-wide text-xs">Role para descobrir</span>
+        {/* =========================================================================
+            BACKGROUND LAYER: Desk with Devices Image + Cinematic Amber Atmospheres
+            ========================================================================= */}
+        <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Zooming, blurring, and fading background container */}
+          <motion.div
+            style={{
+              scale: bgScale,
+              filter: bgFilter,
+              transformOrigin: "70% 50%",
+            }}
+            className="w-full h-full relative will-change-transform"
+          >
+            <img
+              src="/images/hero-background.jpg"
+              alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
+              className="w-full h-full object-contain object-right bg-[#0A0A0E] translate-x-6 sm:translate-x-10 lg:translate-x-16"
+              style={{
+                imageRendering: "-webkit-optimize-contrast",
+              }}
+            />
+          </motion.div>
+
+          {/* Left text-zone shade: boxed to content area, feathered right edge */}
+          <motion.div
+            style={{ opacity: contentOpacity }}
+            className="absolute inset-y-0 left-0 w-[70%] sm:w-1/2 lg:w-[42%] pointer-events-none bg-[linear-gradient(to_right,#0A0A0E_0%,rgba(10,10,14,0.95)_55%,rgba(10,10,14,0.50)_80%,transparent_100%)]"
+          />
+
+          {/* Mid-scene lift: soft tungsten bloom over the dark window zone */}
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              background:
+                "radial-gradient(ellipse 45% 55% at 58% 45%, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.07) 45%, transparent 70%)",
+            }}
+          />
+
+          {/* Bottom subtle edge blend to seamlessly transition into next section */}
+          <div
+            className="absolute inset-x-0 bottom-0 h-16 pointer-events-none"
+            style={{
+              background:
+                "linear-gradient(to top, #0A0A0E 0%, rgba(10, 10, 14, 0.5) 40%, transparent 100%)",
+            }}
+          />
         </div>
-      </motion.div>
-    </section>
+
+        {/* Mobile/Tablet backdrop tint to maintain high text contrast on small screens */}
+        <div className="absolute inset-0 lg:hidden bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
+
+        {/* Top-Left Volumetric Tungsten & Amber Studio Glow */}
+        <div
+          className="absolute -top-16 -left-16 w-[420px] sm:w-[540px] h-[420px] sm:h-[540px] rounded-full pointer-events-none blur-[100px] opacity-40"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(245, 158, 11, 0.16) 0%, rgba(97, 59, 0, 0.25) 45%, transparent 70%)",
+          }}
+        />
+
+        {/* =========================================================================
+            HERO CONTENT LAYER: Executive typography and amber lighting
+            ========================================================================= */}
+        <div className="relative z-10 w-full flex-1 flex flex-col justify-start pt-4 sm:pt-7 lg:pt-8 pb-8">
+          <div className="w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
+            <div className="max-w-xl lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl flex flex-col items-start text-left">
+              
+              {/* Brand logo anchor on top */}
+              <div
+                id="hero-logo-anchor"
+                className="h-52 sm:h-64 lg:h-80 w-auto max-w-full -mt-10 sm:-mt-16 lg:-mt-[4.75rem] -ml-[7px] sm:-ml-[9px] lg:-ml-[11px] mb-1.5 sm:mb-1 lg:mb-1 flex items-center"
+              >
+                <img
+                  src="/images/logo-portocom.png"
+                  alt="Portocom — Design & Engenharia Digital"
+                  className="h-full w-auto object-contain mix-blend-screen select-none opacity-0"
+                />
+              </div>
+
+              {/* Text & CTA group: fades as user scrolls down */}
+              <motion.div
+                style={{ opacity: contentOpacity }}
+                className="w-full flex flex-col items-start will-change-transform"
+              >
+                {/* Headline underneath logo */}
+                <motion.h1
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.06, ease: "easeOut" }}
+                  className="font-heading font-bold uppercase tracking-tight text-[26px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.02] sm:leading-[1.04] text-left max-w-[640px] mb-2.5 sm:mb-3 [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_0_70px_rgba(0,0,0,0.7)]"
+                >
+                  <span className="block w-full text-justify [text-align-last:justify] text-[#FDFDFC] drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">SUA PRESENÇA DIGITAL</span>
+                  <span className="block mt-0.5 sm:mt-1 text-[#FDFDFC] drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">INSPIRA CONFIANÇA</span>
+                </motion.h1>
+
+                {/* Subtitle under headline */}
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.13, ease: "easeOut" }}
+                  className="font-sans text-sm sm:text-base lg:text-lg text-[#B8B8C2] leading-relaxed max-w-[460px] font-normal text-left [text-shadow:0_1px_12px_rgba(0,0,0,0.9)]"
+                >
+                  Sites rápidos e sistemas fáceis de usar.
+                </motion.p>
+
+                {/* Call to Action Button */}
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5, delay: 0.20, ease: "easeOut" }}
+                  className="mt-4 sm:mt-5 flex items-center"
+                >
+                  <Button
+                    href="#contato"
+                    variant="primary"
+                    size="lg"
+                    className="group w-full sm:w-auto shadow-[0_4px_20px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_28px_rgba(245,158,11,0.5)] hover:-translate-y-0.5 transition-all text-sm sm:text-base font-bold"
+                  >
+                    <span>Experimente gratuitamente</span>
+                    <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
+                  </Button>
+                </motion.div>
+              </motion.div>
+
+            </div>
+          </div>
+        </div>
+
+        {/* =========================================================================
+            SCROLL DOWN ARROWS INDICATOR: Urges the user to scroll down
+            ========================================================================= */}
+        <motion.div
+          style={{ opacity: scrollCueOpacity, y: scrollCueY }}
+          className="absolute bottom-3 sm:bottom-6 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center cursor-pointer group select-none"
+          onClick={() => {
+            const next = document.getElementById("trabalho");
+            if (next) {
+              next.scrollIntoView({ behavior: "smooth" });
+            } else {
+              window.scrollTo({ top: window.innerHeight * 0.95, behavior: "smooth" });
+            }
+          }}
+        >
+          <span className="text-[10px] sm:text-xs font-mono font-medium uppercase tracking-[0.25em] text-white group-hover:text-[#F59E0B] transition-colors mb-1 flex items-center gap-1.5">
+            <span>Role para baixo</span>
+          </span>
+          <div className="flex flex-col items-center">
+            <motion.div
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="text-[#F59E0B] drop-shadow-[0_0_8px_rgba(245,158,11,0.6)]"
+            >
+              <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.5]" />
+            </motion.div>
+            <motion.div
+              animate={{ y: [0, 6, 0], opacity: [0.3, 0.8, 0.3] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut", delay: 0.18 }}
+              className="text-white/40 -mt-3.5"
+            >
+              <ChevronDown className="w-4 h-4 sm:w-5 sm:h-5 stroke-[2]" />
+            </motion.div>
+          </div>
+        </motion.div>
+
+      </motion.section>
+    </div>
   );
 }

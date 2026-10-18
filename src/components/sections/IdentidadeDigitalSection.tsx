@@ -118,9 +118,9 @@ function GoogleSearchSimulation() {
       {/* Search Input Bar with animated cursor */}
       <div className="relative flex items-center justify-center">
         <div
-          className={`relative flex items-center px-4 sm:px-5 py-2.5 rounded-full bg-[#1A1A1E] border transition-all duration-300 w-[245px] sm:w-[280px] h-[44px] shadow-md ${
+          className={`relative flex items-center px-4 sm:px-5 py-2.5 rounded-full bg-[#181820] border transition-all duration-300 w-[245px] sm:w-[280px] h-[44px] shadow-md ${
             isSearching
-              ? "border-[#2EE5A7]/70 shadow-[0_0_24px_rgba(46,229,167,0.35)] ring-1 ring-[#2EE5A7]/40"
+              ? "border-[#F59E0B]/70 shadow-[0_0_24px_rgba(245,158,11,0.35)] ring-1 ring-[#F59E0B]/40"
               : isActive
               ? "border-white/35 shadow-[0_0_16px_rgba(255,255,255,0.08)]"
               : "border-white/15"
@@ -128,22 +128,21 @@ function GoogleSearchSimulation() {
         >
           <Search
             className={`w-3.5 h-3.5 mr-2 shrink-0 transition-colors duration-200 ${
-              isSearching ? "text-[#2EE5A7]" : "text-white/40"
+              isSearching ? "text-[#F59E0B]" : "text-white/40"
             }`}
           />
 
           <div className="flex-1 flex items-center overflow-hidden">
             {!isActive && !displayText ? (
               <span
-                className="text-white/60 text-xs sm:text-[13px] tracking-wide select-none"
-                style={{ fontFamily: '"Gambarino", Georgia, serif' }}
+                className="text-white/60 text-xs sm:text-[13px] tracking-wide select-none font-sans"
               >
                 Pesquisar no Google
               </span>
             ) : (
               <span className="text-white text-xs sm:text-[12.5px] font-mono tracking-tight whitespace-nowrap overflow-hidden flex items-center">
                 <span>{displayText}</span>
-                <span className="inline-block w-[1.5px] h-3.5 bg-[#2EE5A7] ml-0.5 animate-pulse shrink-0" />
+                <span className="inline-block w-[1.5px] h-3.5 bg-[#F59E0B] ml-0.5 animate-pulse shrink-0" />
               </span>
             )}
           </div>
@@ -174,8 +173,8 @@ function GoogleSearchSimulation() {
           >
             <path
               d="M5.5 3.5L18.5 10.5L12 12.5L9.5 19L5.5 3.5Z"
-              fill="#FFFFFF"
-              stroke="#121214"
+              fill="#F59E0B"
+              stroke="#0A0A0E"
               strokeWidth="1.5"
               strokeLinejoin="round"
             />
@@ -206,7 +205,7 @@ export function IdentidadeDigitalSection() {
   return (
     <section className="py-20 md:py-28 bg-transparent relative overflow-hidden">
       {/* Background ambient lighting */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#1A5446]/10 blur-[160px] rounded-full pointer-events-none -z-10" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#F59E0B]/10 blur-[160px] rounded-full pointer-events-none -z-10" />
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -218,11 +217,11 @@ export function IdentidadeDigitalSection() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-left md:text-center max-w-3xl md:mx-auto mb-12 sm:mb-16"
         >
-          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.12]">
-            <span className="gradient-text-h block">Identidade Digital</span>
-            <span className="text-[#FFFFFF] block mt-1">Atrai Lucro Real</span>
+          <h2 className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold font-heading tracking-tight leading-[1.12]">
+            <span className="block text-[#FDFDFC]">Identidade Digital</span>
+            <span className="text-[#FDFDFC] block mt-1">Atrai Lucro Real</span>
           </h2>
-          <p className="section-description max-w-2xl md:mx-auto mt-4 text-[#A1A1AA] text-sm sm:text-base md:text-lg leading-relaxed">
+          <p className="section-description max-w-2xl md:mx-auto mt-4 text-[#B8B8C2] text-sm sm:text-base md:text-lg leading-relaxed font-sans">
             Nossos métodos comprovados ajudam você a subir nos rankings de busca mais rápido do que nunca, sem necessidade de habilidades técnicas.
           </p>
         </motion.div>
@@ -236,30 +235,30 @@ export function IdentidadeDigitalSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.5, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative w-full min-h-[350px] sm:min-h-[380px] my-2 transition-all duration-500 flex flex-col"
+            className="relative w-full min-h-[350px] sm:min-h-[380px] my-2 flex flex-col"
           >
-            {/* Skewed gradient panels (Emerald to Forest) */}
+            {/* Skewed gradient panels (Amber to Mahogany) */}
             <span
-              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[10px] group-hover:w-[calc(100%-20px)]"
+              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg]"
               style={{
-                background: "linear-gradient(315deg, #2FA882, #1A5446)",
+                background: "linear-gradient(315deg, #F59E0B, #78350F)",
               }}
             />
             <span
-              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] blur-[25px] opacity-70 transition-all duration-500 group-hover:skew-x-0 group-hover:left-[10px] group-hover:w-[calc(100%-20px)] group-hover:opacity-100"
+              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] blur-[25px] opacity-70"
               style={{
-                background: "linear-gradient(315deg, #2FA882, #1A5446)",
+                background: "linear-gradient(315deg, #F59E0B, #78350F)",
               }}
             />
 
             {/* Animated corner blurs */}
             <span className="pointer-events-none absolute inset-0 z-10">
-              <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 animate-blob group-hover:top-[-25px] group-hover:left-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
-              <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-25px] group-hover:right-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
+              <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 animate-blob group-hover:top-[-25px] group-hover:left-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
+              <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-25px] group-hover:right-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
             </span>
 
             {/* Card Content Glass Box */}
-            <div className="relative z-20 h-full p-6 sm:p-7 bg-[#161614]/90 backdrop-blur-[12px] border border-[#2A2925] shadow-2xl rounded-2xl text-[#F5F4EE] transition-all duration-500 flex flex-col justify-center overflow-hidden group-hover:bg-[#181816] group-hover:border-[#2FA882]/40 group-hover:translate-y-[-6px]">
+            <div className="relative z-20 h-full p-6 sm:p-7 bg-[#121217]/92 border border-white/[0.06] border-t-[#F59E0B]/25 shadow-2xl rounded-2xl text-[#FDFDFC] flex flex-col justify-center overflow-hidden">
               
               {/* Subtle background stripes texture */}
               <div
@@ -270,8 +269,8 @@ export function IdentidadeDigitalSection() {
                 }}
               />
 
-              {/* Ambient green glow for stars */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-32 bg-[#2EE5A7]/10 blur-3xl rounded-full pointer-events-none" />
+              {/* Ambient amber glow for stars */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-32 bg-[#F59E0B]/10 blur-3xl rounded-full pointer-events-none" />
 
               {/* Marquee Wrapper with edge masks */}
               <div className="relative z-10 w-full flex flex-col gap-6 [mask-image:linear-gradient(to_right,transparent_0%,black_12%,black_88%,transparent_100%)]">
@@ -281,17 +280,17 @@ export function IdentidadeDigitalSection() {
                   {[...REVIEWS_ROW_1, ...REVIEWS_ROW_1].map((item, idx) => (
                     <div key={idx} className="flex flex-col items-center gap-2.5 shrink-0">
                       {/* Speech bubble */}
-                      <div className="relative bg-[#E2E2E6] text-[#141416] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-sm inline-flex items-center justify-center whitespace-nowrap">
+                      <div className="relative bg-[#E2E2E6] text-[#141416] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-sm inline-flex items-center justify-center whitespace-nowrap font-sans">
                         <span>{item.quote}</span>
                         <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#E2E2E6] rotate-45" />
                       </div>
 
-                      {/* Rolling star container with green glowing stars */}
-                      <div className="bg-[#141A17] border border-[#2FA882]/25 px-3.5 py-1.5 rounded-full flex items-center justify-center gap-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
+                      {/* Rolling star container with amber glowing stars */}
+                      <div className="bg-[#1E1810] border border-[#F59E0B]/25 px-3.5 py-1.5 rounded-full flex items-center justify-center gap-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
                         {[...Array(7)].map((_, sIdx) => (
                           <Star
                             key={sIdx}
-                            className="w-3 h-3 fill-[#2EE5A7] text-[#2EE5A7] drop-shadow-[0_0_4px_rgba(46,229,167,0.7)]"
+                            className="w-3 h-3 fill-[#F59E0B] text-[#F59E0B] drop-shadow-[0_0_4px_rgba(245,158,11,0.7)]"
                           />
                         ))}
                       </div>
@@ -304,17 +303,17 @@ export function IdentidadeDigitalSection() {
                   {[...REVIEWS_ROW_2, ...REVIEWS_ROW_2].map((item, idx) => (
                     <div key={idx} className="flex flex-col items-center gap-2.5 shrink-0">
                       {/* Speech bubble */}
-                      <div className="relative bg-[#E2E2E6] text-[#141416] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-sm inline-flex items-center justify-center whitespace-nowrap">
+                      <div className="relative bg-[#E2E2E6] text-[#141416] px-3.5 py-1.5 rounded-full text-xs font-semibold shadow-sm inline-flex items-center justify-center whitespace-nowrap font-sans">
                         <span>{item.quote}</span>
                         <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-[#E2E2E6] rotate-45" />
                       </div>
 
-                      {/* Rolling star container with green glowing stars */}
-                      <div className="bg-[#141A17] border border-[#2FA882]/25 px-3.5 py-1.5 rounded-full flex items-center justify-center gap-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
+                      {/* Rolling star container with amber glowing stars */}
+                      <div className="bg-[#1E1810] border border-[#F59E0B]/25 px-3.5 py-1.5 rounded-full flex items-center justify-center gap-1 shadow-[inset_0_1px_2px_rgba(0,0,0,0.5)]">
                         {[...Array(7)].map((_, sIdx) => (
                           <Star
                             key={sIdx}
-                            className="w-3 h-3 fill-[#2EE5A7] text-[#2EE5A7] drop-shadow-[0_0_4px_rgba(46,229,167,0.7)]"
+                            className="w-3 h-3 fill-[#F59E0B] text-[#F59E0B] drop-shadow-[0_0_4px_rgba(245,158,11,0.7)]"
                           />
                         ))}
                       </div>
@@ -332,30 +331,30 @@ export function IdentidadeDigitalSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.5, delay: 0.18, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative w-full min-h-[350px] sm:min-h-[380px] my-2 transition-all duration-500 flex flex-col"
+            className="relative w-full min-h-[350px] sm:min-h-[380px] my-2 flex flex-col"
           >
-            {/* Skewed gradient panels (Teal to Emerald) */}
+            {/* Skewed gradient panels (Champagne to Amber Ochre) */}
             <span
-              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[10px] group-hover:w-[calc(100%-20px)]"
+              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg]"
               style={{
-                background: "linear-gradient(315deg, #3DBA95, #2FA882)",
+                background: "linear-gradient(315deg, #FBBF24, #D97706)",
               }}
             />
             <span
-              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] blur-[25px] opacity-70 transition-all duration-500 group-hover:skew-x-0 group-hover:left-[10px] group-hover:w-[calc(100%-20px)] group-hover:opacity-100"
+              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] blur-[25px] opacity-70"
               style={{
-                background: "linear-gradient(315deg, #3DBA95, #2FA882)",
+                background: "linear-gradient(315deg, #FBBF24, #D97706)",
               }}
             />
 
             {/* Animated corner blurs */}
             <span className="pointer-events-none absolute inset-0 z-10">
-              <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 animate-blob group-hover:top-[-25px] group-hover:left-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
-              <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-25px] group-hover:right-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
+              <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 animate-blob group-hover:top-[-25px] group-hover:left-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
+              <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-25px] group-hover:right-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
             </span>
 
             {/* Card Content Glass Box */}
-            <div className="relative z-20 h-full p-6 sm:p-7 bg-[#161614]/90 backdrop-blur-[12px] border border-[#2A2925] shadow-2xl rounded-2xl text-[#F5F4EE] transition-all duration-500 flex items-center justify-center overflow-hidden group-hover:bg-[#181816] group-hover:border-[#2FA882]/40 group-hover:translate-y-[-6px]">
+            <div className="relative z-20 h-full p-6 sm:p-7 bg-[#121217]/92 border border-white/[0.06] border-t-[#F59E0B]/25 shadow-2xl rounded-2xl text-[#FDFDFC] flex items-center justify-center overflow-hidden">
               
               {/* Vertical stripes background */}
               <div
@@ -367,28 +366,28 @@ export function IdentidadeDigitalSection() {
               />
 
               {/* Floating tilted dashboard container */}
-              <div className="relative w-full max-w-[340px] sm:max-w-[370px] -rotate-2 group-hover:rotate-0 transition-transform duration-500 ease-out">
+              <div className="relative w-full max-w-[340px] sm:max-w-[370px] -rotate-2">
                 
                 {/* Floating pill badge: -8% */}
-                <div className="absolute -left-3 sm:-left-4 bottom-5 z-20 px-2.5 py-1 rounded-full bg-[#1A1A1D] border border-white/10 text-white/75 text-[11px] font-semibold shadow-lg">
+                <div className="absolute -left-3 sm:-left-4 bottom-5 z-20 px-2.5 py-1 rounded-full bg-[#1A1A24] border border-white/10 text-[#B8B8C2] font-mono text-[11px] font-semibold shadow-lg">
                   -8%
                 </div>
 
                 {/* Floating pill badge: +12% */}
-                <div className="absolute -right-3 sm:-right-4 top-10 sm:top-12 z-20 px-2.5 py-1 rounded-full bg-[#202024] border border-white/15 text-white text-[11px] font-semibold shadow-lg">
+                <div className="absolute -right-3 sm:-right-4 top-10 sm:top-12 z-20 px-2.5 py-1 rounded-full bg-[#1A1A24] border border-[#F59E0B]/30 text-[#F59E0B] font-mono text-[11px] font-semibold shadow-[0_0_12px_rgba(245,158,11,0.2)]">
                   +12%
                 </div>
 
                 {/* Dark Glass Dashboard Surface */}
-                <div className="relative z-10 rounded-2xl bg-[#19191C]/95 backdrop-blur-md border border-white/10 p-5 shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
+                <div className="relative z-10 rounded-2xl bg-[#0A0A0E]/90 border border-white/10 p-5 shadow-[0_16px_36px_rgba(0,0,0,0.6)]">
                   {/* Metrics header */}
                   <div className="space-y-1 mb-2">
                     <div className="flex items-center gap-2 text-white/90 text-xs sm:text-sm font-medium">
-                      <Eye className="w-3.5 h-3.5 text-white/60" />
+                      <Eye className="w-3.5 h-3.5 text-[#F59E0B]" />
                       <span>12,8 mil visualizações</span>
                     </div>
-                    <div className="flex items-center gap-2 text-white/70 text-xs sm:text-sm font-medium">
-                      <MousePointer2 className="w-3.5 h-3.5 text-white/50" />
+                    <div className="flex items-center gap-2 text-[#B8B8C2] text-xs sm:text-sm font-medium">
+                      <MousePointer2 className="w-3.5 h-3.5 text-[#F59E0B]/70" />
                       <span>3,2 mil cliques</span>
                     </div>
                   </div>
@@ -403,15 +402,15 @@ export function IdentidadeDigitalSection() {
                     >
                       <defs>
                         <linearGradient id="chartStrokeGradient" x1="0" y1="0" x2="1" y2="0">
-                          <stop offset="0%" stopColor="#71717A" stopOpacity="0.4" />
-                          <stop offset="45%" stopColor="#FFFFFF" stopOpacity="0.95" />
-                          <stop offset="65%" stopColor="#FFFFFF" stopOpacity="0.95" />
-                          <stop offset="100%" stopColor="#71717A" stopOpacity="0.4" />
+                          <stop offset="0%" stopColor="#78350F" stopOpacity="0.4" />
+                          <stop offset="45%" stopColor="#F59E0B" stopOpacity="0.95" />
+                          <stop offset="65%" stopColor="#FDE68A" stopOpacity="0.95" />
+                          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0.4" />
                         </linearGradient>
                         <radialGradient id="peakGlow" cx="50%" cy="50%" r="50%">
-                          <stop offset="0%" stopColor="#FFFFFF" stopOpacity="1" />
-                          <stop offset="40%" stopColor="#FFFFFF" stopOpacity="0.7" />
-                          <stop offset="100%" stopColor="#FFFFFF" stopOpacity="0" />
+                          <stop offset="0%" stopColor="#F59E0B" stopOpacity="1" />
+                          <stop offset="40%" stopColor="#F59E0B" stopOpacity="0.7" />
+                          <stop offset="100%" stopColor="#F59E0B" stopOpacity="0" />
                         </radialGradient>
                       </defs>
 
@@ -433,7 +432,7 @@ export function IdentidadeDigitalSection() {
 
                       {/* Glowing highlight circle at curve peak */}
                       <circle cx="205" cy="18" r="10" fill="url(#peakGlow)" />
-                      <circle cx="205" cy="18" r="4" fill="#FFFFFF" />
+                      <circle cx="205" cy="18" r="4" fill="#FDFDFC" />
                     </svg>
                   </div>
                 </div>
@@ -448,30 +447,30 @@ export function IdentidadeDigitalSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, amount: 0.15 }}
             transition={{ duration: 0.5, delay: 0.24, ease: [0.22, 1, 0.36, 1] }}
-            className="group relative w-full min-h-[350px] sm:min-h-[380px] my-2 transition-all duration-500 flex flex-col md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none lg:w-full"
+            className="group relative w-full min-h-[350px] sm:min-h-[380px] my-2 flex flex-col md:col-span-2 lg:col-span-1 md:max-w-md md:mx-auto lg:max-w-none lg:w-full"
           >
-            {/* Skewed gradient panels (Cyan to Emerald) */}
+            {/* Skewed gradient panels (Warm Bronze to Amber) */}
             <span
-              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] transition-all duration-500 group-hover:skew-x-0 group-hover:left-[10px] group-hover:w-[calc(100%-20px)]"
+              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg]"
               style={{
-                background: "linear-gradient(315deg, #03a9f4, #2FA882)",
+                background: "linear-gradient(315deg, #FFC174, #B45309)",
               }}
             />
             <span
-              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] blur-[25px] opacity-70 transition-all duration-500 group-hover:skew-x-0 group-hover:left-[10px] group-hover:w-[calc(100%-20px)] group-hover:opacity-100"
+              className="absolute top-0 left-[25px] sm:left-[35px] w-[calc(100%-50px)] sm:w-[calc(100%-70px)] h-full rounded-2xl transform skew-x-[12deg] blur-[25px] opacity-70"
               style={{
-                background: "linear-gradient(315deg, #03a9f4, #2FA882)",
+                background: "linear-gradient(315deg, #FFC174, #B45309)",
               }}
             />
 
             {/* Animated corner blurs */}
             <span className="pointer-events-none absolute inset-0 z-10">
-              <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 animate-blob group-hover:top-[-25px] group-hover:left-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
-              <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] backdrop-blur-[10px] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-25px] group-hover:right-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
+              <span className="absolute top-0 left-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-300 animate-blob group-hover:top-[-25px] group-hover:left-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
+              <span className="absolute bottom-0 right-0 w-0 h-0 rounded-lg opacity-0 bg-[rgba(255,255,255,0.1)] shadow-[0_5px_15px_rgba(0,0,0,0.08)] transition-all duration-500 animate-blob animation-delay-1000 group-hover:bottom-[-25px] group-hover:right-[25px] group-hover:w-[70px] group-hover:h-[70px] group-hover:opacity-100" />
             </span>
 
             {/* Card Content Glass Box */}
-            <div className="relative z-20 h-full p-6 sm:p-7 bg-[#161614]/90 backdrop-blur-[12px] border border-[#2A2925] shadow-2xl rounded-2xl text-[#F5F4EE] transition-all duration-500 flex flex-col items-center justify-center text-center overflow-hidden group-hover:bg-[#181816] group-hover:border-[#2FA882]/40 group-hover:translate-y-[-6px]">
+            <div className="relative z-20 h-full p-6 sm:p-7 bg-[#121217]/92 border border-white/[0.06] border-t-[#F59E0B]/25 shadow-2xl rounded-2xl text-[#FDFDFC] flex flex-col items-center justify-center text-center overflow-hidden">
               
               {/* Vertical stripes texture */}
               <div
@@ -483,7 +482,7 @@ export function IdentidadeDigitalSection() {
               />
 
               {/* Ambient subtle spotlight */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-white/[0.03] blur-3xl rounded-full pointer-events-none" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#F59E0B]/[0.05] blur-3xl rounded-full pointer-events-none" />
 
               {/* Interactive Typing & Searching Simulation */}
               <GoogleSearchSimulation />

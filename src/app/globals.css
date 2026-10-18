@@ -49,72 +49,103 @@
 }
 
 :root {
-  /* Warm Grounded Palette (Artisanal, Tactile, Editorial) */
-  --background: #121211;
-  --surface: #181816;
-  --surface-hover: #1F1E1B;
-  --surface-muted: #151514;
-  --border: #2A2925;
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --foreground: #F5F4EE;
-  --muted: #A3A096;
-  --muted-light: #C4C2B9;
-  
-  /* Grounded Accent: Deep Forest / Artisan Sage Emerald (not radioactive neon) */
-  --accent-emerald: #2FA882;
-  --accent-emerald-subtle: rgba(47, 168, 130, 0.12);
-  --accent-pine: #1A5446;
-  --accent-warm: #E2DDD2;
+  /* Nocturne Executive Warm Dark Palette */
+  --background: #0A0A0E;
+  --surface: #131318;
+  --surface-dim: #131318;
+  --surface-bright: #39393E;
+  --surface-container-lowest: #0E0E13;
+  --surface-container-low: #1B1B20;
+  --surface-container: #1F1F24;
+  --surface-container-high: #2A292F;
+  --surface-container-highest: #35343A;
+
+  --layer-1: #121217;
+  --layer-2: #1A1A24;
+
+  --border: #2A292F;
+  --border-subtle: rgba(255, 255, 255, 0.05);
+  --border-glass-rim: rgba(245, 158, 11, 0.15);
+  --outline: #A08E7A;
+  --outline-variant: #534434;
+
+  --foreground: #FDFDFC;
+  --on-surface: #E4E1E9;
+  --on-surface-variant: #D8C3AD;
+  --muted: #B8B8C2;
+  --muted-light: #E4E1E9;
+  --muted-dark: #727282;
+
+  /* Primary Accent: Luminous Amber Gold */
+  --accent-amber: #F59E0B;
+  --accent-amber-subtle: rgba(245, 158, 11, 0.15);
+  --accent-amber-hover: #D97706;
+  --accent-champagne: #FFC174;
+  --accent-ochre: #D97706;
+
+  /* Legacy alias support to preserve all components seamlessly */
+  --accent-emerald: #F59E0B;
+  --accent-emerald-subtle: rgba(245, 158, 11, 0.15);
+  --accent-pine: #78350F;
+  --accent-warm: #FFC174;
 
   /* shadcn variables */
-  --card: #181816;
-  --card-foreground: #F5F4EE;
-  --popover-foreground: #F5F4EE;
-  --primary: #F5F4EE;
-  --primary-foreground: #121211;
-  --secondary: #1F1E1B;
-  --secondary-foreground: #F5F4EE;
-  --muted-foreground: #A3A096;
-  --accent: #1F1E1B;
-  --accent-foreground: #F5F4EE;
-  --destructive: #B93838;
-  --destructive-foreground: #FFFFFF;
-  --input: #1C1B19;
-  --ring: rgba(47, 168, 130, 0.3);
+  --card: #121217;
+  --card-foreground: #FDFDFC;
+  --popover-foreground: #FDFDFC;
+  --primary: #F59E0B;
+  --primary-foreground: #0A0A0E;
+  --secondary: #1F1F24;
+  --secondary-foreground: #FDFDFC;
+  --muted-foreground: #B8B8C2;
+  --accent: #1A1A24;
+  --accent-foreground: #FDFDFC;
+  --destructive: #FFB4AB;
+  --destructive-foreground: #690005;
+  --input: #121217;
+  --ring: rgba(245, 158, 11, 0.35);
 
   /* Extracted Reference Design Typography & Color Tokens */
-  --text-primary: #FFFFFF;
-  --text-primary-soft: #F4F4F6;
-  --text-secondary: #A1A1AA;
-  --text-muted: #71717A;
-  --text-faded: #52525B;
-  --text-inverse: #09090B;
+  --text-primary: #FDFDFC;
+  --text-primary-soft: #E4E1E9;
+  --text-secondary: #B8B8C2;
+  --text-muted: #727282;
+  --text-faded: #534434;
+  --text-inverse: #0A0A0E;
 
-  --heading-gradient-h: linear-gradient(90deg, #FFFFFF 0%, #8E8E93 65%, #636366 100%);
-  --heading-gradient-v: linear-gradient(180deg, #FFFFFF 15%, #A1A1AA 100%);
+  --heading-gradient-h: linear-gradient(90deg, #FFFFFF 0%, #FFC174 65%, #F59E0B 100%);
+  --heading-gradient-v: linear-gradient(180deg, #FFFFFF 15%, #F59E0B 100%);
 }
 
 @theme {
   --color-background: var(--background);
   --color-surface: var(--surface);
-  --color-surface-hover: var(--surface-hover);
-  --color-surface-muted: var(--surface-muted);
+  --color-surface-dim: var(--surface-dim);
+  --color-surface-bright: var(--surface-bright);
+  --color-surface-container: var(--surface-container);
+  --color-surface-hover: var(--layer-2);
+  --color-surface-muted: var(--surface-container-low);
   --color-border: var(--border);
   --color-border-subtle: var(--border-subtle);
   --color-foreground: var(--foreground);
   --color-muted: var(--muted);
   --color-muted-light: var(--muted-light);
-  --color-accent-emerald: var(--accent-emerald);
+  --color-accent-emerald: var(--accent-amber);
   --color-accent-pine: var(--accent-pine);
   --color-accent-warm: var(--accent-warm);
+  --color-accent-amber: var(--accent-amber);
+  --color-accent-ochre: var(--accent-ochre);
   --color-text-primary: var(--text-primary);
   --color-text-primary-soft: var(--text-primary-soft);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-text-faded: var(--text-faded);
-  --font-nippo: "Nippo", sans-serif;
-  --font-display: "Nippo", sans-serif;
-  --font-roman: "Nippo", "Gambarino", Georgia, serif;
+  --font-sans: "Plus Jakarta Sans", sans-serif;
+  --font-heading: "Outfit", sans-serif;
+  --font-display: "Outfit", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-nippo: "Outfit", "Nippo", sans-serif;
+  --font-roman: "Outfit", "Gambarino", Georgia, serif;
 }
 
 /* Base resets & typography */
@@ -123,27 +154,28 @@ html {
   background-color: var(--background);
   color: var(--foreground);
   color-scheme: dark;
-  font-size: 112.5%; /* 18px base — scales all rem type up */
+  font-size: 112.5%; /* 18px base */
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: "Nippo", "Gambarino", sans-serif;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-feature-settings: "cv02", "cv03", "cv04", "cv11";
-  overflow-x: hidden;
+  overflow-x: clip;
   min-height: 100vh;
 }
 
-/* Headings and display elements using Nippo */
+/* Headings and display elements using Outfit */
 h1, h2, h3, h4, h5, h6,
 .hero-title,
 .section-title,
 .card-title,
 .font-nippo,
 .font-display,
-.font-roman {
-  font-family: "Nippo", sans-serif;
+.font-heading {
+  font-family: "Outfit", sans-serif;
+  letter-spacing: -0.025em;
 }
 
 /* Tactile paper/linen grid structure (refined, subtle 48px grid) */
@@ -165,68 +197,71 @@ h1, h2, h3, h4, h5, h6,
 }
 
 .text-editorial-title {
-  color: #F5F4EE;
+  color: #FDFDFC;
   letter-spacing: -0.03em;
 }
 
 .text-accent-tint {
-  color: #45BFA0;
+  color: #F59E0B;
 }
 
-/* Tactile Handcrafted Cards (Styleguide Elevation 1 & 2) */
+/* Nocturne Executive Cards & Surfaces (Elevation 1 & 2) */
 .tactile-card {
-  background: #181816;
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  box-shadow: 
-    0 1px 2px rgba(0, 0, 0, 0.25),
-    0 4px 12px rgba(0, 0, 0, 0.2);
+  background: #121217;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid rgba(245, 158, 11, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.6);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .tactile-card:hover {
-  border-color: #3D3C36;
+  border-color: rgba(245, 158, 11, 0.35);
   box-shadow: 
-    0 2px 4px rgba(0, 0, 0, 0.3),
-    0 8px 24px rgba(0, 0, 0, 0.3);
+    0 20px 48px -8px rgba(0, 0, 0, 0.8),
+    0 0 24px -4px rgba(245, 158, 11, 0.18);
   transform: translateY(-2px);
 }
 
-/* Inverted focal card (warm off-white / parchment card) */
+/* Inverted focal card (warm champagne parchment card) */
 .tactile-card-highlight {
-  background: #F4F2EC;
-  color: #121211;
-  border: 1px solid #E5E2D8;
-  border-radius: 12px;
+  background: #FFFBEB;
+  color: #0A0A0E;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 16px;
   box-shadow: 
     0 4px 6px rgba(0, 0, 0, 0.15),
-    0 12px 32px rgba(0, 0, 0, 0.25);
+    0 16px 36px rgba(245, 158, 11, 0.2);
 }
 
-/* Tactile button micro-relief (intentional 6px-8px radius) */
+/* Nocturne Executive Button (Primary Amber Halo) */
 .btn-tactile {
   border-radius: 8px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 2px 4px rgba(0, 0, 0, 0.2);
+  background: #F59E0B;
+  color: #0A0A0E;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.35);
   transition: all 0.2s ease;
 }
 
 .btn-tactile:hover {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.18), 0 4px 8px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 6px 24px rgba(245, 158, 11, 0.5);
+  background: #FBBF24;
 }
 
-/* Tactile input fields */
+/* Nocturne Executive Smoky Input Fields */
 .tactile-input {
-  background: #151514;
-  border: 1px solid #2A2925;
+  background: rgba(18, 18, 23, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
-  color: #F5F4EE;
+  color: #FDFDFC;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tactile-input:focus {
   outline: none;
-  border-color: #2FA882;
-  box-shadow: 0 0 0 3px rgba(47, 168, 130, 0.15);
+  border-color: #F59E0B;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.18);
 }
 
 /* Infinite marquee */
@@ -262,14 +297,14 @@ h1, h2, h3, h4, h5, h6,
   width: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #121211;
+  background: #0A0A0E;
 }
 ::-webkit-scrollbar-thumb {
-  background: #2A2925;
+  background: #1A1A24;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #3D3C36;
+  background: #F59E0B;
 }
 
 /* Respect prefers-reduced-motion */
@@ -287,11 +322,11 @@ h1, h2, h3, h4, h5, h6,
 
 /* ==========================================================================
    Extracted Reference Design Typography & Visual Treatments
-   (Omitting font-family to preserve site typography)
    ========================================================================== */
 
 /* Main Hero Title (Crisp white, tight tracking) */
 .hero-title {
+  font-family: var(--font-heading), sans-serif;
   font-size: clamp(2.25rem, 5vw, 4.25rem);
   font-weight: 800;
   line-height: 1.1;
@@ -302,6 +337,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Section Title (Dual-tone or crisp white) */
 .section-title {
+  font-family: var(--font-heading), sans-serif;
   font-size: clamp(1.85rem, 3.5vw, 2.75rem);
   font-weight: 700;
   line-height: 1.18;
@@ -330,7 +366,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Big Footer Brand Display */
 .brand-display-outline {
-  font-family: "Nippo", sans-serif;
+  font-family: var(--font-heading), sans-serif;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.04) 100%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -340,7 +376,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Card & Subsection Titles */
 .card-title {
-  font-family: "Nippo", sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: 1.3rem;
   font-weight: 600;
   line-height: 1.25;
@@ -350,7 +386,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Large Stat / Metric Callout */
 .metric-number {
-  font-family: "Nippo", sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: clamp(2.25rem, 4vw, 3.5rem);
   font-weight: 800;
   line-height: 1;
@@ -428,7 +464,7 @@ h1, h2, h3, h4, h5, h6,
 
 /* Pricing Card Figure */
 .pricing-amount {
-  font-family: "Nippo", sans-serif;
+  font-family: var(--font-heading), sans-serif;
   font-size: 2.25rem;
   font-weight: 700;
   line-height: 1;
@@ -443,4 +479,5 @@ h1, h2, h3, h4, h5, h6,
   letter-spacing: 0;
   color: var(--text-muted);
 }
+
 

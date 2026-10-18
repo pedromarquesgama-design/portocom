@@ -16,7 +16,7 @@ export function Resultados() {
               </Badge>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F4EE] mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#FDFDFC] mb-6">
               O Que Muda Quando Seu Site Deixa de Parecer Amador
             </h2>
 
@@ -31,7 +31,7 @@ export function Resultados() {
                   <TrendingUp className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#F5F4EE]">Mais Contatos Comerciais</h4>
+                  <h4 className="text-sm font-semibold text-[#FDFDFC]">Mais Contatos Comerciais</h4>
                   <p className="text-xs text-[#A3A096] leading-relaxed">
                     O visitante entende o valor do seu serviço em poucos segundos e sabe exatamente onde clicar para falar com você.
                   </p>
@@ -43,7 +43,7 @@ export function Resultados() {
                   <Clock className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#F5F4EE]">Menos Tempo Explicando o Básico</h4>
+                  <h4 className="text-sm font-semibold text-[#FDFDFC]">Menos Tempo Explicando o Básico</h4>
                   <p className="text-xs text-[#A3A096] leading-relaxed">
                     Uma página clara filtra curiosos e atrai clientes que já chegam prontos para fechar contrato.
                   </p>
@@ -55,7 +55,7 @@ export function Resultados() {
                   <ShieldCheck className="w-4 h-4" />
                 </div>
                 <div>
-                  <h4 className="text-sm font-semibold text-[#F5F4EE]">Percepção de Autoridade e Segurança</h4>
+                  <h4 className="text-sm font-semibold text-[#FDFDFC]">Percepção de Autoridade e Segurança</h4>
                   <p className="text-xs text-[#A3A096] leading-relaxed">
                     Sua marca passa a competir no mesmo nível dos maiores participantes do seu mercado.
                   </p>
@@ -76,7 +76,7 @@ export function Resultados() {
                 </span>
                 <ArrowUpRight className="w-4 h-4 text-[#A3A096]" />
               </div>
-              <div className="text-4xl sm:text-5xl font-black text-[#F5F4EE] mb-1">
+              <div className="text-4xl sm:text-5xl font-black text-[#FDFDFC] mb-1">
                 +140%
               </div>
               <p className="text-xs text-[#A3A096]">
@@ -93,7 +93,7 @@ export function Resultados() {
                 </span>
                 <ArrowUpRight className="w-4 h-4 text-[#A3A096]" />
               </div>
-              <div className="text-4xl sm:text-5xl font-black text-[#F5F4EE] mb-1">
+              <div className="text-4xl sm:text-5xl font-black text-[#FDFDFC] mb-1">
                 &lt; 1 segundo
               </div>
               <p className="text-xs text-[#A3A096]">
@@ -110,7 +110,7 @@ export function Resultados() {
                 </span>
                 <ArrowUpRight className="w-4 h-4 text-[#A3A096]" />
               </div>
-              <div className="text-4xl sm:text-5xl font-black text-[#F5F4EE] mb-1">
+              <div className="text-4xl sm:text-5xl font-black text-[#FDFDFC] mb-1">
                 100% no prazo
               </div>
               <p className="text-xs text-[#A3A096]">
