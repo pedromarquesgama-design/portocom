@@ -87,10 +87,20 @@ export function Hero() {
             }}
             className="w-full h-full relative will-change-transform"
           >
+            {/* Desktop / Tablet Landscape image */}
             <img
               src="/images/hero-background.jpg"
               alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
-              className="w-full h-full object-contain object-right bg-[#0A0A0E] translate-x-6 sm:translate-x-10 lg:translate-x-16"
+              className="hidden sm:block w-full h-full object-contain object-right bg-[#0A0A0E] sm:translate-x-10 lg:translate-x-16"
+              style={{
+                imageRendering: "-webkit-optimize-contrast",
+              }}
+            />
+            {/* Mobile Portrait image */}
+            <img
+              src="/images/hero-background-mobile.jpg"
+              alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
+              className="block sm:hidden w-full h-full object-cover object-bottom bg-[#0A0A0E]"
               style={{
                 imageRendering: "-webkit-optimize-contrast",
               }}
@@ -122,8 +132,10 @@ export function Hero() {
           />
         </div>
 
-        {/* Mobile/Tablet backdrop tint to maintain high text contrast on small screens */}
-        <div className="absolute inset-0 lg:hidden bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
+        {/* Mobile backdrop tint: soft top-to-bottom shading to guarantee headline legibility over the portrait image */}
+        <div className="absolute inset-0 sm:hidden bg-gradient-to-b from-[#0A0A0E]/80 via-[#0A0A0E]/35 to-transparent pointer-events-none" />
+        {/* Tablet backdrop tint */}
+        <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
 
         {/* Top-Left Volumetric Tungsten & Amber Studio Glow */}
         <div
