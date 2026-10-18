@@ -82,9 +82,10 @@ async function generateAssets() {
 
   const glowBase = await sharp(glowSvg).png().toBuffer();
 
-  // Resize full horizontal PortoCom logo to width 960px (height ~374px) for prominent, bold banner presence
+  // Trim transparent padding so true visible logo artwork is perfectly centered vertically and horizontally
   const fullLogoBuffer = await sharp(path.join(publicDir, 'images/logo-portocom.png'))
-    .resize({ width: 960, fit: 'contain' })
+    .trim()
+    .resize({ width: 980, fit: 'contain' })
     .toBuffer();
 
   const ogCompositeJpg = await sharp(glowBase)
