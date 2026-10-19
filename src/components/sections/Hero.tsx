@@ -148,9 +148,9 @@ export function Hero() {
           style={{
             opacity: contentOpacity,
             background:
-              "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.94) 50%, rgba(10, 10, 14, 0.70) 75%, rgba(10, 10, 14, 0.20) 90%, transparent 100%)",
+              "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.95) 45%, rgba(10, 10, 14, 0.60) 75%, rgba(10, 10, 14, 0.15) 90%, transparent 100%)",
           }}
-          className="sm:hidden absolute top-0 inset-x-0 h-[360px] pointer-events-none"
+          className="sm:hidden absolute top-0 inset-x-0 h-[205px] xs:h-[215px] pointer-events-none"
         />
         {/* Tablet backdrop tint */}
         <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />

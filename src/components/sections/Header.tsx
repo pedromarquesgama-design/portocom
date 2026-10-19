@@ -55,7 +55,7 @@ export function Header() {
                 window.scrollTo({ top: 0, behavior: "smooth" });
               }
             }}
-            className="block sm:hidden focus-visible:outline-none select-none"
+            className="block sm:hidden focus-visible:outline-none select-none -translate-y-[8px]"
             aria-label={`${AGENCY_NAME} - Página inicial`}
           >
             <img
