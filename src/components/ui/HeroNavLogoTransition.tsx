@@ -42,6 +42,10 @@ export function useLogoTransitionGeometry() {
 
   useEffect(() => {
     const measure = () => {
+      if (typeof window !== "undefined" && window.innerWidth < 640) {
+        setGeometry(null);
+        return;
+      }
       const heroAnchor = document.getElementById("hero-logo-anchor");
       const navAnchor = document.getElementById("navbar-logo-anchor");
       const sheet = document.getElementById("hero-cover-sheet");
