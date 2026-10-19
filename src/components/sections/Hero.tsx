@@ -124,9 +124,9 @@ export function Hero() {
             className="hidden sm:block absolute inset-y-0 left-0 sm:w-1/2 lg:w-[42%] pointer-events-none bg-[linear-gradient(to_right,#0A0A0E_0%,rgba(10,10,14,0.95)_55%,rgba(10,10,14,0.50)_80%,transparent_100%)]"
           />
 
-          {/* Mid-scene lift: soft tungsten bloom over the dark window zone */}
+          {/* Mid-scene lift: soft tungsten bloom over the dark window zone (Desktop/Tablet only) */}
           <div
-            className="absolute inset-0 pointer-events-none"
+            className="hidden sm:block absolute inset-0 pointer-events-none"
             style={{
               background:
                 "radial-gradient(ellipse 45% 55% at 58% 45%, rgba(245, 158, 11, 0.18) 0%, rgba(245, 158, 11, 0.07) 45%, transparent 70%)",
@@ -155,9 +155,9 @@ export function Hero() {
         {/* Tablet backdrop tint */}
         <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
 
-        {/* Top-Left Volumetric Tungsten & Amber Studio Glow */}
+        {/* Top-Left Volumetric Tungsten & Amber Studio Glow (Desktop/Tablet only) */}
         <div
-          className="absolute -top-16 -left-16 w-[420px] sm:w-[540px] h-[420px] sm:h-[540px] rounded-full pointer-events-none blur-[100px] opacity-40"
+          className="hidden sm:block absolute -top-16 -left-16 w-[420px] sm:w-[540px] h-[420px] sm:h-[540px] rounded-full pointer-events-none blur-[100px] opacity-40"
           style={{
             background:
               "radial-gradient(ellipse at center, rgba(245, 158, 11, 0.16) 0%, rgba(97, 59, 0, 0.25) 45%, transparent 70%)",
