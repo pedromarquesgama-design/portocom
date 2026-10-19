@@ -41,33 +41,31 @@ export function Header() {
       {/* Floating Transitioning Logo */}
       <HeroNavLogoTransition hidden={mobileMenuOpen} />
 
-      <div className="relative z-50 max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 h-[60px] flex items-center justify-between gap-4 sm:gap-6">
-        {/* Left group: Brand Logo Anchor + Mobile CTA Button aligned with the logo */}
-        <div className="flex items-center gap-2 sm:gap-4 shrink-0">
-          <div
-            id="navbar-logo-anchor"
-            className="relative flex items-center h-8 sm:h-9 w-28 sm:w-36 shrink-0 justify-start"
-          />
-
-          {/* Mobile CTA Button — placed on the navbar aligned with the logo to the left */}
-          <div className="flex md:hidden items-center">
-            <Button
-              href="#contato"
-              onClick={() => setMobileMenuOpen(false)}
-              variant="primary"
-              size="sm"
-              className="font-sans text-[11px] min-[380px]:text-xs !px-2.5 min-[380px]:!px-3 !py-1.5 shadow-[0_2px_12px_rgba(245,158,11,0.3)] whitespace-nowrap font-bold"
-            >
-              <span className="hidden min-[350px]:inline">Experimente gratuitamente</span>
-              <span className="min-[350px]:hidden">Experimentar</span>
-              <ArrowUpRight className="w-3 h-3 stroke-[2.5] shrink-0" />
-            </Button>
-          </div>
+      <div className="relative z-50 max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-12 h-[60px] flex items-center justify-between gap-3 sm:gap-6">
+        {/* Mobile CTA Button — placed on the navbar to the far left */}
+        <div className="flex md:hidden items-center order-1 shrink-0">
+          <Button
+            href="#contato"
+            onClick={() => setMobileMenuOpen(false)}
+            variant="primary"
+            size="sm"
+            className="font-sans text-[11px] min-[380px]:text-xs !px-2.5 min-[380px]:!px-3 !py-1.5 shadow-[0_2px_12px_rgba(245,158,11,0.3)] whitespace-nowrap font-bold"
+          >
+            <span className="hidden min-[350px]:inline">Experimente gratuitamente</span>
+            <span className="min-[350px]:hidden">Experimentar</span>
+            <ArrowUpRight className="w-3 h-3 stroke-[2.5] shrink-0" />
+          </Button>
         </div>
+
+        {/* Brand Logo Anchor (receives transitioning Portocom logo) */}
+        <div
+          id="navbar-logo-anchor"
+          className="relative flex items-center h-8 sm:h-9 w-24 sm:w-36 shrink-0 justify-start order-2 md:order-1"
+        />
 
         {/* Desktop Navigation - centered */}
         <nav
-          className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2"
+          className="hidden md:flex items-center gap-7 absolute left-1/2 -translate-x-1/2 md:order-2"
           aria-label="Navegação principal"
         >
           {NAV_LINKS.map((link) => (
@@ -82,7 +80,7 @@ export function Header() {
         </nav>
 
         {/* Desktop CTA Button */}
-        <div className="hidden md:flex items-center shrink-0">
+        <div className="hidden md:flex items-center shrink-0 md:order-3">
           <Button href="#contato" variant="primary" size="sm" className="font-sans">
             <span>Experimente gratuitamente</span>
             <ArrowUpRight className="w-3.5 h-3.5 stroke-[2.5]" />
@@ -93,7 +91,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+          className="md:hidden p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] order-3 ml-auto"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
@@ -124,6 +122,18 @@ export function Header() {
                 <span className="text-[#F59E0B]/60 text-xs font-mono">→</span>
               </a>
             ))}
+            <div className="pt-5">
+              <Button
+                href="#contato"
+                onClick={() => setMobileMenuOpen(false)}
+                variant="primary"
+                size="md"
+                className="w-full text-center font-bold shadow-[0_4px_20px_rgba(245,158,11,0.35)]"
+              >
+                <span>Experimente gratuitamente</span>
+                <ArrowUpRight className="w-4 h-4 ml-1.5 stroke-[2.5]" />
+              </Button>
+            </div>
           </nav>
         </div>
       )}
