@@ -150,7 +150,7 @@ export function Hero() {
             background:
               "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.94) 50%, rgba(10, 10, 14, 0.70) 75%, rgba(10, 10, 14, 0.20) 90%, transparent 100%)",
           }}
-          className="sm:hidden absolute top-0 inset-x-0 h-[250px] pointer-events-none"
+          className="sm:hidden absolute top-0 inset-x-0 h-[280px] pointer-events-none"
         />
         {/* Tablet backdrop tint */}
         <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
@@ -167,14 +167,14 @@ export function Hero() {
         {/* =========================================================================
             HERO CONTENT LAYER: Executive typography and amber lighting
             ========================================================================= */}
-        <div className="relative z-10 w-full flex-1 flex flex-col justify-start pt-4 sm:pt-7 lg:pt-8 pb-8">
+        <div className="relative z-10 w-full flex-1 flex flex-col justify-start pt-2 sm:pt-7 lg:pt-8 pb-8">
           <div className="w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
             <div className="max-w-xl lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl flex flex-col items-start text-left">
               
               {/* Brand logo anchor on top */}
               <div
                 id="hero-logo-anchor"
-                className="h-28 sm:h-64 lg:h-80 w-auto max-w-[calc(100vw-32px)] -mt-4 sm:-mt-16 lg:-mt-[4.75rem] -ml-[3px] sm:-ml-[9px] lg:-ml-[11px] mb-1.5 sm:mb-1 lg:mb-1 flex items-center"
+                className="h-28 sm:h-64 lg:h-80 w-auto max-w-[calc(100vw-32px)] -mt-6 sm:-mt-16 lg:-mt-[4.75rem] -ml-[3px] sm:-ml-[9px] lg:-ml-[11px] mb-4 sm:mb-1 lg:mb-1 flex items-center"
               >
                 <img
                   src="/images/logo-portocom.png"
@@ -193,7 +193,7 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.06, ease: "easeOut" }}
-                  className="font-heading font-bold uppercase tracking-tight text-[26px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.02] sm:leading-[1.04] text-left max-w-[640px] mb-2.5 sm:mb-3 [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_0_70px_rgba(0,0,0,0.7)]"
+                  className="font-heading font-bold uppercase tracking-tight text-[26px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.02] sm:leading-[1.04] text-left max-w-[640px] mb-4 sm:mb-3 [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_0_70px_rgba(0,0,0,0.7)]"
                 >
                   <span className="block w-full text-justify [text-align-last:justify] text-[#FDFDFC] drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">SUA PRESENÇA DIGITAL</span>
                   <span className="block mt-0.5 sm:mt-1 text-[#FDFDFC] drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">INSPIRA CONFIANÇA</span>
