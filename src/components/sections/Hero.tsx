@@ -48,7 +48,7 @@ export function Hero() {
   const scrollCueY = useTransform(scrollYProgress, [0, 0.15], [0, 16]);
 
   // Height of the pinned hero viewport (matches the section's h + min-h below, uses dvh for mobile address bar)
-  const pinnedHeight = "max(100dvh - 60px, 580px)";
+  const pinnedHeight = isMobile ? "max(100dvh - 70px, 580px)" : "max(100dvh - 60px, 580px)";
 
   return (
     // Outer wrapper is extended by one hero-height and pulled back with a negative
@@ -76,7 +76,7 @@ export function Hero() {
       />
       <motion.section
         style={{ opacity: isMobile ? 1 : heroOpacity }}
-        className="sticky top-[60px] z-0 h-[calc(100dvh-60px)] min-h-[580px] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0E]"
+        className="sticky top-[70px] sm:top-[60px] z-0 h-[calc(100dvh-70px)] sm:h-[calc(100dvh-60px)] min-h-[580px] w-full flex flex-col justify-between overflow-hidden bg-[#0A0A0E]"
       >
         {/* =========================================================================
             BACKGROUND LAYER: Desk with Devices Image + Cinematic Amber Atmospheres
@@ -150,7 +150,7 @@ export function Hero() {
             background:
               "linear-gradient(to bottom, #0A0A0E 0%, rgba(10, 10, 14, 0.94) 50%, rgba(10, 10, 14, 0.70) 75%, rgba(10, 10, 14, 0.20) 90%, transparent 100%)",
           }}
-          className="sm:hidden absolute top-0 inset-x-0 h-[340px] pointer-events-none"
+          className="sm:hidden absolute top-0 inset-x-0 h-[360px] pointer-events-none"
         />
         {/* Tablet backdrop tint */}
         <div className="hidden sm:block lg:hidden absolute inset-0 bg-gradient-to-t from-[#0A0A0E] via-[#0A0A0E]/90 to-[#0A0A0E]/75 pointer-events-none" />
@@ -167,7 +167,7 @@ export function Hero() {
         {/* =========================================================================
             HERO CONTENT LAYER: Executive typography and amber lighting
             ========================================================================= */}
-        <div className="relative z-10 w-full flex-1 flex flex-col justify-start pt-6 sm:pt-7 lg:pt-8 pb-8">
+        <div className="relative z-10 w-full flex-1 flex flex-col justify-start pt-5 xs:pt-6 sm:pt-7 lg:pt-8 pb-8">
           <div className="w-full max-w-7xl xl:max-w-[1520px] 2xl:max-w-[1680px] mx-auto px-5 sm:px-8 lg:px-12 xl:px-16">
             <div className="max-w-xl lg:max-w-xl xl:max-w-2xl 2xl:max-w-3xl flex flex-col items-start text-left">
               
@@ -188,17 +188,17 @@ export function Hero() {
                 style={{ opacity: contentOpacity }}
                 className="w-full flex flex-col items-start will-change-transform"
               >
-                {/* Headline */}
+                {/* Headline with fading gold gradient */}
                 <motion.h1
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.06, ease: "easeOut" }}
-                  className="font-heading font-bold uppercase tracking-tight text-[28px] xs:text-[32px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.04] sm:leading-[1.04] text-left max-w-[640px] mb-3 sm:mb-3 [text-shadow:0_2px_24px_rgba(0,0,0,0.95),0_0_70px_rgba(0,0,0,0.7)]"
+                  className="font-heading font-black uppercase tracking-tight text-[31px] xs:text-[35px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.03] text-left max-w-[640px] mb-3 sm:mb-3 [text-shadow:0_3px_24px_rgba(0,0,0,0.95),0_1px_8px_rgba(0,0,0,0.9)]"
                 >
-                  <span className="block text-[#FDFDFC] drop-shadow-[0_2px_24px_rgba(0,0,0,0.8)]">
+                  <span className="block bg-[linear-gradient(90deg,#FFFFFF_0%,#FFF8F0_45%,#FCE2C3_75%,#F6C58E_100%)] bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]">
                     <span className="hidden sm:inline">SUA </span>PRESENÇA DIGITAL
                   </span>
-                  <span className="block mt-1 sm:mt-1 text-[#F59E0B] drop-shadow-[0_2px_24px_rgba(245,158,11,0.4)]">
+                  <span className="block mt-1 sm:mt-1 bg-[linear-gradient(90deg,#FFF3DB_0%,#FCDAA3_30%,#F7BF69_65%,#E5962B_100%)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.95)]">
                     INSPIRA CONFIANÇA
                   </span>
                 </motion.h1>
@@ -208,9 +208,10 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.13, ease: "easeOut" }}
-                  className="font-sans text-sm sm:text-base lg:text-lg text-[#B8B8C2] leading-relaxed max-w-[460px] font-normal text-left [text-shadow:0_1px_12px_rgba(0,0,0,0.9)] mb-5 sm:mb-0"
+                  className="font-sans text-[14px] xs:text-[15px] sm:text-base lg:text-lg text-[#C8C8D2] leading-[1.45] sm:leading-relaxed max-w-[340px] sm:max-w-[460px] font-normal text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.95)] mb-6 sm:mb-0"
                 >
-                  Sites rápidos e sistemas fáceis de usar para o seu negócio crescer.
+                  <span className="block">Sites rápidos e sistemas fáceis de usar</span>
+                  <span className="block">para o seu negócio crescer.</span>
                 </motion.p>
 
                 {/* Call to Action Button */}
@@ -224,10 +225,10 @@ export function Hero() {
                     href="#contato"
                     variant="primary"
                     size="lg"
-                    className="group w-auto shadow-[0_4px_20px_rgba(245,158,11,0.35)] hover:shadow-[0_6px_28px_rgba(245,158,11,0.5)] hover:-translate-y-0.5 transition-all text-sm sm:text-base font-bold !px-5 sm:!px-6 !py-3 sm:!py-3.5"
+                    className="group w-auto shadow-[0_4px_24px_rgba(245,158,11,0.4)] hover:shadow-[0_6px_32px_rgba(245,158,11,0.55)] hover:-translate-y-0.5 transition-all text-[13px] xs:text-sm sm:text-base font-bold !px-5 xs:!px-6 !py-2.5 xs:!py-3 sm:!py-3.5 rounded-[10px]"
                   >
                     <span>Experimente gratuitamente</span>
-                    <ArrowUpRight className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
+                    <ArrowUpRight className="w-3.5 h-3.5 sm:w-5 sm:h-5 transition-transform duration-200 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 stroke-[2.5]" />
                   </Button>
                 </motion.div>
               </motion.div>

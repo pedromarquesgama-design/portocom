@@ -41,11 +41,11 @@ export function Header() {
       {/* Floating Transitioning Logo */}
       <HeroNavLogoTransition hidden={mobileMenuOpen} />
 
-      <div className="relative z-50 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 h-[60px] flex items-center justify-between gap-6">
+      <div className="relative z-50 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 h-[70px] sm:h-[60px] flex items-center justify-between gap-6">
         {/* Brand Logo Anchor (static on mobile, receives transitioning logo on desktop) */}
         <div
           id="navbar-logo-anchor"
-          className="relative flex items-center h-8 sm:h-9 w-32 sm:w-36 shrink-0 justify-start"
+          className="relative flex items-center h-12 sm:h-9 w-auto sm:w-36 shrink-0 justify-start"
         >
           <a
             href="#"
@@ -61,7 +61,7 @@ export function Header() {
             <img
               src="/images/logo-portocom.png"
               alt={`${AGENCY_NAME} — Design & Engenharia Digital`}
-              className="h-8 w-auto object-contain mix-blend-screen"
+              className="h-[46px] xs:h-[48px] w-auto object-contain mix-blend-screen"
             />
           </a>
         </div>
@@ -90,22 +90,30 @@ export function Header() {
           </Button>
         </div>
 
-        {/* Mobile menu trigger */}
+        {/* Mobile menu trigger — 3 golden metallic horizontal bars matching screenshot */}
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden p-2 rounded-md text-white/80 hover:text-white hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B]"
+          className="md:hidden flex flex-col justify-center items-center w-10 h-10 -mr-1 rounded-lg hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] transition-colors"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >
-          {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+          {mobileMenuOpen ? (
+            <X className="w-6 h-6 text-[#E5A93C]" />
+          ) : (
+            <div className="flex flex-col justify-between w-[25px] h-[18px]">
+              <span className="w-full h-[2px] rounded-full bg-gradient-to-r from-[#C5A880] via-[#E5A93C] to-[#C89D66] shadow-[0_0_8px_rgba(229,169,60,0.4)]" />
+              <span className="w-full h-[2px] rounded-full bg-gradient-to-r from-[#A88252] via-[#D4A359] to-[#9E733D] shadow-[0_0_8px_rgba(212,163,89,0.3)]" />
+              <span className="w-full h-[2px] rounded-full bg-gradient-to-r from-[#DECB9E] via-[#F3DEAB] to-[#C9A96E] shadow-[0_0_8px_rgba(243,222,171,0.4)]" />
+            </div>
+          )}
         </button>
       </div>
 
       {/* Mobile Drawer Backdrop */}
       {mobileMenuOpen && (
         <div
-          className="md:hidden fixed inset-0 top-[60px] bg-black/80 z-40"
+          className="md:hidden fixed inset-0 top-[70px] sm:top-[60px] bg-black/80 z-40"
           onClick={() => setMobileMenuOpen(false)}
         />
       )}
