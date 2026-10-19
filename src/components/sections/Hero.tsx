@@ -105,15 +105,14 @@ export function Hero() {
               />
             </motion.div>
 
-            {/* Mobile Portrait image: zoom-in without any blur or fading */}
+            {/* Mobile Portrait image: crisp high-resolution portrait asset */}
             <div className="block sm:hidden w-full h-full relative">
               <img
                 src="/images/hero-background-mobile.jpg"
                 alt="Escritório executivo à noite com dispositivos exibindo a sua marca"
                 className="w-full h-full object-cover object-bottom bg-[#0A0A0E]"
-                style={{
-                  imageRendering: "-webkit-optimize-contrast",
-                }}
+                fetchPriority="high"
+                decoding="async"
               />
             </div>
           </motion.div>
@@ -196,9 +195,7 @@ export function Hero() {
                   className="font-heading font-extrabold uppercase tracking-tight text-[31px] xs:text-[35px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.03] text-left max-w-[640px] mb-3 sm:mb-3"
                 >
                   <span className="block">
-                    <span className="text-[#FFFFFF]">
-                      <span className="hidden sm:inline">SUA </span>PRESENÇA{" "}
-                    </span>
+                    <span className="text-[#FFFFFF]">PRESENÇA </span>
                     <span
                       className="inline-block bg-[linear-gradient(90deg,#FEE8D3_0%,#F8C896_50%,#F6B874_100%)] bg-clip-text text-transparent font-extrabold"
                       style={{
@@ -227,10 +224,9 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.13, ease: "easeOut" }}
-                  className="font-sans text-[14px] xs:text-[15px] sm:text-base lg:text-lg text-[#C8C8D2] leading-[1.45] sm:leading-relaxed max-w-[340px] sm:max-w-[460px] font-normal text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.95)] mb-6 sm:mb-0"
+                  className="font-sans text-[14px] xs:text-[15px] sm:text-base lg:text-lg text-[#C8C8D2] leading-[1.45] sm:leading-relaxed max-w-[340px] sm:max-w-[480px] lg:max-w-[540px] font-normal text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.95)] mb-7 sm:mb-8"
                 >
-                  <span className="block">Sites rápidos e sistemas fáceis de usar</span>
-                  <span className="block">para o seu negócio crescer.</span>
+                  Desenvolvemos sites rápidos e sistemas fáceis de usar.
                 </motion.p>
 
                 {/* Call to Action Button */}
