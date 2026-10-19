@@ -42,10 +42,10 @@ export function Header() {
       <HeroNavLogoTransition hidden={mobileMenuOpen} />
 
       <div className="relative z-50 max-w-[1280px] mx-auto px-5 sm:px-8 lg:px-12 h-[70px] sm:h-[60px] flex items-center justify-between gap-6">
-        {/* Brand Logo Anchor (static on mobile, receives transitioning logo on desktop) */}
+        {/* Brand Logo Anchor (centered & larger on mobile, receives transitioning logo on desktop) */}
         <div
           id="navbar-logo-anchor"
-          className="relative flex items-center h-12 sm:h-9 w-auto sm:w-36 shrink-0 justify-start"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 sm:static sm:left-auto sm:top-auto sm:translate-x-0 sm:translate-y-0 flex items-center justify-center sm:justify-start h-full sm:h-9 w-auto sm:w-36 shrink-0 pointer-events-auto"
         >
           <a
             href="#"
@@ -61,7 +61,7 @@ export function Header() {
             <img
               src="/images/logo-portocom.png"
               alt={`${AGENCY_NAME} — Design & Engenharia Digital`}
-              className="h-[46px] xs:h-[48px] w-auto object-contain mix-blend-screen"
+              className="h-[52px] xs:h-[55px] w-auto object-contain mix-blend-screen"
             />
           </a>
         </div>
@@ -94,7 +94,7 @@ export function Header() {
         <button
           type="button"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          className="md:hidden flex flex-col justify-center items-center w-10 h-10 -mr-1 rounded-lg hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] transition-colors"
+          className="ml-auto md:hidden flex flex-col justify-center items-center w-10 h-10 -mr-1 rounded-lg hover:bg-white/[0.04] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F59E0B] transition-colors"
           aria-expanded={mobileMenuOpen}
           aria-label={mobileMenuOpen ? "Fechar menu" : "Abrir menu"}
         >

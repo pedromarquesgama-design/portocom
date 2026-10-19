@@ -193,12 +193,31 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.06, ease: "easeOut" }}
-                  className="font-heading font-black uppercase tracking-tight text-[31px] xs:text-[35px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.03] text-left max-w-[640px] mb-3 sm:mb-3 [text-shadow:0_3px_24px_rgba(0,0,0,0.95),0_1px_8px_rgba(0,0,0,0.9)]"
+                  className="font-heading font-extrabold uppercase tracking-tight text-[31px] xs:text-[35px] sm:text-3xl md:text-4xl lg:text-5xl xl:text-[56px] leading-[1.03] text-left max-w-[640px] mb-3 sm:mb-3"
                 >
-                  <span className="block bg-[linear-gradient(90deg,#FFFFFF_0%,#FFF8F0_45%,#FCE2C3_75%,#F6C58E_100%)] bg-clip-text text-transparent drop-shadow-[0_2px_20px_rgba(0,0,0,0.9)]">
-                    <span className="hidden sm:inline">SUA </span>PRESENÇA DIGITAL
+                  <span className="block">
+                    <span className="text-[#FFFFFF]">
+                      <span className="hidden sm:inline">SUA </span>PRESENÇA{" "}
+                    </span>
+                    <span
+                      className="inline-block bg-[linear-gradient(90deg,#FEE8D3_0%,#F8C896_50%,#F6B874_100%)] bg-clip-text text-transparent font-extrabold"
+                      style={{
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        color: "#F8C896",
+                      }}
+                    >
+                      DIGITAL
+                    </span>
                   </span>
-                  <span className="block mt-1 sm:mt-1 bg-[linear-gradient(90deg,#FFF3DB_0%,#FCDAA3_30%,#F7BF69_65%,#E5962B_100%)] bg-clip-text text-transparent drop-shadow-[0_2px_24px_rgba(0,0,0,0.95)]">
+                  <span
+                    className="block mt-1 sm:mt-1 bg-[linear-gradient(90deg,#FDC77B_0%,#F7BE72_45%,#F3B061_80%,#EEA343_100%)] bg-clip-text text-transparent font-extrabold"
+                    style={{
+                      WebkitBackgroundClip: "text",
+                      WebkitTextFillColor: "transparent",
+                      color: "#F7BE72",
+                    }}
+                  >
                     INSPIRA CONFIANÇA
                   </span>
                 </motion.h1>
