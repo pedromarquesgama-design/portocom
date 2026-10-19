@@ -224,7 +224,7 @@ export function Hero() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.5, delay: 0.13, ease: "easeOut" }}
-                  className="font-sans text-[14px] xs:text-[15px] sm:text-base lg:text-lg text-[#C8C8D2] leading-[1.45] sm:leading-relaxed max-w-[340px] sm:max-w-[480px] lg:max-w-[540px] font-normal text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.95)] mb-7 sm:mb-8"
+                  className="font-sans max-lg:whitespace-nowrap max-lg:text-[clamp(0.75rem,3.6vw,1.125rem)] max-lg:tracking-tight max-lg:max-w-none lg:text-lg text-[#C8C8D2] leading-[1.45] sm:leading-relaxed lg:max-w-[540px] font-normal text-left [text-shadow:0_2px_12px_rgba(0,0,0,0.95)] mb-7 sm:mb-8"
                 >
                   Desenvolvemos sites rápidos e sistemas fáceis de usar.
                 </motion.p>
