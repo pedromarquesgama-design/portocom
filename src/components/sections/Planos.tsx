@@ -96,7 +96,7 @@ export function Planos() {
                 <div className="border-t border-white/[0.08] mt-5 pt-4 pb-4">
                   <div className="flex items-baseline gap-2 flex-wrap">
                     <span className="text-3xl sm:text-4xl font-extrabold font-heading text-white tracking-tight">
-                      R$ 970,00
+                      R$ 769,90
                     </span>
                     <span className="text-xs sm:text-sm font-medium text-[#B8B8C2]">
                       à vista
@@ -105,7 +105,7 @@ export function Planos() {
 
                   <div className="mt-1.5 flex items-center">
                     <span className="text-[11px] sm:text-xs font-mono font-medium px-2.5 py-0.5 rounded bg-[#F59E0B]/10 text-[#F59E0B] border border-[#F59E0B]/25">
-                      ou 10x de R$ 100,00 no cartão
+                      ou 8x de R$ 100,00 no cartão
                     </span>
                   </div>
 
